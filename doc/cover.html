@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <title>iutest_c</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift_jis" />
+  <meta http-equiv="content-style-type" content="text/css" />
+  <style type="text/css">
+  body {
+    font-family: Arial,'ＭＳ Ｐゴシック',sans-serif ;
+    background-color:#008080;
+    line-height:130%;
+  }
+  h1 {
+    padding:20px 10px;
+    background-color:#cccccc;
+    border-bottom: solid 1px #808080;
+  }
+  h2 {
+    padding:14px 10px;
+    background-color:#cccccc;
+    border-bottom: solid 1px #808080;
+  }
+  h3 {
+    padding:10px 10px;
+    background-color:#cccccc;
+    border-bottom: solid 1px #808080;
+  }
+  .contents {
+    padding:0px 0px 1em 0px;
+    background-color:#f8f8f8;
+    border-right: solid 5px #006400;
+    border-bottom: solid 10px #006400;
+  }
+  li {
+    padding-bottom:4px;
+  }
+  .text_block {
+    padding-left:1em;
+  }
+  .source {
+    border : solid 2px #006400;
+    background-color:#ffffff;
+    padding: 0.5em;
+    margin: 10px;
+  }
+  </style>
+</head>
+<body>
+
+<div class="contents">
+<h1>IUTEST_C</h1>
+<div class="text_block">
+Iris Unit Test Framework for C : 2013 / 8 / 12<br />
+<br />
+</div>
+<h2>はじめに</h2>
+<div class="text_block">
+iutest_c は、include するのみで使うことができる C テスティングフレームワーク です。<br />
+"iutest_c/include" をインクルードパスに追加し、<br />
+<pre>
+   #include "iutest_c.h"
+</pre>
+とするだけ使用できます。<br />
+</div>
+</div> <!-- end of contents -->
+
+<div class="contents">
+<h2>テストの自動検出</h2>
+<div class="text_block">
+iutest_c ではテストを書くだけで自動的にテストを検出して実行します。<br />
+(※ 非対応コンパイラあり) <br />
+</div>
+
+<h2>アサーション/マクロ</h2>
+<div class="text_block">
+iutest_c のテスト用マクロは、 IUTEST_ から始まります。<br />
+IUTEST_ASSERT_ から始まるマクロは致命的なアサーション。<br />
+IUTEST_EXPECT_ から始まるマクロは致命的ではないアサーションになります。<br />
+また、警告アサーションとして IUTEST_INFORM_ も用意しています。<br />
+詳細は、ヘッダーファイルもしくは付属の <a href="html/index.html">Doxygen ドキュメント</a> をご確認ください。
+</div>
+
+<h2>テストを書く</h2>
+<div class="text_block">
+最も簡単なテストの記述を以下に示します。<br />
+<pre class="source">
+IUTEST(CaseName, TestName)
+{
+    int x = 0;
+    IUTEST_ASSERT_EQ(0, x);
+}
+</pre>
+IUTEST マクロからテストの記述を開始します。<br />
+あとは、アサーションマクロを使用してあなたのコードをテストするだけです。<br />
+</div>
+
+<h2>main を書く</h2>
+<div class="text_block">
+iutest_c を実行するには、初期化と実行のマクロを記述するだけです。<br />
+<pre class="source">
+<strong>/* ワーキング変数の定義 */
+IUTEST_C_WORKSPACE();
+</strong>
+int main(int argc, char** argv)
+{
+    IUTEST_INIT(&argc, argv);
+    return IUTEST_RUN_ALL_TESTS();
+}
+</pre>
+</div>
+
+</div> <!-- end of contents -->
+
+<br />
+<div align="right">Copyright (c) 2012-2013, Takazumi-Shirayanagi, All rights reserved.</div>
+
+</body>
+</html>

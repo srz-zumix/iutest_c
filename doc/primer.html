@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift_jis" />
+  <meta http-equiv="content-style-type" content="text/css" />
+  <style type="text/css">
+  body {
+    font-family: Arial,'ＭＳ Ｐゴシック',sans-serif ;
+    background-color:#008080;
+    line-height:130%;
+  }
+  h1 {
+    padding:20px 10px;
+    background-color:#cccccc;
+    border-bottom: solid 1px #808080;
+  }
+  h2 {
+    padding:14px 10px;
+    background-color:#cccccc;
+    border-bottom: solid 1px #808080;
+  }
+  h3 {
+    padding:10px 10px;
+    background-color:#cccccc;
+    border-bottom: solid 1px #808080;
+  }
+  h4, h5, h6 {
+    padding:5px 5px;
+    background-color:#dddddd;
+    border-bottom: solid 1px #808080;
+  }
+
+  .contents {
+    padding:0px 0px 1em 0px;
+    background-color:#f8f8f8;
+    border-right: solid 5px #006400;
+    border-bottom: solid 10px #006400;
+  }
+  li {
+    padding-bottom:4px;
+  }
+  .text_block {
+    padding-left:1em;
+  }
+  .source {
+    border : solid 2px #006400;
+    background-color:#ffffff;
+    padding: 0.5em;
+    margin: 10px;
+  }
+  </style>
+  <title>iutest - primer</title>
+</head>
+<body>
+
+<div class="contents">
+<h1><a name="menu" id="menu">入門ガイド</a></h1>
+<ul>
+  <li><a href="#concept">コンセプト</a></li>
+  <li><a href="#reference">リファレンス</a>
+  <ul>
+    <li><a href="#maincode">main コード</a></li>
+    <li><a href="#testsimple">もっとも簡単なテスト</a></li>
+    <li><a href="#registertest">テストの明示的な登録</a></li>
+    <li><a href="#assertlimit">アサーションの制限</a></li>
+    <li><a href="#testfix">テストフィクスチャ</a></li>
+    <li><a href="#simpleparamtest">簡易的なパラメタライズテスト</a></li>
+    <li><a href="#paramtest">値のパラメータ化テスト</a>
+      <ul>
+        <li><a href="#combinetest">組み合わせテスト</a></li>
+      </ul>
+    </li>
+    <li><a href="#disabledtest">テストを一時的に無効にする</a></li>
+    <li><a href="#options">テストプログラム実行時のオプション</a>
+      <ul>
+        <li><a href="#selecttest">テストの選択</a>
+          <ul>
+          <li><a href="#opt_list">テストの一覧</a>
+          <li><a href="#opt_filter">テストの部分的な実行</a>
+          <li><a href="#opt_disabled">無効テストの実行</a>
+          </ul>
+        </li>
+        <li><a href="#repeattest">テストを繰り返す</a></li>
+        <li><a href="#shuffletest">テストをシャッフルする</a></li>
+        <li><a href="#xmlreport">XML レポート</a></li>
+      </ul>
+    </li>
+  </ul>
+  </li>
+</ul>
+</div> <!-- end of contents -->
+
+<div class="contents">
+<h2><a name="concept" id="concept">コンセプト</a></h2>
+<div class="text_block">
+<ul>
+<li>include オンリーで使用できる<br />
+iutest_c は「簡単に」「すぐに」テストが書けることを目的としています。<br />
+そのため、ライブラリを作成しなくても include するだけで使用できるように初期障壁をなくすようにしました。<br />
+ <br />
+</li>
+<li>テストの自動検出<br />
+iutest_c ではテストを書くだけで自動的にテストを検出して実行します。<br />
+(※ 非対応コンパイラあり) <br />
+</li>
+</ul>
+</div>
+</div> <!-- end of contents -->
+
+<div class="contents">
+<h2><a name="reference" id="reference">リファレンス</a></h2>
+<div class="text_block">
+<h3><a name="maincode" id="maincode">main コード</a></h3>
+iutest_c を実行するために必要な main コードを以下に記述します。<br />
+<pre class="source">
+<strong>/* ワーキング変数の定義 */
+IUTEST_C_WORKSPACE();
+</strong>
+int main(int argc, char** argv)
+{
+    IUTEST_INIT(&argc, argv);
+    return IUTEST_RUN_ALL_TESTS();
+}
+</pre>
+
+<h3><a name="testsimple" id="testsimple">もっとも簡単なテスト</a></h3>
+<pre class="source">
+IUTEST(CaseName, TestName)
+{
+    int x = 0;
+    IUTEST_ASSERT_EQ(0, x);
+}
+</pre>
+IUTEST マクロからテストの記述を開始します。<br />
+あとは、アサーションマクロを使用してあなたのコードをテストするだけです。<br />
+
+
+<h3><a name="registertest" id="registertest">テストの明示的な登録</a></h3>
+iutest_c はテストを自動的に検出して実行する機能がありますが、<br />
+一部対応していないコンパイラがあります。<br />
+その場合、IUTEST_REGISTER_TEST を使用して登録をしてください。<br />
+値のパラメータ化テストを使用する場合は、IUTEST_REGISTER_TEST_P も合わせて呼ぶようにしてください。<br />
+<pre class="source">
+int main(int argc, char** argv)
+{<strong>
+    /* 初期化前に call してください。 */
+    /* testcase_name にテストケース名 */
+    /* test_name にテスト名 */
+    IUTEST_REGISTER_TEST(testcase_name, test_name);
+
+    /* 値のパラメータ化テストの場合は IUTEST_REGISTER_TEST_P もする */
+    IUTEST_REGISTER_TEST_P(prefix, testcase_name);
+</strong>
+    IUTEST_INIT(&argc, argv);
+    return IUTEST_RUN_ALL_TESTS();
+}
+</pre>
+
+<h3><a name="assertlimit" id="assertlimit">アサーションの制限</a></h3>
+iutest_c の アサーションには使用するにあたって、一部制限があります。<br />
+<ul>
+  <li>IUTEST_*_EQ<br />
+  実行時の値の出力のために、actual に右辺値を使用できません。<br />
+  また、expected には右辺値を使用できますが、実行時の値が出力されません。<br />
+  <br />
+  どちらも実行時の値を出力したい場合、IUTEST_*_LVALUE_EQ を使用してください。<br />
+  （※ただし、右辺値を使用できません。）<br />
+  <br />
+  右辺値を使用したい場合は、IUTEST_*_RVALUE_EQ を使用してください。<br />
+  （※左辺値も使用できます。ただし、実行時の値が出力されません。）<br />
+  <br />
+  </li>
+  <li>IUTEST_*_STREQ</li>
+  <li>IUTEST_*_STRNE</li>
+  <li>IUTEST_*_STRCASEEQ</li>
+  <li>IUTEST_*_STRCASENE<br />
+  制限なく使用できます。<br />
+  <br />
+  </li>
+  <li>IUTEST_*_FLOAT_EQ</li>
+  <li>IUTEST_*_DOUBLE_EQ<br />
+  expected に右辺値/左辺値、actual に左辺値が使用できます。<br />
+  また、actual の実行時の値が出力されます。<br />
+  <br />
+  </li>
+  <li>その他のアサーション<br />
+  実装の都合上、IUTEST_*_EQ と同様の問題がありますが、<br />
+  現バージョンでは、左辺値のみ利用できるアサーションとして提供しています。<br />
+  そのため、右辺値を使用できません。<br />
+  右辺値を利用したい場合は、一時変数に格納することで回避できます。<br />
+  <br />
+  将来のバージョンアップで根本的解決を目指しておりますが、IUTEST_*_EQ と同様の提供方法になる可能性もあります。<br />
+  <br />
+  </li>
+</ul>
+
+
+<h3><a name="testfix" id="testfix">テストフィクスチャ</a></h3>
+iutest_c でもテストフィクスチャに対応しています。<br />
+言語が C なので、テストフィクスチャは構造体と関数ポインタで構成します。<br />
+よって、iutest や Google Test とは少し違った記述が必要になります。<br />
+<pre class="source">
+void TestF_SetUp(void)
+{
+  /* ここに SetUp コード */
+}
+static const iuTestFixture TestF = { NULL /* SetUpTestCase */
+                                  , NULL /* TearDownTestCase */
+                                  , TestF_SetUp /* SetUp */
+                                  , NULL /* TearDwon */
+                                  , NULL /* ユーザーデータ */
+                                  };
+IUTEST_F(TestF, Hoge)
+{
+   IUTEST_ASSERT_EQ(0, 0);
+   IUTEST_EXPECT_NULL(iuUnitTest_GetCurrentUserData());
+}
+</pre>
+ユーザーデータには、iuUnitTest_GetCurrentUserData 関数を使うことでアクセスすることができます。<br />
+
+<h3><a name="simpleparamtest" id="simpleparamtest">簡易的なパラメタライズテスト</a></h3>
+関数の引数にパラメータを渡すテストを簡易的に記述できるマクロを用意してあります。<br />
+<br />
+<pre class="source">
+void TestFunction(int x, int y)
+{
+   IUTEST_ASSERT_EQ(x, y);
+}
+IUTEST_PMZ(ParamMethodTest, EQ, TestFunction, 0, 0);
+IUTEST_PMZ(ParamMethodTest, EQ, TestFunction, 1, 1);
+IUTEST_PMZ(ParamMethodTest, EQ, TestFunction, 2, 2);
+</pre>
+
+<h3><a name="paramtest" id="paramtest">値のパラメータ化テスト</a></h3>
+値をパラメータ化したテストを作成します。<br />
+１つのテストの記述に対して複数の値をテストすることができます。<br />
+特定の範囲の数値を網羅的にテストしたい場合などに便利です。<br />
+<br />
+<pre class="source">
+IUTEST_INSTANTIATE_TEST_CASE_P(int, A, TestP, iuRange, 0, 2 );
+
+IUTEST_P(int, TestP, Test)
+{
+    const int x = param; // パラメータは param 引数として渡されます
+    const int kMax = 10;
+    IUTEST_ASSERT_LT(x, kMax);
+}
+</pre>
+<br />
+パラメータの生成には、iuValues,iuRange,iuStepRange,iuCombine が利用できます。<br />
+<br />
+
+<h4><a name="combinetest" id="combinetest">組み合わせテスト</a></h4>
+iuCombine を使用することで、複数のパラメータの組み合わせテストが行えます。<br />
+iuCombine の書式は以下のようになります。
+
+<pre class="source">
+IUTEST_INSTANTIATE_TEST_CASE_P((int, char, unsigned int), A, TestName, iuCombine
+	   , (iuRange, (0, 2)), (iuStepRange, (100, 110, 2)), (iuValues, (0, 4, 2)) );
+
+</pre>
+IUTEST_INSTANTIATE_TEST_CASE_P の第一引数にはパラメータの各要素の型を括弧でくくって指定します。<br />
+第５引数以降には、各要素の生成器と生成器に対するパラメータを指定します。生成器には、iuValues,iuRange,iuStepRange が利用できます。<br />
+パラメータは括弧でくくり、さらに生成器とパラメータを括弧でくくってください。<br />
+<br />
+
+続いて、テストの記述方法を説明します。<br />
+<pre class="source">
+typedef IUTEST_P_TYPE((int, char, unsigned int)) TestCombineParamType;
+
+IUTEST_P(TestCombineParamType, TestCombine, Test)
+{
+	const int x0 = param.value0;
+	const char x1 = param.value1;
+	const unsigned int x2 = param.value2;
+	iuConsole_Output("%d %d %d\n", x0, x1, x2);
+}
+</pre>
+
+iuCombine を使用して値のパラメータ化テストを行う場合、IUTEST_P マクロの第一引数に指定するための型を定義する必要があります。<br />
+型の定義には IUTEST_P_TYPE を使用します。IUTEST_P_TYPE は構造体を宣言するだけですので、typedef で任意の名前をつけてください。<br />
+パラメータの値は、構造体のメンバー変数として定義されています。変数名は、value0,value1,value2... になります。<br />
+テスト関数には param 変数としてパラメータが渡されますのでこちらからアクセスしてください。<br />
+<br />
+
+<h3><a name="disabledtest" id="disabledtest">テストを一時的に無効にする</a></h3>
+テストの失敗の修正が早急にはできないなど、何らかの理由でテストを実行したくない場合、DISABLE_ プレフィックスを
+テスト名もしくはテストケース名に付けることで、無効にできます。<br />
+<br />
+無効なテストは <a href="#opt_disabled">--iutest_also_run_disabled_tests</a> オプションを使用することで一時的に有効にすることもできます。<br />
+
+
+<h3><a name="options" id="options">テストプログラム実行時のオプション</a></h3>
+<h4><a name="selecttest" id="selecttest">テストの選択</a></h4>
+<h5><a name="opt_list" id="opt_list">テストの一覧</a></h5>
+<pre>
+--iutest_list_tests
+</pre>
+上記オプションを指定すると、プログラムは検出したテストの一覧を出力します。
+<h5><a name="opt_filter" id="opt_filter">テストの部分的な実行</a></h5>
+<pre>
+--iutest_filter=&lt;filter&gt;
+</pre>
+上記オプション、または環境変数 IUTEST_FILTER を指定すると、&lt;filter&gt; にマッチしたテストが実行されます。<br />
+(テスト名は TestCaseName.TestName)<br />
+<br />
+フィルターのフォーマットは、':' で区切られたワイルドカードパターンのリスト（ポジティブ）と<br />
+':' で区切られたパターンの先頭に '-' がついたリスト（ネガティブ）です。
+
+<h5><a name="opt_disabled" id="opt_disabled">無効テストの実行</a></h5>
+iutest_c でも、DISABLED テストが使用できます。<br />
+テストケースもしくはテスト名の先頭に "DISABLED_" が ついたテストは無効テストとして通常の実行では無視されます。<br />
+<pre>
+--iutest_also_run_disabled_tests
+</pre>
+上記オプション、または環境変数 IUTEST_ALSO_RUN_DISABLED_TESTS を指定すると、無効テストも実行されます。<br />
+
+<h4><a name="repeattest" id="repeattest">テストを繰り返す</a></h4>
+<pre>
+--iutest_repeat=&lt;count&gt;
+</pre>
+上記オプション、または環境変数 IUTEST_REPEAT を指定すると、テストの繰り返し回数を設定できます。<br />
+&lt;count&gt; に負数を指定した場合、無限に繰り返します。<br />
+
+<h4><a name="shuffletest" id="shuffletest">テストをシャッフルする</a></h4>
+<pre>
+--iutest_shuffle
+</pre>
+上記オプション、または環境変数 IUTEST_SHUFFLE を指定すると、ランダムな順序でテストを実行します。<br />
+これによって、テスト間に良くない依存関係がないか調べることができます。<br />
+
+<h4><a name="xmlreport" id="xmlreport">XML レポート</a></h4>
+<pre>
+--iutest_output=xml[:filepath]
+</pre>
+上記オプション、または環境変数 IUTEST_OUTPUT を指定すると、XML 形式でテスト結果を出力します。<br />
+出力フォーマットは、 JUnit report に基づいており、 Jenkins など CI ツールで解析することができます。<br />
+
+</div> <!-- end of text_block -->
+</div> <!-- end of contents -->
+
+<a href="#menu">↑</a>
+
+<br />
+<div align="right">Copyright (c) 2012-2013, Takazumi-Shirayanagi, All rights reserved.</div>
+
+</body>
+</html>

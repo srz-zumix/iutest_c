@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_MD|Win32">
+      <Configuration>Debug_MD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_MD|Win32">
+      <Configuration>Release_MD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\internal\iutest_compiler_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_console_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_core_impl_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_internal_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_internal_defs_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_libc_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_message_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_option_message_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_params_util_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_pool_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_port_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_pp_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_pragma_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_random_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_regex_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_string_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_time_c.h" />
+    <ClInclude Include="..\..\include\internal\iutest_xml_file_c.h" />
+    <ClInclude Include="..\..\include\iutest_assertion_c.h" />
+    <ClInclude Include="..\..\include\iutest_body_c.h" />
+    <ClInclude Include="..\..\include\iutest_c.h" />
+    <ClInclude Include="..\..\include\iutest_case_c.h" />
+    <ClInclude Include="..\..\include\iutest_config_c.h" />
+    <ClInclude Include="..\..\include\iutest_core_c.h" />
+    <ClInclude Include="..\..\include\iutest_defs_c.h" />
+    <ClInclude Include="..\..\include\iutest_env_c.h" />
+    <ClInclude Include="..\..\include\iutest_info_c.h" />
+    <ClInclude Include="..\..\include\iutest_listener_c.h" />
+    <ClInclude Include="..\..\include\iutest_pred_c.h" />
+    <ClInclude Include="..\..\include\iutest_printer_c.h" />
+    <ClInclude Include="..\..\include\iutest_result_c.h" />
+    <ClInclude Include="..\..\include\iutest_spi_c.h" />
+    <ClInclude Include="..\..\include\iutest_static_assertion_c.h" />
+    <ClInclude Include="..\..\include\iutest_ver_c.h" />
+    <ClInclude Include="..\..\include\listener\iutest_default_printer_c.h" />
+    <ClInclude Include="..\..\include\listener\iutest_default_xml_generator_c.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\iutest_all.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\doc\Doxyfile" />
+    <None Include="..\..\doc\index.html" />
+    <None Include="..\..\include\impl\iutest_assertion_c.inl" />
+    <None Include="..\..\include\impl\iutest_body_c.inl" />
+    <None Include="..\..\include\impl\iutest_case_c.inl" />
+    <None Include="..\..\include\impl\iutest_console_c.inl" />
+    <None Include="..\..\include\impl\iutest_core_c.inl" />
+    <None Include="..\..\include\impl\iutest_default_printer_c.inl" />
+    <None Include="..\..\include\impl\iutest_default_xml_generator_c.inl" />
+    <None Include="..\..\include\impl\iutest_defs_c.inl" />
+    <None Include="..\..\include\impl\iutest_env_c.inl" />
+    <None Include="..\..\include\impl\iutest_info_c.inl" />
+    <None Include="..\..\include\impl\iutest_listener_c.inl" />
+    <None Include="..\..\include\impl\iutest_message_c.inl" />
+    <None Include="..\..\include\impl\iutest_option_message_c.inl" />
+    <None Include="..\..\include\impl\iutest_port_c.inl" />
+    <None Include="..\..\include\impl\iutest_printer_c.inl" />
+    <None Include="..\..\include\impl\iutest_regex_c.inl" />
+    <None Include="..\..\include\impl\iutest_string_c.inl" />
+    <None Include="..\..\include\impl\iutest_xml_file_c.inl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F9486302-95EE-497A-99EB-DF5756F9907F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>iutest_c</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\..\lib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'">
+    <OutDir>$(SolutionDir)\..\..\lib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'">
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>lib$(ProjectName)-vc100-mtd</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'">
+    <TargetName>lib$(ProjectName)-vc100-mdd</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\..\lib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'">
+    <OutDir>$(SolutionDir)\..\..\lib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'">
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>lib$(ProjectName)-vc100-mt</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'">
+    <TargetName>lib$(ProjectName)-vc100-md</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
