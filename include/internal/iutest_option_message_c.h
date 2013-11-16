@@ -29,6 +29,8 @@ IUTEST_EXTERN_C_BEGIN()
 */
 IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowNotinitializedWarning(void);
 
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION || IUTEST_C_HAS_COMMANDLINE_OPTION
+
 /**
  * @brief	バージョンの出力
 */
@@ -48,6 +50,8 @@ IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowHelpAndSorry(void);
  * @brief	機能情報の出力
 */
 IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowFeature(void);
+
+#endif
 
 #endif
 

@@ -235,10 +235,14 @@ IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuUnitTest_Passed(const iuUnitTest* unit_test);
 */
 IUTEST_ATTRIBUTE_UNUSED_ unsigned int iuUnitTest_GetRandomSeed(void);
 
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION || IUTEST_C_HAS_COMMANDLINE_OPTION
+
 /**
  * @brief	テストのリスト出力
 */
 IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowTestList(const iuUnitTest* unit_test);
+
+#endif
 
 /**
  * @biref	テストケースの追加

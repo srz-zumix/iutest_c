@@ -21,6 +21,13 @@
 #include "../iutest_body_c.h"
 
 /* function ==========================================================*/
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTest_Init(iuTest* test_body, iuTestSetUp setup, iuTestTearDown teardown, void* user)
+{
+	test_body->setup = setup;
+	test_body->teardown = teardown;
+	test_body->user = user;
+}
+
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_RecordProperty(const char *key, const char *value)
 {
 	/* 不正なキーのチェック */

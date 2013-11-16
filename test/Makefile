@@ -10,7 +10,7 @@
 IUTEST_DIR = ..
 
 # Flags passed to the preprocessor.
-CCFLAGS_ += -I$(IUTEST_DIR)/include
+override CCFLAGS_ += -I$(IUTEST_DIR)/include
 
 #
 # Flags passed to the C++ compiler.
@@ -72,7 +72,7 @@ endif
 # Builds a sample test.  
 
 ifdef USE_LIB
-CCFLAGS_ += -DIUTEST_C_USE_LIB=1 -L../lib
+override CCFLAGS_ += -DIUTEST_C_USE_LIB=1 -L../lib
 $(TARGETS) : $(SRCS) $(IUTEST_HEADERS) Makefile
 	$(CC) $(CCFLAGS_) $(CCFLAGS) -o $@ $@.c -liutest_c
 

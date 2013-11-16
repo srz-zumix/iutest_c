@@ -214,6 +214,8 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ unsigned int iuUnitTest_GetRandomSe
 	return iuTestEnv_GetInstance()->current_seed;
 }
 
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION || IUTEST_C_HAS_COMMANDLINE_OPTION
+
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowTestList(const iuUnitTest* unit_test)
 {
 #if IUTEST_C_HAS_CONSOLEOUT
@@ -242,6 +244,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowTestList(const iuUni
 #endif
 	return 0;
 }
+#endif
 
 IUTEST_C_INL_INLINE void iuTestRun_EnvironmentSetUp(iuUnitTest *unit_test)
 {
@@ -362,7 +365,8 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_Run(void)
 	{
 		return iuTest_ShowNotinitializedWarning();
 	}
-	if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVER) )
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION || IUTEST_C_HAS_COMMANDLINE_OPTION
+	if(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVER))
 	{
 		return iuTest_ShowVersion();
 	}
@@ -382,6 +386,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_Run(void)
 	{
 		return iuTest_ShowTestList(&IIUT_C_UNITTEST());
 	}
+#endif
 
 	return iuTestRun_Run(&IIUT_C_UNITTEST());
 }

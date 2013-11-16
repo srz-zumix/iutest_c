@@ -382,6 +382,8 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuUInt32 iuTestEnve_GetCurrentRando
 	return IIUT_C_TESTENV().current_seed;
 }
 
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION || IUTEST_C_HAS_COMMANDLINE_OPTION
+
 IUTEST_C_INL_INLINE iuBOOL iuTestEnv_IsYesOption(const char* option)
 {
 	if( iuString_IsStringCaseEqual(option, "yes")
@@ -479,6 +481,10 @@ IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_END()
 	}
 	return TRUE;
 }
+
+#endif
+
+#if IUTEST_C_HAS_COMMANDLINE_OPTION
 
 IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseCommandLineElemA(const char* arg)
 {
@@ -715,6 +721,10 @@ IUTEST_C_INL_INLINE void	iuTestEnv_ParseCommandLineW(int* pargc, wchar_t** argv)
 }
 #endif
 
+#endif
+
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION
+
 IUTEST_C_INL_INLINE void iuTestEnv_LoadEnviromentVariable(void)
 {
 #if !defined(IUTEST_C_NO_GETENV)
@@ -767,5 +777,7 @@ IUTEST_C_INL_INLINE void iuTestEnv_LoadEnviromentVariable(void)
 	}
 #endif
 }
+
+#endif
 
 #endif

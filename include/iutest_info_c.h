@@ -98,10 +98,6 @@ void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Clear(iuTestInfo* test_info);
 */
 void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Filter(iuTestInfo *test_info);
 
-#else
-
-static iuBOOL iuTestInfo_IsShouldRunTest(const iuTestInfo* test_info);
-
 #endif
 
 #if !IUTEST_C_HAS_LIB

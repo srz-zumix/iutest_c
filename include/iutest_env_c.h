@@ -139,15 +139,6 @@ typedef struct iuTestEnv_t
  * @}
 */
 
-/**
- * @brief	コマンドライン引数の解析
-*/
-#ifdef UNICODE
-#  define iuTestEnv_ParseCommandLine	iuTestEnv_ParseCommandLineW
-#else
-#  define iuTestEnv_ParseCommandLine	iuTestEnv_ParseCommandLineA
-#endif
-
 /* extern ============================================================*/
 extern iuTestEnv	IIUT_C_TESTENV_NAME;
 
@@ -272,16 +263,6 @@ IUTEST_ATTRIBUTE_UNUSED_ void iuTestEnv_ListenerEvent_OnTestProgramEnd(struct iu
 IUTEST_ATTRIBUTE_UNUSED_ void iuTestEnv_SetUp(iuTestEnv* test_env);
 
 /**
- * @brief	オプション文字列から設定文字列の先頭アドレスを取得
-*/
-const char* iuTestEnv_ParseOptionSettingStr(const char* opt);
-
-/**
- * @brief	テストフラグを設定
-*/
-void iuTestEnv_SetFlag(int enable, int mask);
-
-/**
  * @brief	DISABLED テストも実行するかどうか
 */
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestEnv_IsEnableRunDisabledTests(void);
@@ -311,6 +292,7 @@ iuBOOL iuTestEnv_IsEnableFlag(int mask);
 */
 IUTEST_ATTRIBUTE_UNUSED_ iuUInt32 iuTestEnve_GetCurrentRandomSeed(void);
 
+#if IUTEST_C_HAS_COMMANDLINE_OPTION
 /**
  * @brief	コマンドライン引数の解析
 */
@@ -323,10 +305,16 @@ IUTEST_C_INL_INLINE void iuTestEnv_ParseCommandLineA(int* pargc, char** argv);
 IUTEST_C_INL_INLINE void iuTestEnv_ParseCommandLineW(int* pargc, wchar_t** argv);
 #endif
 
+#endif
+
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION
+
 /**
  * @brief	環境変数の読み取り
 */
 void iuTestEnv_LoadEnviromentVariable(void);
+
+#endif
 
 #endif
 

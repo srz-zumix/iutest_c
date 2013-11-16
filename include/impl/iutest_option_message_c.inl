@@ -29,6 +29,8 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowNotinitializedWarnin
 	return 1;
 }
 
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION || IUTEST_C_HAS_COMMANDLINE_OPTION
+
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowVersion(void)
 {
 #if IUTEST_C_HAS_CONSOLEOUT
@@ -183,5 +185,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowFeature(void)
 #undef SHOW_MACRO
 	return 0;
 }
+
+#endif
 
 #endif

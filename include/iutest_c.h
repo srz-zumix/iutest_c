@@ -722,8 +722,15 @@ static void iuTestInitialize(void);
 */
 static IUTEST_ATTRIBUTE_UNUSED_ void	iuInitIrisUnitTestA(int* argc, char** argv)
 {
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION
 	iuTestEnv_LoadEnviromentVariable();
+#endif
+#if IUTEST_C_HAS_COMMANDLINE_OPTION
 	iuTestEnv_ParseCommandLineA(argc, argv);
+#else
+	IUTEST_UNUSED_VAR(argc);
+	IUTEST_UNUSED_VAR(argv);
+#endif
 	iuTestInitialize();
 }
 #if IUTEST_C_HAS_WCHAR_T
@@ -732,8 +739,15 @@ static IUTEST_ATTRIBUTE_UNUSED_ void	iuInitIrisUnitTestA(int* argc, char** argv)
 */
 static IUTEST_ATTRIBUTE_UNUSED_ void	iuInitIrisUnitTestW(int* argc, wchar_t** argv)
 {
+#if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION
 	iuTestEnv_LoadEnviromentVariable();
+#endif
+#if IUTEST_C_HAS_COMMANDLINE_OPTION
 	iuTestEnv_ParseCommandLineW(argc, argv);
+#else
+	IUTEST_UNUSED_VAR(argc);
+	IUTEST_UNUSED_VAR(argv);
+#endif
 	iuTestInitialize();
 }
 #endif

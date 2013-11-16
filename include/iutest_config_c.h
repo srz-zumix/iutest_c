@@ -339,6 +339,19 @@
 #  endif
 #endif
 
+/*! コマンドラインオプション解析を使用するかどうか */
+#ifndef IUTEST_C_HAS_COMMANDLINE_OPTION
+#  define IUTEST_C_HAS_COMMANDLINE_OPTION	1
+#endif
+
+/*! 環境変数オプション解析を使用するかどうか */
+#ifndef IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION
+#  if defined(IUTEST_C_NO_GETENV)
+#    define IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION	0
+#  else
+#    define IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION	1
+#  endif
+#endif
 
 /**
  * @}

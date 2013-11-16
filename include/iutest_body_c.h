@@ -57,6 +57,12 @@ typedef struct iuTest_t
 
 /* function ==========================================================*/
 #if IUTEST_C_HAS_LIB
+
+/**
+* @brief	iuTest Body の初期化
+*/
+IUTEST_ATTRIBUTE_UNUSED_ void iuTest_Init(iuTest* test_body, iuTestSetUp setup, iuTestTearDown teardown, void* user);
+
 /**
  * @brief	プロパティの記録
  * @param [in]	key		= キー名

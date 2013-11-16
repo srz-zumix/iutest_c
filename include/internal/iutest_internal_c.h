@@ -61,9 +61,7 @@
 	IUTEST_C_DECL_INITIALIZATION_SECTION_BEGIN( IIUT_C_TEST_INITIALIZATION_SECTION_NAME(testcase_, testname_) )			\
 	iuTestCase_AddTestInfo(iuUnitTest_AddTestCase(#testcase_, setup_testcase_, teardown_testcase_, allocator_),			\
 	& IIUT_C_TEST_INFO_DECL_NAME(testcase_, testname_) );																\
-	IIUT_C_TEST_INFO_DECL_NAME(testcase_, testname_).test.setup = setup_;												\
-	IIUT_C_TEST_INFO_DECL_NAME(testcase_, testname_).test.teardown = teardown_;											\
-	IIUT_C_TEST_INFO_DECL_NAME(testcase_, testname_).test.user = user_;													\
+	iuTest_Init( &IIUT_C_TEST_INFO_DECL_NAME(testcase_, testname_).test, setup_, teardown_, user_);						\
 	IUTEST_C_DECL_INITIALIZATION_SECTION_END()																			\
 	IUTEST_TEST_SECTION_ void IIUT_C_TEST_BODY_DECL_NAME(testcase_, testname_)(void)
 
@@ -104,9 +102,7 @@
 	IUTEST_C_DECL_INITIALIZATION_SECTION_BEGIN( IUTEST_PP_CAT(iutest_c_test_register_dummy_##testcase_##_##testname_, __LINE__) )		\
 	iuTestCase_AddTestInfo(iuUnitTest_AddTestCase(#testcase_, setup_testcase_, teardown_testcase_, allocator_),							\
 	& IIUTE_C_TEST_PMZ_INFO_DECL_NAME(testcase_, testname_) );																			\
-	IIUTE_C_TEST_PMZ_INFO_DECL_NAME(testcase_, testname_).test.setup = setup_;															\
-	IIUTE_C_TEST_PMZ_INFO_DECL_NAME(testcase_, testname_).test.teardown = teardown_;													\
-	IIUTE_C_TEST_PMZ_INFO_DECL_NAME(testcase_, testname_).test.user = user_;															\
+	iuTest_Init(&IIUTE_C_TEST_PMZ_INFO_DECL_NAME(testcase_, testname_).test, setup_, teardown_, user_);									\
 	IUTEST_C_DECL_INITIALIZATION_SECTION_END()																							\
 
 #endif
