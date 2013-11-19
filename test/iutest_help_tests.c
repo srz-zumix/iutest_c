@@ -20,10 +20,14 @@
 
 IUTEST_C_WORKSPACE();
 
+#if IUTEST_C_HAS_COMMANDLINE_OPTION
+
 IUTEST(Foo, NotRun)
 {
 	IUTEST_ASSERT_RVALUE_EQ(0, 1);
 }
+
+#endif
 
 #ifdef UNICODE
 int wmain(int argc, wchar_t** argv)

@@ -372,6 +372,14 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestEnv_IsEnablePrintTime(
 	return IIUT_C_TESTENV().option.print_time;
 }
 
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestEnv_IsEnableOutputXml(void)
+{
+	const char* output = IIUT_C_TESTENV().option.output;
+	if(output == NULL) return FALSE;
+	if(iu_strstr(output, "xml") != output) return FALSE;
+	return TRUE;
+}
+
 IUTEST_C_INL_INLINE iuBOOL iuTestEnv_IsEnableFlag(int mask)
 {
 	return IIUT_C_TESTENV().flag & mask ? TRUE : FALSE;
@@ -447,7 +455,7 @@ IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseColorOption(const char* option)
 	return TRUE;
 }
 
-IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseYesNoFlagOption(const char* option, iuBOOL* flag, int def)
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL	iuTestEnv_ParseYesNoFlagOption(const char* option, iuBOOL* flag, int def)
 {
 	const char* str = iuTestEnv_ParseOptionSettingStr(option);
 	int yesno = str != NULL ? iuTestEnv_ParseYesNoOption(str) : def;
@@ -461,24 +469,7 @@ IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseYesNoFlagOption(const char* option, iu
 
 IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseOutputOption(const char* option)
 {
-	if( option == NULL ) return FALSE;
-	if( iu_strstr(option, "xml") != option ) return FALSE;
-
-	iuTestEnv_SetFlag(IUTESTENV_OUTPUT_XML_REPORT, -1);
-
-	{
-IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_BEGIN()
-		const char* file = iu_strchr(option+3, ':');
-		if( file != NULL )
-		{
-			iu_strcpy(IIUT_C_TESTENV().output_xml, file+1);
-		}
-		else
-		{
-			iu_strcpy(IIUT_C_TESTENV().output_xml, "test_detail.xml");
-		}
-IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_END()
-	}
+	IIUT_C_TESTENV().option.output = option;
 	return TRUE;
 }
 

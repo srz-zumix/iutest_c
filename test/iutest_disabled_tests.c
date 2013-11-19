@@ -47,8 +47,12 @@ int main(int argc, char* argv[])
 #endif
 {
 	IUTEST_INIT(&argc, argv);
+#if defined(OUTPUTXML)
+	// 失敗テストを含むので xml 出力しない
+	IUTEST_FLAG(output) = NULL;
+#endif
 	{
-		int ret = IUTEST_RUN_ALL_TESTS();
+		const int ret = IUTEST_RUN_ALL_TESTS();
 		if( ret != 0 ) return 1;
 		IUTEST_ASSERT( iuUnitTest_GetDisableTestCount(iuUnitTest_GetInstance()) == 2 );
 	}

@@ -252,7 +252,20 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTestDefaultXMLGenerator_OnOu
 
 IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_BEGIN()
 	FILE* fp = NULL;
-	fp = fopen(IIUT_C_TESTENV().output_xml, "wb");
+	const char* filepath = NULL;
+	{
+		const char* output = IIUT_C_TESTENV().option.output;
+		const char* file = iu_strchr(output + 3, ':');
+		if( file != NULL )
+		{
+			filepath = file + 1;
+		}
+		else
+		{
+			filepath = "test_detail.xml";
+		}
+	}
+	fp = fopen(filepath, "wb");
 	iuTestDefaultXMLGenerator_OnReportTests(fp, unit_test);
 	fclose(fp);
 IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_END()

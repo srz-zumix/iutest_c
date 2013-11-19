@@ -20,7 +20,7 @@
 
 IUTEST_C_WORKSPACE();
 
-#if !defined(IUTEST_C_NO_GETENV) && !defined(IUTEST_C_NO_PUTENV)
+#if !defined(IUTEST_C_NO_GETENV) && !defined(IUTEST_C_NO_PUTENV) && IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION
 int SetUpEnvironment(void)
 {
 	iuTestOS_PutEnv("IUTEST_C_SHUFFLE=1");

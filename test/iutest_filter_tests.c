@@ -43,6 +43,10 @@ int main(int argc, char* argv[])
 {
 	int ret = 0;
 	IUTEST_INIT(&argc, argv);
+#if defined(OUTPUTXML)
+	// 失敗テストを含むので xml 出力しない
+	IUTEST_FLAG(output) = NULL;
+#endif
 
 	{
 		IUTEST_FLAG(filter) = "-*Fail*";

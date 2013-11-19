@@ -387,7 +387,6 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_Run(void)
 		return iuTest_ShowTestList(&IIUT_C_UNITTEST());
 	}
 #endif
-
 	return iuTestRun_Run(&IIUT_C_UNITTEST());
 }
 

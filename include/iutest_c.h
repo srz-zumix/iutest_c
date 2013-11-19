@@ -84,7 +84,7 @@
  * @ingroup	TESTDEF
  * @brief	すべてのテストを実行する
 */
-#define IUTEST_RUN_ALL_TESTS()						iuUnitTest_Run()
+#define IUTEST_RUN_ALL_TESTS()						iuTestRun()
 
 /**
  * @ingroup TESTDEF
@@ -737,7 +737,7 @@ static IUTEST_ATTRIBUTE_UNUSED_ void	iuInitIrisUnitTestA(int* argc, char** argv)
 /**
  * @brief	テストの初期化
 */
-static IUTEST_ATTRIBUTE_UNUSED_ void	iuInitIrisUnitTestW(int* argc, wchar_t** argv)
+static IUTEST_ATTRIBUTE_UNUSED_ void iuInitIrisUnitTestW(int* argc, wchar_t** argv)
 {
 #if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION
 	iuTestEnv_LoadEnviromentVariable();
@@ -762,34 +762,42 @@ static IUTEST_ATTRIBUTE_UNUSED_ void	iuInitIrisUnitTestW(int* argc, wchar_t** ar
 /**
  * @biref	テストの初期化（共通項）
 */
-static void iuTestInitialize(void)
+static IUTEST_ATTRIBUTE_UNUSED_ void iuTestInitialize(void)
 {
 #if IUTEST_C_HAS_CONSOLEOUT
 	{
 		iuTestListener* listener = iuTestListener_MakeListener(&iuUnitTest_GetInstance()->def_printer
-			, iuTestDefaultPrinter_OnTestProgramStart
-			, iuTestDefaultPrinter_OnTestIterationStart
-			, NULL
-			, NULL
-			, iuTestDefaultPrinter_OnTestCaseStart
-			, iuTestDefaultPrinter_OnTestStart
-			, iuTestDefaultPrinter_OnTestPartResult
-			, iuTestDefaultPrinter_OnTestRecordProperty
-			, iuTestDefaultPrinter_OnTestEnd
-			, iuTestDefaultPrinter_OnTestCaseEnd
-			, NULL
-			, NULL
-			, iuTestDefaultPrinter_OnTestIterationEnd
-			, iuTestDefaultPrinter_OnTestProgramEnd
-			);
-		if( listener != NULL )
+		, iuTestDefaultPrinter_OnTestProgramStart
+		, iuTestDefaultPrinter_OnTestIterationStart
+		, NULL
+		, NULL
+		, iuTestDefaultPrinter_OnTestCaseStart
+		, iuTestDefaultPrinter_OnTestStart
+		, iuTestDefaultPrinter_OnTestPartResult
+		, iuTestDefaultPrinter_OnTestRecordProperty
+		, iuTestDefaultPrinter_OnTestEnd
+		, iuTestDefaultPrinter_OnTestCaseEnd
+		, NULL
+		, NULL
+		, iuTestDefaultPrinter_OnTestIterationEnd
+		, iuTestDefaultPrinter_OnTestProgramEnd
+		);
+		if(listener != NULL)
 		{
 			iuUnitTest_AddTestListener(listener);
 		}
 	}
 #endif
+	iuUnitTest_Init();
+}
+
+/**
+ * @brief	テストの実行
+*/
+static IUTEST_ATTRIBUTE_UNUSED_ int iuTestRun(void)
+{
 #if IUTEST_C_HAS_DEFAULT_XML_GENERATOR
-	if(iuTestEnv_IsEnableFlag(IUTESTENV_OUTPUT_XML_REPORT))
+	if(iuTestEnv_IsEnableOutputXml())
 	{
 		iuTestListener* listener = iuTestListener_MakeListener(&iuUnitTest_GetInstance()->def_xml_generator
 			, iuTestDefaultXMLGenerator_OnTestProgramStart
@@ -807,13 +815,13 @@ static void iuTestInitialize(void)
 			, iuTestDefaultXMLGenerator_OnTestIterationEnd
 			, iuTestDefaultXMLGenerator_OnTestProgramEnd
 			);
-		if( listener != NULL )
+		if(listener != NULL)
 		{
 			iuUnitTest_AddTestListener(listener);
 		}
 	}
 #endif
-	iuUnitTest_Init();
+	return iuUnitTest_Run();
 }
 
 #endif

@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_spi_failure_tests.c
- * @brief		iutest_spi failure test
+ * @brief		iutest spi failure test
  *
  * @author		t.sirayanagi
  * @version		1.0
@@ -127,8 +127,12 @@ int main(int argc, char* argv[])
 #endif
 {
 	IUTEST_INIT(&argc, argv);
+#if defined(OUTPUTXML)
+	// 失敗テストを含むので xml 出力しない
+	IUTEST_FLAG(output) = NULL;
+#endif
 	{
-		int ret = IUTEST_RUN_ALL_TESTS();
+		const int ret = IUTEST_RUN_ALL_TESTS();
 		if( ret == 0 ) return 1;
 	}
 	

@@ -35,7 +35,7 @@ IUTEST_EXTERN_C_BEGIN()
  * @}
 */
 
-#define IUTEST_FLAG(name)	IIUT_C_TESTENV().option.name
+#define IUTEST_FLAG(name)		IIUT_C_TESTENV().option.name
 
 /* enum ==============================================================*/
 typedef enum IUTESTENV_FLAG
@@ -112,6 +112,7 @@ typedef struct iuTestEnv_t
 	/* オプション */
 	struct {
 		const char*		filter;			/*!< テストフィルタリング文字列 */
+		const char*		output;			/*!< 出力文字列 */
 		int				repeat;			/*!< リピートカウント */
 		iuUInt32		random_seed;	/*!< 乱数シードの設定値 */
 		iuBOOL			shuffle;		/*!< シャッフルテスト */
@@ -119,7 +120,6 @@ typedef struct iuTestEnv_t
 		iuBOOL			break_on_failure;			/*!< テスト失敗時にブレーク */
 		iuBOOL			also_run_disabled_tests;	/*!< DISABLED テストも実行 */
 	} option;
-	char			output_xml[260];	/*!< 出力XMLファイルパス */
 } iuTestEnv;
 
 /* define ============================================================*/
@@ -127,13 +127,13 @@ typedef struct iuTestEnv_t
  * @private
  * @{
 */
-#define iuTestEnvOption_ctor()	{ NULL, 1, 0, FALSE, TRUE, FALSE, FALSE }
+#define iuTestEnvOption_ctor()	{ NULL, NULL, 1, 0, FALSE, TRUE, FALSE, FALSE }
 #if IUTEST_C_HAS_STDARG
 #define iuTestEnv_ctor()	{ NULL, NULL, NULL, NULL, IUTESTENV_FLAG_DEFAULT, 0		\
-								, iuRandomContext_ctor(), { NULL, NULL }, iuTestEnvOption_ctor(), {0} }
+								, iuRandomContext_ctor(), { NULL, NULL }, iuTestEnvOption_ctor() }
 #else
 #define iuTestEnv_ctor()	{ NULL, NULL, NULL, IUTESTENV_FLAG_DEFAULT, 0		\
-								, iuRandomContext_ctor(), { NULL, NULL }, iuTestEnvOption_ctor(), {0} }
+								, iuRandomContext_ctor(), { NULL, NULL }, iuTestEnvOption_ctor() }
 #endif
 /**
  * @}
@@ -281,6 +281,11 @@ IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestEnv_IsEnableBreakOnFailure(void);
  * @brief	時間出力するかどうか
 */
 iuBOOL iuTestEnv_IsEnablePrintTime(void);
+
+/**
+ * @biref	xml 出力するかどうか
+*/
+iuBOOL iuTestEnv_IsEnableOutputXml(void);
 
 /**
  * @brief	テストフラグが有効かどうか
