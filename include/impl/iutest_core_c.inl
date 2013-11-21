@@ -35,9 +35,14 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuUnitTest_SetVPrintfFunction(
 }
 #endif
 
-IUTEST_C_INL_INLINE iuBOOL	iuUnitTest_AddTestListener(iuTestListener* test_listener)
+IUTEST_C_INL_INLINE iuBOOL	iuUnitTest_AppendTestListener(iuTestListener* test_listener)
 {
 	return iuTestEnv_AddTestListener(iuTestEnv_GetInstance(), test_listener);
+}
+
+IUTEST_C_INL_INLINE iuTestListener*	iuUnitTest_ReleaseTestListener(iuTestListener* test_listener)
+{
+	return iuTestEnv_SubTestListener(iuTestEnv_GetInstance(), test_listener);
 }
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL	iuUnitTest_AddGlobalEnvironmentSetUp(iuGlobalEnvironmentSetUp func)

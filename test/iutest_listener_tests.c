@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
 			);
 		if( listener != NULL )
 		{
-			iuUnitTest_AddTestListener(listener);
+			iuUnitTest_AppendTestListener(listener);
 		}
 	}
 	ret = IUTEST_RUN_ALL_TESTS();

@@ -127,7 +127,12 @@ IUTEST_ATTRIBUTE_UNUSED_ void iuUnitTest_SetVPrintfFunction(iuVPrintf proc);
 /**
  * @brief	TestListener ‚Ì’Ç‰Á
 */
-iuBOOL	iuUnitTest_AddTestListener(iuTestListener* test_listener);
+iuBOOL	iuUnitTest_AppendTestListener(iuTestListener* test_listener);
+
+/**
+* @brief	TestListener ‚Ìíœ
+*/
+iuTestListener*	iuUnitTest_ReleaseTestListener(iuTestListener* test_listener);
 
 /**
  * @brief	GlobalEnvironmentSetUp ‚Ì’Ç‰Á

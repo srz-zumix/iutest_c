@@ -165,7 +165,7 @@ IUTEST_ATTRIBUTE_UNUSED_ iuBOOL	iuTestEnv_AddTestListener(iuTestEnv* test_env, i
 /**
  * @brief	TestListener ‚Ìíœ
 */
-IUTEST_ATTRIBUTE_UNUSED_ iuBOOL	iuTestEnv_SubTestListener(iuTestEnv* test_env, iuTestListener* test_listener);
+IUTEST_ATTRIBUTE_UNUSED_ iuTestListener* iuTestEnv_SubTestListener(iuTestEnv* test_env, iuTestListener* test_listener);
 
 /**
  * @brief	GlobalEnvironmentSetUp ‚Ì’Ç‰Á

@@ -62,18 +62,18 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL	iuTestEnv_AddTestListener(iu
 	return TRUE;
 }
 
-IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL	iuTestEnv_SubTestListener(iuTestEnv* test_env, iuTestListener* test_listener)
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuTestListener* iuTestEnv_SubTestListener(iuTestEnv* test_env, iuTestListener* test_listener)
 {
-	if( test_env == NULL ) return FALSE;
-	if( test_listener == NULL ) return FALSE;
+	if( test_env == NULL ) return NULL;
+	if( test_listener == NULL ) return NULL;
 	{
 		iuTestListener *top = test_env->listeners;
-		if( top == NULL ) return FALSE;
+		if( top == NULL ) return NULL;
 		if( top == test_listener )
 		{
 			test_env->listeners = test_listener->next;
 			test_listener->next = NULL;
-			return TRUE;
+			return test_listener;
 		}
 		{
 			iuTestListener *prev = top;
@@ -84,14 +84,14 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL	iuTestEnv_SubTestListener(iu
 				{
 					prev->next = test_listener->next;
 					test_listener->next = NULL;
-					return TRUE;
+					return test_listener;
 				}
 				prev = curr;
 				curr = curr->next;
 			}
 		}
 	}
-	return FALSE;
+	return NULL;
 }
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestEnv_AddGlobalEnvironmentSetUp(iuTestEnv* test_env, iuGlobalEnvironmentSetUp func)

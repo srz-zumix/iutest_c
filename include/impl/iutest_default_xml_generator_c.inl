@@ -253,8 +253,10 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTestDefaultXMLGenerator_OnOu
 IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_BEGIN()
 	FILE* fp = NULL;
 	const char* filepath = NULL;
+	const char* output = IIUT_C_TESTENV().option.output;
+	if(output == NULL) return;
+
 	{
-		const char* output = IIUT_C_TESTENV().option.output;
 		const char* file = iu_strchr(output + 3, ':');
 		if( file != NULL )
 		{

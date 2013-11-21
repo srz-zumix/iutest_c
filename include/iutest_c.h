@@ -784,7 +784,7 @@ static IUTEST_ATTRIBUTE_UNUSED_ void iuTestInitialize(void)
 		);
 		if(listener != NULL)
 		{
-			iuUnitTest_AddTestListener(listener);
+			iuUnitTest_AppendTestListener(listener);
 		}
 	}
 #endif
@@ -799,7 +799,9 @@ static IUTEST_ATTRIBUTE_UNUSED_ int iuTestRun(void)
 #if IUTEST_C_HAS_DEFAULT_XML_GENERATOR
 	if(iuTestEnv_IsEnableOutputXml())
 	{
-		iuTestListener* listener = iuTestListener_MakeListener(&iuUnitTest_GetInstance()->def_xml_generator
+		iuUnitTest_ReleaseTestListener(&iuUnitTest_GetInstance()->def_xml_generator);
+		{
+			iuTestListener* listener = iuTestListener_MakeListener(&iuUnitTest_GetInstance()->def_xml_generator
 			, iuTestDefaultXMLGenerator_OnTestProgramStart
 			, iuTestDefaultXMLGenerator_OnTestIterationStart
 			, NULL
@@ -815,9 +817,10 @@ static IUTEST_ATTRIBUTE_UNUSED_ int iuTestRun(void)
 			, iuTestDefaultXMLGenerator_OnTestIterationEnd
 			, iuTestDefaultXMLGenerator_OnTestProgramEnd
 			);
-		if(listener != NULL)
-		{
-			iuUnitTest_AddTestListener(listener);
+			if(listener != NULL)
+			{
+				iuUnitTest_AppendTestListener(listener);
+			}
 		}
 	}
 #endif

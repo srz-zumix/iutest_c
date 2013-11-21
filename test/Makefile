@@ -12,6 +12,10 @@ IUTEST_DIR = ..
 # Flags passed to the preprocessor.
 override CCFLAGS_ += -I$(IUTEST_DIR)/include
 
+ifdef OUTPUTXML
+DEFS+=-DOUTPUTXML
+endif
+
 #
 # Flags passed to the C++ compiler.
 CCFLAGS += -g -Wall -Wextra
@@ -57,6 +61,9 @@ all: default test
 
 clean:
 	rm -f $(TARGETS) *.o
+ifdef OUTPUTXML
+	rm -f *.xml
+endif
 
 run: test
 test: $(RUNNER)
