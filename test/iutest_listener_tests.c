@@ -115,7 +115,7 @@ void MyTestEvenet_OnTestProgramEnd(iuUnitTest* test)
 	g_TestEventListenerInfo.called_OnTestProgramEnd = TRUE;
 }
 
-IUTEST(FlagTest, Check)
+IUTEST(ListenerTest, Check)
 {
 	IUTEST_ASSERT_TRUE( g_TestEventListenerInfo.called_OnTestProgramStart );
 	IUTEST_ASSERT_TRUE( g_TestEventListenerInfo.called_OnTestIterationStart );
@@ -149,6 +149,10 @@ int main(int argc, char* argv[])
 	int ret = 0;
 	IUTEST_INIT(&argc, argv);
 
+#if defined(OUTPUTXML)
+	// 失敗テストを含むので xml 出力しない
+	IUTEST_FLAG(output) = NULL;
+#endif
 	{
 		iuTestListener* listener = iuTestListener_NewListener(
 			  MyTestEvenet_OnTestProgramStart
