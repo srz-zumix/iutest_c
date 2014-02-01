@@ -93,9 +93,14 @@ iuBOOL iuTestCase_IsDisabledTest(const iuTestCase* test_case);
 int iuTestCase_GetDisableTestCount(const iuTestCase* test_case);
 
 /**
- * @brief	スキップしたテストの総数取得
+ * @brief	明示的にスキップしたテストの総数取得
 */
-int iuTestCase_GetSkippedTestCount(const iuTestCase* test_case);
+int iuTestCase_GetRunSkippedTestCount(const iuTestCase* test_case);
+
+/**
+* @brief	スキップしたテストの総数取得
+*/
+int iuTestCase_GetSkipTestCount(const iuTestCase* test_case);
 
 /**
  * @brief	実行テストがあるかどうか

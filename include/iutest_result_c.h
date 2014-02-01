@@ -8,7 +8,7 @@
  * @version		1.0
  *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -32,6 +32,8 @@ struct iuTestProperty_t;
 */
 typedef enum eTestResultType
 {
+	kTestResultAssume  = -3,	/*!< 前提条件 */
+	kTestResultSkip    = -2,	/*!< スキップ */
 	kTestResultWarning = -1,	/*!< 警告 */
 	kTestResultSuccess,			/*!< 成功 */
 	kTestResultNonFatalFailure,	/*!< 致命的ではない失敗 */
@@ -112,7 +114,17 @@ static IUTEST_ATTRIBUTE_UNUSED_ void iuTestResult_AddPartResult(iuTestResult *re
 static iuBOOL iuTestPartResult_IsFailed(const iuTestPartResult *result)
 {
 	if( result == NULL ) return FALSE;
-	if( result->type != kTestResultSuccess && result->type != kTestResultWarning ) return TRUE;
+	if( result->type > kTestResultSuccess ) return TRUE;
+	return FALSE;
+}
+
+/**
+* @brief	スキップしたかどうか
+*/
+static iuBOOL iuTestPartResult_IsSkipped(const iuTestPartResult *result)
+{
+	if( result == NULL ) return FALSE;
+	if( result->type == kTestResultSkip || result->type == kTestResultAssume ) return TRUE;
 	return FALSE;
 }
 
@@ -128,6 +140,24 @@ static IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestResult_IsFailed(const iuTestResult 
 		while( curr != NULL )
 		{
 			if( iuTestPartResult_IsFailed(curr) ) return TRUE;
+			curr = curr->next;
+		}
+	}
+	return FALSE;
+}
+
+/**
+* @brief	スキップしたかどうか
+*/
+static IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestResult_IsSkipped(const iuTestResult *result)
+{
+	if( result == NULL ) return FALSE;
+
+	{
+		const iuTestPartResult *curr = result->list;
+		while( curr != NULL )
+		{
+			if( iuTestPartResult_IsSkipped(curr) ) return !iuTestResult_IsFailed(result);
 			curr = curr->next;
 		}
 	}

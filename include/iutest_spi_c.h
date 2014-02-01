@@ -8,7 +8,7 @@
  * @version		1.0
  *
  * @par			copyright
- * Copyright (C) 2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2013-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -64,8 +64,8 @@
 	do {																		\
 		iuTestEnv* env = iuTestEnv_GetInstance();								\
 		static iuTestSpiCheckResult result ={ 0, kTestResultSuccess, NULL };	\
-		result.num = 0; result.type = kTestResultSuccess; result.msg = NULL;	\
 		IIUT_PUSH_COMMITRESULT_FUNC(env);										\
+		result.num = 0; result.type = kTestResultSuccess; result.msg = NULL;	\
 		env->commit_result.func = iuTestSpiFailureCheck_OnCommitTestPartResult;	\
 		env->commit_result.user = (void*)&result;								\
 		statement;																\

@@ -8,7 +8,7 @@
  * @version		1.0
  *
  * @par			copyright
- * Copyright (C) 2012-2013 Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014 Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -151,6 +151,22 @@
 
 #define IUTEST_INFORM_FAILURE_AT(msg, file, line)	IUTEST_MESSAGE_AT(file, line, msg, kTestResultWarning)
 
+/**
+ * @internal
+ * @brief	ASSUME メッセージ処理
+*/
+#define IUTEST_ASSUME_FAILURE(msg)					IUTEST_ASSUME_FAILURE_AT(msg, __FILE__, __LINE__)
+
+#define IUTEST_ASSUME_FAILURE_AT(msg, file, line)	if( IUTEST_MESSAGE_AT(file, line, msg, kTestResultAssume), iuAlwaysTrue()) return
+
+/**
+* @internal
+* @brief	SKIP メッセージ処理
+*/
+#define IUTEST_SKIP_MESSAGE(msg)					IUTEST_SKIP_MESSAGE_AT(msg, __FILE__, __LINE__)
+
+#define IUTEST_SKIP_MESSAGE_AT(msg, file, line)		if( IUTEST_MESSAGE_AT(file, line, msg, kTestResultSkip), iuAlwaysTrue()) return
+
 
 /**
  * @internal
@@ -248,6 +264,9 @@
 	} else																		\
 		IUTEST_PP_CAT(iutest_label_test_no_failure_, __LINE__):					\
 		on_failure("\nExpected: " #statement " doesn't generate new fatal failure.\n  Actual: it does.")
+
+#define IUTEST_TEST_SKIP()				\
+	IUTEST_SKIP_MESSAGE(iuTestInfo_HasFailure(iuUnitTest_GetCurrentTestInfo()) ? "Skipped. but already failed. " : "Skipped. ")
 
 /**
  * @}

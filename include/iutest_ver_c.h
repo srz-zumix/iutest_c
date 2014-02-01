@@ -18,11 +18,11 @@
 #define INCG_IRIS_iutest_ver_C_H_D65CB7A7_D2AD_40fe_8F5F_8FBF376A0010_
 
 /* define ============================================================*/
-#define	IUTEST_C_VER			0x01039912	/*!< iutest version 1.3.99.12 */
+#define	IUTEST_C_VER			0x01039914	/*!< iutest version 1.3.99.14 */
 #define IUTEST_C_MAJORVER		0x01		/*!< Major Version */
 #define IUTEST_C_MINORVER		0x03		/*!< Minor Version */
 #define IUTEST_C_BUILD			0x99		/*!< Build */
-#define IUTEST_C_REVISION		0x12		/*!< Revision */
+#define IUTEST_C_REVISION		0x14		/*!< Revision */
 
 /**
  * @mainpage
@@ -85,8 +85,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * @page	CHANGELOG		変更履歴
  * @par		Changes
 <ul>
-  <li>v1.3.99.12
+  <li>v1.3.99.14
     <ul>
+      <li>IUTEST_SKIP 追加</li>
       <li>iuBoolean パラメータジェネレータを追加</li>
       <li>セクション指定に対応</li>
       <li>機能削減用コンフィグマクロを追加</li>

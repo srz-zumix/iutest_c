@@ -8,7 +8,7 @@
  * @version		1.0
  *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
  * 
@@ -129,6 +129,15 @@
 */
 #ifndef IUTEST_ADD_FAILURE_AT
 #  define IUTEST_ADD_FAILURE_AT(file, line)			IIUT_ADD_FAILURE_AT(file, line)
+#endif
+
+/**
+ * @ingroup		IUTEST_UTIL
+ * @brief		テストの明示的なスキップ
+ * @details		明示的にスキップを報告します
+*/
+#ifndef IUTEST_SKIP
+#  define IUTEST_SKIP()								IUTEST_TEST_SKIP()
 #endif
 
 /**

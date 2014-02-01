@@ -8,7 +8,7 @@
  * @version		1.0
  *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -48,7 +48,7 @@ IUTEST_C_INL_INLINE int iuTestCase_GetSuccessfulTestCount(const iuTestCase* test
 	const iuTestInfo* curr = test_case->list;
 	while( curr != NULL )
 	{
-		if( iuTestInfo_IsShouldRunTest(curr) && !iuTestInfo_HasFailure(curr) )
+		if( iuTestInfo_IsShouldRunTest(curr) && iuTestInfo_Passed(curr) )
 		{
 			++cnt;
 		}
@@ -104,13 +104,28 @@ IUTEST_C_INL_INLINE int iuTestCase_GetDisableTestCount(const iuTestCase* test_ca
 	}
 }
 
-IUTEST_C_INL_INLINE int iuTestCase_GetSkippedTestCount(const iuTestCase* test_case)
+IUTEST_C_INL_INLINE int iuTestCase_GetRunSkippedTestCount(const iuTestCase* test_case)
 {
 	int cnt = 0;
 	const iuTestInfo* curr = test_case->list;
 	while( curr != NULL )
 	{
-		if( !iuTestInfo_IsRanTest(curr) )
+		if( iuTestInfo_IsSkippedTest(curr) )
+		{
+			++cnt;
+		}
+		curr = curr->next;
+	}
+	return cnt;
+}
+
+IUTEST_C_INL_INLINE int iuTestCase_GetSkipTestCount(const iuTestCase* test_case)
+{
+	int cnt = 0;
+	const iuTestInfo* curr = test_case->list;
+	while( curr != NULL )
+	{
+		if( iuTestInfo_IsSkippedTest(curr) || !iuTestInfo_IsRanTest(curr) )
 		{
 			++cnt;
 		}

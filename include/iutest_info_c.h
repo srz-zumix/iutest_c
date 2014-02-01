@@ -8,7 +8,7 @@
  * @version		1.0
  *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -32,6 +32,7 @@ typedef enum IUTESTINFO_FLAG
 	IUTESTINFO_SHOULD_NOTRUN	= 0x00000001,	/*!< 実行するかどうか */
 	IUTESTINFO_DISABLED			= 0x00000002,	/*!< 無効かどうか */
 	IUTESTINFO_RAN				= 0x00000010,	/*!< 実行したかどうか */
+	IUTESTINFO_SKIPPED			= 0x00000020,	/*!< スキップしたかどうか */
 } IUTESTINFO_FLAG;
 
 /* struct ============================================================*/
@@ -57,6 +58,7 @@ typedef struct iuTestInfo_t
 #if !IUTEST_C_HAS_LIB
 
 static iuBOOL iuTestInfo_IsShouldRunTest(const iuTestInfo* test_info);
+static iuBOOL iuTestInfo_IsSkippedTest(const iuTestInfo *test_info);
 
 #endif
 
@@ -84,9 +86,24 @@ iuBOOL iuTestInfo_IsRanTest(const iuTestInfo *test_info);
 iuBOOL iuTestInfo_HasFailure(const iuTestInfo *test_info);
 
 /**
+* @brief	成功したかどうか
+*/
+iuBOOL iuTestInfo_Passed(const iuTestInfo *test_info);
+
+/**
  * @brief	無効かどうか
 */
 iuBOOL iuTestInfo_IsDisabledTest(const iuTestInfo *test_info);
+
+/**
+ * @brief	スキップしたかどうか
+*/
+iuBOOL iuTestInfo_IsSkippedTest(const iuTestInfo *test_info);
+
+/**
+ * @brief	スキップ
+*/
+void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Skip(iuTestInfo* test_info);
 
 /**
  * @brief	状態のクリア

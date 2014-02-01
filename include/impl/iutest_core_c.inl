@@ -182,13 +182,25 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetDisableTestCount(
 	return cnt;
 }
 
-IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetSkippedTestCount(const iuUnitTest* unit_test)
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetRunSkippedTestCount(const iuUnitTest* unit_test)
 {
 	int cnt = 0;
 	const iuTestCase* curr = unit_test->list;
 	while( curr != NULL )
 	{
-		cnt += iuTestCase_GetSkippedTestCount(curr);
+		cnt += iuTestCase_GetRunSkippedTestCount(curr);
+		curr = curr->next;
+	}
+	return cnt;
+}
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetSkipTestCount(const iuUnitTest* unit_test)
+{
+	int cnt = 0;
+	const iuTestCase* curr = unit_test->list;
+	while( curr != NULL )
+	{
+		cnt += iuTestCase_GetSkipTestCount(curr);
 		curr = curr->next;
 	}
 	return cnt;

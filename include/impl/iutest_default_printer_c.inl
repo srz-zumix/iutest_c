@@ -72,9 +72,13 @@ IUTEST_C_INL_INLINE void	iuTestDefaultPrinter_OnTestRecordProperty(struct iuTest
 
 IUTEST_C_INL_INLINE void	iuTestDefaultPrinter_OnTestEnd(struct iuTestCase_t *test_case, struct iuTestInfo_t *test_info)
 {
-	if( iuTestResult_IsFailed(&test_info->result) )
+	if( iuTestInfo_HasFailure(test_info) )
 	{
 		iuConsole_ColorOutput(PRINT_RED  , "[  FAILED  ] ");
+	}
+	else if( iuTestInfo_IsSkippedTest(test_info) )
+	{
+		iuConsole_ColorOutput(PRINT_YELLOW,"[  SKIPPED ] ");
 	}
 	else
 	{
@@ -124,11 +128,19 @@ IUTEST_C_INL_INLINE void iuTestDefaultPrinter_OnTestIterationEnd(struct iuUnitTe
 			iuConsole_Output("%d tests.\n", iuUnitTest_GetSuccessfulTestCount(unit_test) );
 		}
 		{
-			int disabled = iuUnitTest_GetDisableTestCount(unit_test);
+			const int disabled = iuUnitTest_GetDisableTestCount(unit_test);
 			if( disabled > 0 )
 			{
 				iuConsole_ColorOutput(PRINT_YELLOW, "[ DISABLED ] ");
 				iuConsole_Output("%d tests.\n", disabled );
+			}
+		}
+		{
+			const int count = iuUnitTest_GetRunSkippedTestCount(unit_test);
+			if( count > 0 )
+			{
+				iuConsole_ColorOutput(PRINT_YELLOW, "[  SKIPPED ] ");
+				iuConsole_Output("%d tests.\n", count);
 			}
 		}
 		{

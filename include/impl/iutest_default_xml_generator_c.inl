@@ -191,7 +191,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTestDefaultXMLGenerator_OnRe
 			);
 	}
 #if IUTEST_C_REPORT_SKIPPED
-	fprintf(fp, "skip=\"%d\" ", iuTestCase_GetSkippedTestCount(test_case) );
+	fprintf(fp, "skip=\"%d\" ", iuTestCase_GetSkipTestCount(test_case) );
 #endif
 	{
 		char time_buf[32];
@@ -220,7 +220,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTestDefaultXMLGenerator_OnRe
 		, iuUnitTest_GetDisableTestCount(unit_test)
 		);
 #if IUTEST_C_REPORT_SKIPPED
-	fprintf(fp, "skip=\"%d\" ", iuUnitTest_GetSkippedTestCount(unit_test) );
+	fprintf(fp, "skip=\"%d\" ", iuUnitTest_GetSkipTestCount(unit_test) );
 #endif
 	{
 		char time_buf[32];

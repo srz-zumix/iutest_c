@@ -8,7 +8,7 @@
  * @version		1.0
  *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -70,12 +70,31 @@ IUTEST_C_INL_INLINE iuBOOL iuTestInfo_HasFailure(const iuTestInfo *test_info)
 	/*
 	if( !iuTestInfo_IsRanTest(test_info) ) return FALSE;
 	*/
+	if( test_info == NULL ) return FALSE;
 	return iuTestResult_IsFailed(&test_info->result);
+}
+
+IUTEST_C_INL_INLINE iuBOOL iuTestInfo_Passed(const iuTestInfo *test_info)
+{
+	if( test_info == NULL ) return FALSE;
+	if( iuTestInfo_IsSkippedTest(test_info) ) return FALSE;
+	return !iuTestResult_IsFailed(&test_info->result);
 }
 
 IUTEST_C_INL_INLINE iuBOOL iuTestInfo_IsDisabledTest(const iuTestInfo *test_info)
 {
 	return test_info->flag & IUTESTINFO_DISABLED ? TRUE : FALSE;
+}
+
+IUTEST_C_INL_INLINE iuBOOL iuTestInfo_IsSkippedTest(const iuTestInfo *test_info)
+{
+	if( test_info->flag & IUTESTINFO_SKIPPED ) return TRUE;
+	return iuTestResult_IsSkipped(&test_info->result);
+}
+
+IUTEST_C_INL_INLINE void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Skip(iuTestInfo* test_info)
+{
+	test_info->flag |= IUTESTINFO_SKIPPED;
 }
 
 IUTEST_C_INL_INLINE void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Clear(iuTestInfo* test_info)

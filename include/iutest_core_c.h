@@ -221,9 +221,14 @@ IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetFailureTestCount(const iuUnitTest* un
 IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetDisableTestCount(const iuUnitTest* unit_test);
 
 /**
- * @brief	スキップしたテストの総数取得
+ * @brief	明示的にスキップしたテストの総数取得
 */
-IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetSkippedTestCount(const iuUnitTest* unit_test);
+IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetRunSkippedTestCount(const iuUnitTest* unit_test);
+
+/**
+* @brief	スキップしたテストの総数取得
+*/
+IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_GetSkipTestCount(const iuUnitTest* unit_test);
 
 /**
  * @brief	テスト結果の取得
