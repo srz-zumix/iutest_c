@@ -15,6 +15,11 @@ after_success:
   # Coverage
   - if [ "${USE_COVERAGE}" = '1' ]; then make send-coverage; fi
 
+env:
+  matrix:
+    - USE_COVERAGE=0
+    - USE_COVERAGE=1
+
 matrix:
   exclude:
     - compiler: clang
