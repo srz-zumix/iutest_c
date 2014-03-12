@@ -15,6 +15,11 @@ ifdef OUTPUTXML
 CCFLAGS +=-DOUTPUTXML
 endif
 
+ifdef USE_COVERAGE
+COVERAGE = coveralls
+CXXFLAGS += -coverage
+endif
+
 MAKEFILE=GNUmakefile CommonMakefile.in
 
 #
@@ -45,10 +50,27 @@ test: $(RUNNER)
 
 run_% : %
 	@echo $<
+ifdef USE_COVERAGE
+	./$< $(RUN_OPTION) --iutest_output=xml:$<.xml > /dev/null
+else
 ifdef OUTPUTXML
 	./$< $(RUN_OPTION) --iutest_output=xml:$<.xml
 else
 	./$< $(RUN_OPTION)
+endif
+endif
+
+# coverage
+ifdef COVERAGE
+COVARALLS_EXCLUDE=-e doc -e projects -e samples -e tools
+COVARALLS_EXCLUDE_PATTERN  =-E ".*/test/.*"
+COVARALLS_SRCEXT=-x .h -x .hpp -x .cpp -x .ipp
+endif
+
+send-coverage:
+ifdef COVERAGE
+	gcov -v
+	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
 endif
 
 # Builds a sample test.  
