@@ -5,10 +5,8 @@
  * @brief		iris unit test console ファイル
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -24,7 +22,7 @@
 IUTEST_EXTERN_C_BEGIN()
 
 /* define ============================================================*/
-#ifndef IUTEST_HAS_COLORCONSOLE
+#if !defined(IUTEST_HAS_COLORCONSOLE)
 #  if defined(IUTEST_OS_WINDOWS_MOBILE) || defined(IUTEST_OS_NACL)
 #    define IUTEST_HAS_COLORCONSOLE	0	/*!< 色つきターミナルが使用可能かどうか */
 #  else

@@ -5,10 +5,8 @@
  * @brief		iris unit test pragma ˆË‘¶‚Ì‹zŽû ƒtƒ@ƒCƒ‹
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -67,33 +65,33 @@
 #  define IUTEST_PRAGMA_GCC_WARN_POP			IUTEST_PRAGMA_CLANG_WARN_POP
 #endif
 
-#ifndef IUTEST_PRAGMA_MSC_WARN_PUSH
+#if !defined(IUTEST_PRAGMA_MSC_WARN_PUSH)
 #  define IUTEST_PRAGMA_MSC_WARN_PUSH()
 #endif
-#ifndef IUTEST_PRAGMA_MSC_WARN_DISABLE
+#if !defined(IUTEST_PRAGMA_MSC_WARN_DISABLE)
 #  define IUTEST_PRAGMA_MSC_WARN_DISABLE(x)
 #endif
-#ifndef IUTEST_PRAGMA_MSC_WARN_POP
+#if !defined(IUTEST_PRAGMA_MSC_WARN_POP)
 #  define IUTEST_PRAGMA_MSC_WARN_POP()
 #endif
 
-#ifndef IUTEST_PRAGMA_GCC_WARN_PUSH
+#if !defined(IUTEST_PRAGMA_GCC_WARN_PUSH)
 #  define IUTEST_PRAGMA_GCC_WARN_PUSH()
 #endif
-#ifndef IUTEST_PRAGMA_GCC_WARN_DISABLE
+#if !defined(IUTEST_PRAGMA_GCC_WARN_DISABLE)
 #  define IUTEST_PRAGMA_GCC_WARN_DISABLE(x)
 #endif
-#ifndef IUTEST_PRAGMA_GCC_WARN_POP
+#if !defined(IUTEST_PRAGMA_GCC_WARN_POP)
 #  define IUTEST_PRAGMA_GCC_WARN_POP()
 #endif
 
-#ifndef IUTEST_PRAGMA_CLANG_WARN_PUSH
+#if !defined(IUTEST_PRAGMA_CLANG_WARN_PUSH)
 #  define IUTEST_PRAGMA_CLANG_WARN_PUSH()
 #endif
-#ifndef IUTEST_PRAGMA_CLANG_WARN_DISABLE
+#if !defined(IUTEST_PRAGMA_CLANG_WARN_DISABLE)
 #  define IUTEST_PRAGMA_CLANG_WARN_DISABLE(x)
 #endif
-#ifndef IUTEST_PRAGMA_CLANG_WARN_POP
+#if !defined(IUTEST_PRAGMA_CLANG_WARN_POP)
 #  define IUTEST_PRAGMA_CLANG_WARN_POP()
 #endif
 

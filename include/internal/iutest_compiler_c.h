@@ -5,10 +5,8 @@
  * @brief		iris unit test compiler 依存の吸収 ファイル
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
- * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+* @par			copyright
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -20,29 +18,42 @@
 /* typedef ===========================================================*/
 typedef int iuBOOL;
 
-/* define　===========================================================*/
+/* define  ===========================================================*/
 /* os */
-#if		defined(__CYGWIN__)
+#if   defined(__CYGWIN__)
 #  define IUTEST_OS_CYGWIN				1
 #  define IUTEST_PLATFORM				"CYGWIN"
-#elif	defined(_WIN32) || defined(WIN32) || defined(__WIN32__)
+#elif defined(_WIN32) || defined(WIN32) || defined(__WIN32__) || defined(WINAPI_FAMILY)
 #  define IUTEST_OS_WINDOWS				1
-#  define IUTEST_PLATFORM				"Windows"
+#  if !defined(WIN32_LEAN_AND_MEAN)
+#    define WIN32_LEAN_AND_MEAN
+#  endif
 #  include <windows.h>
-#  if	defined(_WIN32_WCE)
+#  if defined(_WIN32_WCE)
 #    define IUTEST_OS_WINDOWS_MOBILE	1
-#  elif	defined(__MINGW__) || defined(__MINGW32__)
+#    define IUTEST_PLATFORM				"Windows CE"
+#  elif defined(__MINGW__) || defined(__MINGW32__)
 #    define IUTEST_OS_WINDOWS_MINGW		1
-#  elif	defined(__CUDACC__)
+#  elif defined(__CUDACC__)
 #    define IUTEST_OS_WINDOWS_CUDA		1
+#  elif defined(WINAPI_FAMILY)
+#    if defined(WINAPI_FAMILY_PHONE_APP) && (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP)
+#      define IUTEST_OS_WINDOWS_PHONE	1
+#      define IUTEST_PLATFORM			"Windows Phone"
+#    else
+#      define IUTEST_OS_WINDOWS_DESKTOP	1
+#    endif
 #  else
 #    define IUTEST_OS_WINDOWS_DESKTOP	1
 #  endif
-#elif	defined(__APPLE__)
+#  if !defined(IUTEST_PLATFORM)
+#    define IUTEST_PLATFORM				"Windows"
+#  endif
+#elif defined(__APPLE__)
 #  include "TargetConditionals.h"
-#  ifdef TARGET_OS_IPHONE
+#  if TARGET_OS_IPHONE
 #    define IUTEST_OS_IOS				1
-#    ifdef TARGET_IPHONE_SIMULATOR
+#    if TARGET_IPHONE_SIMULATOR
 #      define IUTEST_OS_IOS_SIMULATOR	1
 #      define IUTEST_PLATFORM			"iOS Simulator"
 #    else
@@ -52,18 +63,23 @@ typedef int iuBOOL;
 #    define IUTEST_OS_MAC				1
 #    define IUTEST_PLATFORM				"Mac OS"
 #  endif
-#elif	defined(sun) || defined(__sun)
+#elif defined(sun) || defined(__sun)
 #  define IUTEST_OS_SOLARIS				1
 #  define IUTEST_PLATFORM				"Solaris"
-#elif	defined(__linux__)
+#elif defined(__linux__)
 #  define IUTEST_OS_LINUX				1
-#  define IUTEST_PLATFORM				"LINUX"
 #  ifdef ANDROID
 #    define IUTEST_OS_LINUX_ANDROID		1
+#    define IUTEST_PLATFORM				"Android"
+#  else
+#    define IUTEST_PLATFORM				"LINUX"
 #  endif
-#elif	defined(__native_client__)
+#elif defined(__native_client__)
 #  define IUTEST_OS_NACL				1
 #  define IUTEST_PLATFORM				"Google Native Client"
+#elif defined(__AVR32__) || defined(__avr32__)
+#  define IUTEST_OS_AVR32				1
+#  define IUTEST_PLATFORM				"AVR32"
 #endif
 
 #if defined(IUTEST_OS_LINUX_ANDROID)
@@ -89,7 +105,7 @@ typedef int iuBOOL;
 #define IUTEST_HAS_C11		(IUTEST_STDC_VER == 201112L)
 
 /* attribute */
-#ifndef IUTEST_ATTRIBUTE_UNUSED_
+#if !defined(IUTEST_ATTRIBUTE_UNUSED_)
 #  if defined(__GNUC__) && !defined(COMPILER_ICC)
 #    define IUTEST_ATTRIBUTE_UNUSED_	__attribute__ ((unused))
 #  else
@@ -97,7 +113,7 @@ typedef int iuBOOL;
 #  endif
 #endif
 
-#ifndef IUTEST_SECTION_
+#if !defined(IUTEST_SECTION_)
 #  if defined(__GNUC__) && !defined(COMPILER_ICC)
 #    define IUTEST_SECTION_(name)	IUTEST_SECTION_I_(name)
 #    define IUTEST_SECTION_I_(name)	IUTEST_SECTION_D_("." #name)
@@ -111,7 +127,7 @@ typedef int iuBOOL;
 #endif
 
 /* 可変長引数マクロ */
-#ifndef IUTEST_C_NO_VARIADIC_MACROS
+#if !defined(IUTEST_C_NO_VARIADIC_MACROS)
 #  if	defined(_MSC_VER) && (_MSC_VER < 1500)
 #    define IUTEST_C_NO_VARIADIC_MACROS
 #  elif	!defined(__GNUC__) && IUTEST_HAS_C90
@@ -120,7 +136,7 @@ typedef int iuBOOL;
 #endif
 
 /* __COUNTER__ マクロ */
-#ifndef IUTEST_C_HAS_COUNTER_MACRO
+#if !defined(IUTEST_C_HAS_COUNTER_MACRO)
 #  if	defined(_MSC_VER) && (_MSC_VER >= 1300)
 #    define IUTEST_C_HAS_COUNTER_MACRO		1
 #  elif defined(__clang__)
@@ -132,7 +148,7 @@ typedef int iuBOOL;
 #  endif
 #endif
 
-#ifndef IUTEST_C_HAS_COUNTER_MACRO
+#if !defined(IUTEST_C_HAS_COUNTER_MACRO)
 #  define IUTEST_C_HAS_COUNTER_MACRO		0
 #endif
 
@@ -144,7 +160,7 @@ typedef int iuBOOL;
 #  define IUTEST_EXTERN_C_END()		
 #endif
 
-#ifndef NULL
+#if !defined(NULL)
 #  if defined(__cplusplus)
 #    define NULL	0
 #  else
@@ -152,11 +168,11 @@ typedef int iuBOOL;
 #  endif
 #endif
 
-#ifndef TRUE
+#if !defined(TRUE)
 #  define TRUE	1
 #endif
 
-#ifndef FALSE
+#if !defined(FALSE)
 #  define FALSE	0
 #endif
 

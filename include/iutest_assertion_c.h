@@ -5,10 +5,8 @@
  * @brief		iris unit test assertion 定義 ファイル
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -123,7 +121,7 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 	iuAssertionFailureMessage("error: Expected: " expected_str " == " actual_str)
 
 
-#ifndef iuTestAssertion_EqFailureMessage
+#if !defined(iuTestAssertion_EqFailureMessage)
 #  define iuTestAssertion_EqFailureMessage		iuTestAssertion_EqFailureMessageShowActual
 #endif
 
@@ -163,7 +161,7 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 #define iuTestAssertion_VsFailureMessageShowOnlyExpr(expression_str, val1, val2)		\
 	iuAssertionFailureMessage("error: Expected: " expression_str ) )
 
-#ifndef iuTestAssertion_VsFailureMessage
+#if !defined(iuTestAssertion_VsFailureMessage)
 #  define iuTestAssertion_VsFailureMessage		iuTestAssertion_VsFailureMessageShowActual12
 #endif
 

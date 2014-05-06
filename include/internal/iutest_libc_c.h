@@ -5,10 +5,8 @@
  * @brief		iris unit test libc ‘Î‰ž ƒtƒ@ƒCƒ‹
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -89,13 +87,13 @@ static IUTEST_ATTRIBUTE_UNUSED_ void * iu_malloc(size_t n) { (void)n; return NUL
 #endif
 
 /* sys/time.h */
-#ifndef IUTEST_C_HAS_HDR_SYSTIME
+#if !defined(IUTEST_C_HAS_HDR_SYSTIME)
 #  if defined(IUTEST_OS_WINDOWS) && !defined(IUTEST_OS_WINDOWS_MINGW)
 #    define IUTEST_C_HAS_HDR_SYSTIME	0
 #  endif
 #endif
 
-#ifndef IUTEST_C_HAS_HDR_SYSTIME
+#if !defined(IUTEST_C_HAS_HDR_SYSTIME)
 #  define IUTEST_C_HAS_HDR_SYSTIME		1
 #endif
 

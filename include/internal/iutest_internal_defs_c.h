@@ -5,10 +5,8 @@
  * @brief		iris unit test def ƒtƒ@ƒCƒ‹
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -100,15 +98,26 @@
 
 
 #ifndef IUTEST_C_BREAK
-#  if	defined(_MSC_VER)
+#  if   defined(_MSC_VER)
+#    define IUTEST_C_BREAK()	__debugbreak()
+#  elif defined(__MINGW32__)
 #    define IUTEST_C_BREAK()	DebugBreak()
+#  elif defined(IUTEST_OS_MAC)
+// http://www.cocoawithlove.com/2008/03/break-into-debugger.html
+#    if defined(__ppc64__) || defined(__ppc__)
+#    define IUTEST_C_BREAK()	__asm__("li r0, 20\nsc\nnop\nli r0, 37\nli r4, 2\nsc\nnop\n" : : : "memory","r0","r3","r4" )
+#    else
+#    define IUTEST_C_BREAK()	__asm__("int $3\n" : : )
+#    endif
 #  elif defined(__GUNC__) && (defined (__i386__) || defined (__x86_64__))
-#    define IUTEST_C_BREAK()	do { __asm{ int 3 } } while(iuAlwaysZero())
-#  elif	defined(__ARMCC_VERSION)
-#    define IUTEST_C_BREAK()	do { __breakpoint(0xF02C); } while(iuAlwaysZero())
+#    define IUTEST_C_BREAK()	do { __asm{ int 3 } } while(::iutest::detail::AlwaysFalse())
+#  elif defined(__clang__) || defined(__GNUC__)
+#    define IUTEST_C_BREAK()	__builtin_trap()
+#  elif defined(__ARMCC_VERSION)
+#    define IUTEST_C_BREAK()	do { __breakpoint(0xF02C); } while(::iutest::detail::AlwaysFalse())
 #  else
-#    define IUTEST_C_BREAK()	*(volatile int*)(NULL) = 1;
-/*#    define IUTEST_BREAK()	(void)0*/
+#    define IUTEST_C_BREAK()	*static_cast<volatile int*>(NULL) = 1;
+//#    define IUTEST_C_BREAK()	(void)0
 #  endif
 #endif
 

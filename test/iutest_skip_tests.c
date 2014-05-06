@@ -5,8 +5,6 @@
  * @brief		IUTEST_SKIP テスト
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
  * Copyright (C) 2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,

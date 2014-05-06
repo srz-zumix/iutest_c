@@ -5,10 +5,8 @@
  * @brief		iris unit test config ファイル
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -27,7 +25,7 @@
 */
 
 /*! Library を使うかどうか */
-#ifndef IUTEST_C_HAS_LIB
+#if !defined(IUTEST_C_HAS_LIB)
 #  if	defined(IUTEST_C_NO_LIB)
 #    define IUTEST_C_HAS_LIB		0
 #  elif	defined(IUTEST_C_USE_LIB) || defined(IUTEST_C_AUTO_LINK)
@@ -35,7 +33,7 @@
 #  endif
 #endif
 
-#ifndef IUTEST_C_HAS_LIB
+#if !defined(IUTEST_C_HAS_LIB)
 #  define IUTEST_C_HAS_LIB			0
 #endif
 
@@ -46,8 +44,8 @@
 */
 
 /*! 浮動小数点数が使用可能かどうか */
-#ifndef IUTEST_C_HAS_FLOATINGPOINT
-#  ifndef IUTEST_C_NO_FLOATINGPOINT
+#if !defined(IUTEST_C_HAS_FLOATINGPOINT)
+#  if !defined(IUTEST_C_NO_FLOATINGPOINT)
 #    define IUTEST_C_HAS_FLOATINGPOINT	1
 #  else
 #    define IUTEST_C_HAS_FLOATINGPOINT	0
@@ -55,8 +53,8 @@
 #endif
 
 /*! wchar_t が使用可能かどうか */
-#ifndef IUTEST_C_HAS_WCHAR_T
-#  ifndef IUTEST_C_NO_WCHAR_T
+#if !defined(IUTEST_C_HAS_WCHAR_T)
+#  if !defined(IUTEST_C_NO_WCHAR_T)
 #    define IUTEST_C_HAS_WCHAR_T	1
 #  else
 #    define IUTEST_C_HAS_WCHAR_T	0
@@ -64,8 +62,8 @@
 #endif
 
 /*! stdarg.h が使用可能かどうか */
-#ifndef IUTEST_C_HAS_STDARG
-#  ifndef IUTEST_C_NO_STDARG
+#if !defined(IUTEST_C_HAS_STDARG)
+#  if !defined(IUTEST_C_NO_STDARG)
 #    define IUTEST_C_HAS_STDARG		1
 #  else
 #    define IUTEST_C_HAS_STDARG		0
@@ -73,8 +71,8 @@
 #endif
 
 /*! 標準ライブラリが使用可能かどうか */
-#ifndef IUTEST_C_HAS_LIBC
-#  ifndef IUTEST_C_NO_LIBC
+#if !defined(IUTEST_C_HAS_LIBC)
+#  if !defined(IUTEST_C_NO_LIBC)
 #    define IUTEST_C_HAS_LIBC		1
 #  else
 #    define IUTEST_C_HAS_LIBC		0
@@ -82,7 +80,7 @@
 #endif
 
 /*! stdint.h があるかどうか */
-#ifndef IUTEST_C_HAS_HDR_STDINT
+#if !defined(IUTEST_C_HAS_HDR_STDINT)
 #  if defined(_MSC_VER) && _MSC_VER < 1600
 #    define IUTEST_C_HAS_HDR_STDINT	0
 #  else
@@ -91,7 +89,7 @@
 #endif
 
 /*! malloc 関数が使用可能かどうか */
-#ifndef IUTEST_C_HAS_MALLOC
+#if !defined(IUTEST_C_HAS_MALLOC)
 #  if !defined(IUTEST_C_NO_MALLOC) && IUTEST_C_HAS_LIBC
 #    define IUTEST_C_HAS_MALLOC		1
 #  else
@@ -100,8 +98,8 @@
 #endif
 
 /*! long long が使用可能かどうか */
-#ifndef IUTEST_C_HAS_LONGLONG
-#  ifndef IUTEST_C_NO_LONGLONG
+#if !defined(IUTEST_C_HAS_LONGLONG)
+#  if !defined(IUTEST_C_NO_LONGLONG)
 #    define IUTEST_C_HAS_LONGLONG	1
 #  else
 #    define IUTEST_C_HAS_LONGLONG	0
@@ -109,7 +107,7 @@
 #endif
 
 /*! 可変長マクロが使用可能かどうか */
-#ifndef IUTEST_C_HAS_VARIADIC_MACROS
+#if !defined(IUTEST_C_HAS_VARIADIC_MACROS)
 #  ifdef IUTEST_C_NO_VARIADIC_MACROS
 #    define IUTEST_C_HAS_VARIADIC_MACROS	0
 #  else
@@ -118,21 +116,21 @@
 #endif
 
 /*! getenv があるかどうか */
-#ifndef IUTEST_C_NO_GETENV
+#if !defined(IUTEST_C_NO_GETENV)
 #  if !IUTEST_C_HAS_LIBC
 #    define IUTEST_C_NO_GETENV
 #  endif
 #endif
 
 /*! putenv があるかどうか */
-#ifndef IUTEST_C_NO_PUTENV
+#if !defined(IUTEST_C_NO_PUTENV)
 #  if !IUTEST_C_HAS_LIBC
 #    define IUTEST_C_NO_PUTENV
 #  endif
 #endif
 
 /*! memcpy & memset があるかどうか */
-#ifndef IUTEST_C_HAS_MEMCPY_AND_MEMSET
+#if !defined(IUTEST_C_HAS_MEMCPY_AND_MEMSET)
 #  if IUTEST_C_HAS_LIBC || defined(_MSC_VER)
 #    define IUTEST_C_HAS_MEMCPY_AND_MEMSET	1
 #  else
@@ -151,7 +149,7 @@
 */
 
 /*! vprintf があるかどうか */
-#ifndef IUTEST_C_HAS_VPRINTF
+#if !defined(IUTEST_C_HAS_VPRINTF)
 #  if IUTEST_C_HAS_LIBC && !defined(IUTEST_C_NO_VPRINTF)
 #    define IUTEST_C_HAS_VPRINTF	1
 #  else
@@ -160,7 +158,7 @@
 #endif
 
 /*! printf があるかどうか */
-#ifndef IUTEST_C_HAS_PRINTF
+#if !defined(IUTEST_C_HAS_PRINTF)
 #  if IUTEST_C_HAS_LIBC && !defined(IUTEST_C_NO_PRINTF)
 #    define IUTEST_C_HAS_PRINTF		1
 #  else
@@ -169,7 +167,7 @@
 #endif
 
 /*! vprintf 呼び出しマクロ */
-#ifndef IUTEST_VPRINTF
+#if !defined(IUTEST_VPRINTF)
 #  if IUTEST_C_HAS_VPRINTF
 #    define IUTEST_VPRINTF(f, a)	vprintf(f, a)
 #  else
@@ -178,7 +176,7 @@
 #endif
 
 /*! printf 呼び出しマクロ */
-#ifndef IUTEST_PRINTF
+#if !defined(IUTEST_PRINTF)
 #  if IUTEST_C_HAS_PRINTF
 #    if IUTEST_C_HAS_VARIADIC_MACROS
 #      if defined(__GNUC__)
@@ -209,7 +207,7 @@
 */
 
 /*! パラメタライズ関数コールテストが使用可能かどうか */
-#ifndef IUTEST_C_HAS_PARAM_METHOD_TEST
+#if !defined(IUTEST_C_HAS_PARAM_METHOD_TEST)
 #  if IUTEST_C_HAS_VARIADIC_MACROS
 #    define IUTEST_C_HAS_PARAM_METHOD_TEST	1
 #  else
@@ -218,7 +216,7 @@
 #endif
 
 /*! 値のパラメータ化テストが使用可能かどうか */
-#ifndef IUTEST_C_HAS_PARAM_TEST
+#if !defined(IUTEST_C_HAS_PARAM_TEST)
 #  if IUTEST_C_HAS_VARIADIC_MACROS
 #    define IUTEST_C_HAS_PARAM_TEST		1
 #  else
@@ -227,7 +225,7 @@
 #endif
 
 /*! Combine が使用可能かどうか */
-#ifndef IUTEST_C_HAS_COMBINE
+#if !defined(IUTEST_C_HAS_COMBINE)
 #  if IUTEST_C_HAS_VARIADIC_MACROS && IUTEST_C_HAS_PARAM_TEST
 #    define IUTEST_C_HAS_COMBINE		1
 #  else
@@ -246,7 +244,7 @@
 */
 
 /*! デフォルト XML ジェネレーターが使用可能かどうか */
-#ifndef IUTEST_C_HAS_DEFAULT_XML_GENERATOR
+#if !defined(IUTEST_C_HAS_DEFAULT_XML_GENERATOR)
 #  define IUTEST_C_HAS_DEFAULT_XML_GENERATOR	1
 #endif
 
@@ -261,7 +259,7 @@
 */
 
 /*! FILE IO 関係の関数が使用可能かどうか */
-#ifndef IUTEST_C_HAS_FILEAPI
+#if !defined(IUTEST_C_HAS_FILEAPI)
 #  if	!defined(IUTEST_C_NO_FILEAPI) && IUTEST_C_HAS_LIBC
 #    define IUTEST_C_HAS_FILEAPI	1
 #  else
@@ -280,7 +278,7 @@
 */
 
 /*! time.h があるかどうか */
-#ifndef IUTEST_C_HAS_HDR_TIME
+#if !defined(IUTEST_C_HAS_HDR_TIME)
 #  if IUTEST_C_HAS_LIBC
 #    define IUTEST_C_HAS_HDR_TIME	1
 #  else
@@ -289,7 +287,7 @@
 #endif
 
 /*! time 関数が使用可能かどうか */
-#ifndef IUTEST_C_HAS_CTIME
+#if !defined(IUTEST_C_HAS_CTIME)
 #  if IUTEST_C_HAS_HDR_TIME
 #    define IUTEST_C_HAS_CTIME		1
 #  else
@@ -298,7 +296,7 @@
 #endif
 
 /*! gettimeofday 関数が使用可能かどうか */
-#ifndef IUTEST_C_HAS_GETTIMEOFDAY
+#if !defined(IUTEST_C_HAS_GETTIMEOFDAY)
 #  if IUTEST_C_HAS_HDR_SYSTIME
 #    define IUTEST_C_HAS_GETTIMEOFDAY	1
 #  else
@@ -307,7 +305,7 @@
 #endif
 
 /*! clock 関数が使用可能かどうか */
-#ifndef IUTEST_C_HAS_CLOCK
+#if !defined(IUTEST_C_HAS_CLOCK)
 #  ifdef CLOCKS_PER_SEC
 #    define IUTEST_C_HAS_CLOCK		1
 #  else
@@ -326,12 +324,12 @@
 */
 
 /*! IUTEST が生成するテスト関数のセクション名 */
-#ifndef IUTEST_TEST_SECTION_NAME
+#if !defined(IUTEST_TEST_SECTION_NAME)
 #  define IUTEST_TEST_SECTION_NAME
 #endif
 
 /*! printf 出力が可能かどうか */
-#ifndef IUTEST_C_HAS_CONSOLEOUT
+#if !defined(IUTEST_C_HAS_CONSOLEOUT)
 #  if IUTEST_C_HAS_STDARG && IUTEST_C_HAS_VPRINTF
 #    define IUTEST_C_HAS_CONSOLEOUT		1
 #  else
@@ -340,12 +338,12 @@
 #endif
 
 /*! コマンドラインオプション解析を使用するかどうか */
-#ifndef IUTEST_C_HAS_COMMANDLINE_OPTION
+#if !defined(IUTEST_C_HAS_COMMANDLINE_OPTION)
 #  define IUTEST_C_HAS_COMMANDLINE_OPTION	1
 #endif
 
 /*! 環境変数オプション解析を使用するかどうか */
-#ifndef IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION
+#if !defined(IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION)
 #  if defined(IUTEST_C_NO_GETENV)
 #    define IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION	0
 #  else
@@ -366,32 +364,32 @@
 #if !IUTEST_C_HAS_MALLOC || defined(IUTEST_BUILD_DOXYGEN)
 
 /*! malloc が使えない場合の TestResult の Pool 総数 */
-#ifndef IUTEST_C_TESTPARTRESULT_POOL_COUNT
+#if !defined(IUTEST_C_TESTPARTRESULT_POOL_COUNT)
 #  define IUTEST_C_TESTPARTRESULT_POOL_COUNT	512
 #endif
 
 /*! malloc が使えない場合の TestProerty の Pool 総数 */
-#ifndef IUTEST_C_TESTPROPERTY_POOL_COUNT
+#if !defined(IUTEST_C_TESTPROPERTY_POOL_COUNT)
 #  define IUTEST_C_TESTPROPERTY_POOL_COUNT		128
 #endif
 
 /*! malloc が使えない場合の TestListner の Pool 総数 */
-#ifndef IUTEST_C_LISTENER_POOL_COUNT
+#if !defined(IUTEST_C_LISTENER_POOL_COUNT)
 #  define IUTEST_C_LISTENER_POOL_COUNT			8
 #endif
 
 /*! malloc が使えない場合の iuTestGlobalEnvSetUp の Pool 総数 */
-#ifndef IUTEST_C_GLOBALENVSETUP_POOL_COUNT
+#if !defined(IUTEST_C_GLOBALENVSETUP_POOL_COUNT)
 #  define IUTEST_C_GLOBALENVSETUP_POOL_COUNT	8
 #endif
 
 /*! malloc が使えない場合の iuTestGlobalEnvTearDown の Pool 総数 */
-#ifndef IUTEST_C_GLOBALENVTEARDOWN_POOL_COUNT
+#if !defined(IUTEST_C_GLOBALENVTEARDOWN_POOL_COUNT)
 #  define IUTEST_C_GLOBALENVTEARDOWN_POOL_COUNT	8
 #endif
 
 /*! malloc が使えない場合の テストメッセージバッファ の Pool 総数 */
-#ifndef IUTEST_C_TESTMSGBUFFER_POOL_COUNT
+#if !defined(IUTEST_C_TESTMSGBUFFER_POOL_COUNT)
 #  define IUTEST_C_TESTMSGBUFFER_POOL_COUNT		16*1024
 #endif
 
@@ -426,7 +424,7 @@
 */
 
 /* include only */
-#ifndef IUTEST_C_INL_INLINE
+#if !defined(IUTEST_C_INL_INLINE)
 #  if IUTEST_C_HAS_LIB
 #    define IUTEST_C_INL_INLINE
 #  else

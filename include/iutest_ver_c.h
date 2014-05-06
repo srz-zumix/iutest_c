@@ -5,8 +5,6 @@
  * @brief		iris unit test version 定義 ファイル
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
  * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
@@ -18,11 +16,11 @@
 #define INCG_IRIS_iutest_ver_C_H_D65CB7A7_D2AD_40fe_8F5F_8FBF376A0010_
 
 /* define ============================================================*/
-#define	IUTEST_C_VER			0x01039914	/*!< iutest version 1.3.99.14 */
+#define	IUTEST_C_VER			0x01039915	/*!< iutest version 1.3.99.15 */
 #define IUTEST_C_MAJORVER		0x01		/*!< Major Version */
 #define IUTEST_C_MINORVER		0x03		/*!< Minor Version */
 #define IUTEST_C_BUILD			0x99		/*!< Build */
-#define IUTEST_C_REVISION		0x14		/*!< Revision */
+#define IUTEST_C_REVISION		0x15		/*!< Revision */
 
 /**
  * @mainpage
@@ -85,7 +83,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * @page	CHANGELOG		変更履歴
  * @par		Changes
 <ul>
-  <li>v1.3.99.14
+  <li>v1.4.0.0
     <ul>
       <li>IUTEST_SKIP 追加</li>
       <li>iuBoolean パラメータジェネレータを追加</li>

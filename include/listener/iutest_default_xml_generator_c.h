@@ -5,10 +5,8 @@
  * @brief		iris unit test xml 出力イベントリスナー ファイル
  *
  * @author		t.sirayanagi
- * @version		1.0
- *
  * @par			copyright
- * Copyright (C) 2012-2013, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -28,7 +26,7 @@ IUTEST_EXTERN_C_BEGIN()
  * @ingroup	IUTEST_CONFIG
  * @brief	xml 出力に skipped タグを含めるかどうか
 */
-#ifndef IUTEST_C_REPORT_SKIPPED
+#if !defined(IUTEST_C_REPORT_SKIPPED)
 #  define IUTEST_C_REPORT_SKIPPED		1
 #endif
 
