@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_console_C_H_5D02AA77_5C25_4919_BDEC_CD32EB5774C8_
-#define INCG_IRIS_iutest_console_C_H_5D02AA77_5C25_4919_BDEC_CD32EB5774C8_
+#ifndef INCG_IRIS_IUTEST_CONSOLE_C_H_5D02AA77_5C25_4919_BDEC_CD32EB5774C8_
+#define INCG_IRIS_IUTEST_CONSOLE_C_H_5D02AA77_5C25_4919_BDEC_CD32EB5774C8_
 
 /* include ===========================================================*/
 #include "iutest_port_c.h"

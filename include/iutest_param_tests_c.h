@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_param_tests_C_H_3DBBF55E_A076_4207_B49E_34734EE333EE_
-#define INCG_IRIS_iutest_param_tests_C_H_3DBBF55E_A076_4207_B49E_34734EE333EE_
+#ifndef INCG_IRIS_IUTEST_PARAM_TESTS_C_H_3DBBF55E_A076_4207_B49E_34734EE333EE_
+#define INCG_IRIS_IUTEST_PARAM_TESTS_C_H_3DBBF55E_A076_4207_B49E_34734EE333EE_
 
 /* include ===========================================================*/
 #include "iutest_core_c.h"

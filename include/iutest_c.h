@@ -16,8 +16,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_c_H_
-#define INCG_IRIS_iutest_c_H_
+#ifndef INCG_IRIS_IUTEST_C_H_
+#define INCG_IRIS_IUTEST_C_H_
 
 /* include ===========================================================*/
 #include "iutest_ver_c.h"

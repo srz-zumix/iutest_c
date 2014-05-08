@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_option_message_C_INL_B8037C4F_8F86_4c64_B1FB_01F9018076A0_
-#define INCG_IRIS_iutest_option_message_C_INL_B8037C4F_8F86_4c64_B1FB_01F9018076A0_
+#ifndef INCG_IRIS_IUTEST_OPTION_MESSAGE_C_INL_B8037C4F_8F86_4C64_B1FB_01F9018076A0_
+#define INCG_IRIS_IUTEST_OPTION_MESSAGE_C_INL_B8037C4F_8F86_4C64_B1FB_01F9018076A0_
 
 /* include ===========================================================*/
 #include "../internal/iutest_option_message_c.h"

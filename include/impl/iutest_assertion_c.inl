@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_assertion_C_INL_E6AF3476_DA81_46f7_A961_ACCEF7363932_
-#define INCG_IRIS_iutest_assertion_C_INL_E6AF3476_DA81_46f7_A961_ACCEF7363932_
+#ifndef INCG_IRIS_IUTEST_ASSERTION_C_INL_E6AF3476_DA81_46F7_A961_ACCEF7363932_
+#define INCG_IRIS_IUTEST_ASSERTION_C_INL_E6AF3476_DA81_46F7_A961_ACCEF7363932_
 
 /* include ===========================================================*/
 #include "../iutest_assertion_c.h"

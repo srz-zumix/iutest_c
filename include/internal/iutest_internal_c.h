@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_internal_c_H_A3DF31D4_5FC6_4c62_BCF6_EF835E47B10A_
-#define INCG_IRIS_iutest_internal_c_H_A3DF31D4_5FC6_4c62_BCF6_EF835E47B10A_
+#ifndef INCG_IRIS_IUTEST_INTERNAL_C_H_A3DF31D4_5FC6_4C62_BCF6_EF835E47B10A_
+#define INCG_IRIS_IUTEST_INTERNAL_C_H_A3DF31D4_5FC6_4C62_BCF6_EF835E47B10A_
 
 /* include ===========================================================*/
 #include "../iutest_pred_c.h"

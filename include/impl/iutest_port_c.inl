@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_port_c_INL_6D5DBD9D_C830_4415_957D_D38D69AEE35B_
-#define INCG_IRIS_iutest_port_c_INL_6D5DBD9D_C830_4415_957D_D38D69AEE35B_
+#ifndef INCG_IRIS_IUTEST_PORT_C_INL_6D5DBD9D_C830_4415_957D_D38D69AEE35B_
+#define INCG_IRIS_IUTEST_PORT_C_INL_6D5DBD9D_C830_4415_957D_D38D69AEE35B_
 
 /* include ===========================================================*/
 #include "../internal/iutest_port_c.h"

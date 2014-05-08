@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_env_C_INL_DC5C5193_7081_4fef_B668_283CAEFA1F77_
-#define INCG_IRIS_iutest_env_C_INL_DC5C5193_7081_4fef_B668_283CAEFA1F77_
+#ifndef INCG_IRIS_IUTEST_ENV_C_INL_DC5C5193_7081_4FEF_B668_283CAEFA1F77_
+#define INCG_IRIS_IUTEST_ENV_C_INL_DC5C5193_7081_4FEF_B668_283CAEFA1F77_
 
 /* include ===========================================================*/
 #include "../iutest_env_c.h"

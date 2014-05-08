@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_default_printer_C_INL_FA31CAB7_32CB_4764_89FC_6AC5C0D25385_
-#define INCG_IRIS_iutest_default_printer_C_INL_FA31CAB7_32CB_4764_89FC_6AC5C0D25385_
+#ifndef INCG_IRIS_IUTEST_DEFAULT_PRINTER_C_INL_FA31CAB7_32CB_4764_89FC_6AC5C0D25385_
+#define INCG_IRIS_IUTEST_DEFAULT_PRINTER_C_INL_FA31CAB7_32CB_4764_89FC_6AC5C0D25385_
 
 /* include ===========================================================*/
 #include "../listener/iutest_default_printer_c.h"

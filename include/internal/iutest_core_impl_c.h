@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_core_impl_c_H_D5ABC7DE_C751_4ac0_922F_547880163891_
-#define INCG_IRIS_iutest_core_impl_c_H_D5ABC7DE_C751_4ac0_922F_547880163891_
+#ifndef INCG_IRIS_IUTEST_CORE_IMPL_C_H_D5ABC7DE_C751_4AC0_922F_547880163891_
+#define INCG_IRIS_IUTEST_CORE_IMPL_C_H_D5ABC7DE_C751_4AC0_922F_547880163891_
 
 IUTEST_EXTERN_C_BEGIN()
 

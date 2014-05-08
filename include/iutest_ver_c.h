@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_ver_C_H_D65CB7A7_D2AD_40fe_8F5F_8FBF376A0010_
-#define INCG_IRIS_iutest_ver_C_H_D65CB7A7_D2AD_40fe_8F5F_8FBF376A0010_
+#ifndef INCG_IRIS_IUTEST_VER_C_H_D65CB7A7_D2AD_40FE_8F5F_8FBF376A0010_
+#define INCG_IRIS_IUTEST_VER_C_H_D65CB7A7_D2AD_40FE_8F5F_8FBF376A0010_
 
 /* define ============================================================*/
 #define	IUTEST_C_VER			0x01039915	/*!< iutest version 1.3.99.15 */

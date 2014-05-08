@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_regex_C_H_1575CB44_189A_4248_B305_DB4882E3BFC2_
-#define INCG_IRIS_iutest_regex_C_H_1575CB44_189A_4248_B305_DB4882E3BFC2_
+#ifndef INCG_IRIS_IUTEST_REGEX_C_H_1575CB44_189A_4248_B305_DB4882E3BFC2_
+#define INCG_IRIS_IUTEST_REGEX_C_H_1575CB44_189A_4248_B305_DB4882E3BFC2_
 
 IUTEST_EXTERN_C_BEGIN()
 

@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_defs_c_H_2EF67DBB_93CC_4c5a_BCB6_556CD9265270_
-#define INCG_IRIS_iutest_defs_c_H_2EF67DBB_93CC_4c5a_BCB6_556CD9265270_
+#ifndef INCG_IRIS_IUTEST_DEFS_C_H_2EF67DBB_93CC_4C5A_BCB6_556CD9265270_
+#define INCG_IRIS_IUTEST_DEFS_C_H_2EF67DBB_93CC_4C5A_BCB6_556CD9265270_
 
 /* include ===========================================================*/
 #include "iutest_compiler_c.h"

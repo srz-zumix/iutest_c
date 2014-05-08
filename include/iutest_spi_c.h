@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_spi_C_H_31A295B7_1BFC_429D_84F2_FC76F7FB647F_
-#define INCG_IRIS_iutest_spi_C_H_31A295B7_1BFC_429D_84F2_FC76F7FB647F_
+#ifndef INCG_IRIS_IUTEST_SPI_C_H_31A295B7_1BFC_429D_84F2_FC76F7FB647F_
+#define INCG_IRIS_IUTEST_SPI_C_H_31A295B7_1BFC_429D_84F2_FC76F7FB647F_
 
 /* include ===========================================================*/
 #include "iutest_c.h"

@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_pragma_C_H_FBC5A1DE_3D0C_443e_84B1_5F0618DF9A6B_
-#define INCG_IRIS_iutest_pragma_C_H_FBC5A1DE_3D0C_443e_84B1_5F0618DF9A6B_
+#ifndef INCG_IRIS_IUTEST_PRAGMA_C_H_FBC5A1DE_3D0C_443E_84B1_5F0618DF9A6B_
+#define INCG_IRIS_IUTEST_PRAGMA_C_H_FBC5A1DE_3D0C_443E_84B1_5F0618DF9A6B_
 
 /* define ============================================================*/
 

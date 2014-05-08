@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_params_util_C_H_4B4332BA_2300_416B_A1EE_004BC08A627E_
-#define INCG_IRIS_iutest_params_util_C_H_4B4332BA_2300_416B_A1EE_004BC08A627E_
+#ifndef INCG_IRIS_IUTEST_PARAMS_UTIL_C_H_4B4332BA_2300_416B_A1EE_004BC08A627E_
+#define INCG_IRIS_IUTEST_PARAMS_UTIL_C_H_4B4332BA_2300_416B_A1EE_004BC08A627E_
 
 /* include ===========================================================*/
 #include "../iutest_defs_c.h"

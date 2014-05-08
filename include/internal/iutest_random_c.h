@@ -12,8 +12,8 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-#ifndef INCG_IRIS_iutest_random_c_H_89F260D7_9145_4b50_A8F0_B7A2696121B6_
-#define INCG_IRIS_iutest_random_c_H_89F260D7_9145_4b50_A8F0_B7A2696121B6_
+#ifndef INCG_IRIS_IUTEST_RANDOM_C_H_89F260D7_9145_4B50_A8F0_B7A2696121B6_
+#define INCG_IRIS_IUTEST_RANDOM_C_H_89F260D7_9145_4B50_A8F0_B7A2696121B6_
 
 /* include ===========================================================*/
 #include "iutest_time_c.h"
