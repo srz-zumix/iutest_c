@@ -17,7 +17,7 @@ endif
 
 ifdef USE_COVERAGE
 COVERAGE = coveralls
-CXXFLAGS += -coverage
+CCFLAGS += -coverage
 endif
 
 MAKEFILE=GNUmakefile CommonMakefile.in
@@ -43,6 +43,9 @@ clean:
 	rm -f $(TARGETS) *.o
 ifdef OUTPUTXML
 	rm -f *.xml
+endif
+ifdef COVERAGE
+	$(RM) *.xml *.gcov *.gcno *.gcda
 endif
 
 run: test
