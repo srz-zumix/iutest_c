@@ -66,7 +66,7 @@ endif
 # coverage
 ifdef COVERAGE
 COVARALLS_EXCLUDE=-e doc -e projects -e samples -e tools
-COVARALLS_EXCLUDE_PATTERN  =-E ".*test/.*"
+COVARALLS_EXCLUDE_PATTERN  =-E "test/.*"
 COVARALLS_SRCEXT=-x .h -x .c -x .inl
 endif
 
