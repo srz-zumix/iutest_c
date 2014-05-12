@@ -303,7 +303,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsStringEqual(const
 }
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsStringCaseEqual(const char* str1, const char* str2)
 {
-	return str1 == NULL ? (str2 == NULL ? TRUE : FALSE) : (str2 == NULL ? FALSE : (iu_stricmp(str1, str2) == 0)); 
+	return str1 == NULL ? (str2 == NULL ? TRUE : FALSE) : (str2 == NULL ? FALSE : (iu_stricmp(str1, str2) == 0));
 }
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsDisabledTestName(const char* name)

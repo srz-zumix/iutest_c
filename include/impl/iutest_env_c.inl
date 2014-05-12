@@ -397,7 +397,7 @@ IUTEST_C_INL_INLINE iuBOOL iuTestEnv_IsYesOption(const char* option)
 		|| iuString_IsStringCaseEqual(option, "on")
 		|| iuString_IsStringCaseEqual(option, "true")
 		|| iuString_IsStringCaseEqual(option, "t")
-		|| iuString_IsStringEqual(option, "1") ) 
+		|| iuString_IsStringEqual(option, "1") )
 	{
 		return TRUE;
 	}
@@ -411,7 +411,7 @@ IUTEST_C_INL_INLINE iuBOOL iuTestEnv_IsNoOption(const char* option)
 		|| iuString_IsStringCaseEqual(option, "off")
 		|| iuString_IsStringCaseEqual(option, "false")
 		|| iuString_IsStringCaseEqual(option, "f")
-		|| iuString_IsStringEqual(option, "0") ) 
+		|| iuString_IsStringEqual(option, "0") )
 	{
 		return TRUE;
 	}
@@ -446,7 +446,7 @@ IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseColorOption(const char* option)
 	{
 		iuTestEnv_SetFlag(IUTESTENV_CONSOLECOLOR_ON|IUTESTENV_CONSOLECOLOR_ANSI, ~IUTESTENV_CONSOLECOLOR_OFF);
 	}
-	else 
+	else
 	{
 		return FALSE;
 	}

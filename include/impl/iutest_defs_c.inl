@@ -16,7 +16,7 @@
 #define INCG_IRIS_IUTEST_DEFS_C_INL_C65D73ED_BE82_4B01_8B5D_756A3C887B9A_
 
 /* include ===========================================================*/
-#include "..//iutest_defs_c.h"
+#include "../iutest_defs_c.h"
 
 /* function ==========================================================*/
 

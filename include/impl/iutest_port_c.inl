@@ -65,7 +65,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestOS_GetEnvironmentInt(c
 	char buf[128];
 	iu_memset(buf, 0, sizeof(buf));
 	if( value == NULL ) return FALSE;
-	if( iuTestOS_GetEnvironmentVariable(name, buf, sizeof(buf)) ) 
+	if( iuTestOS_GetEnvironmentVariable(name, buf, sizeof(buf)) )
 	{
 		*value = iuString_ToInt(buf);
 		return TRUE;

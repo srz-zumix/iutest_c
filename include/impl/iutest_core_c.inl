@@ -352,14 +352,14 @@ IUTEST_C_INL_INLINE void iuTestRun_TestProgramEnd(iuUnitTest *unit_test)
 
 IUTEST_C_INL_INLINE int iuTestRun_Run(iuUnitTest *unit_test)
 {
-	iuBOOL result = TRUE; 
+	iuBOOL result = TRUE;
 	int repeat = IUTEST_FLAG(repeat);
 	if( repeat == 0 ) return 0;
 	iuTestRun_TestProgramStart(unit_test);
 
 	{
 		int iteration = 0;
-		while( repeat != 0 ) 
+		while( repeat != 0 )
 		{
 			if( !iuTestRun_Iteration(unit_test, iteration) )
 			{
@@ -486,7 +486,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuUnitTest_ParamHolderRegister
 				}
 				iuTestHelper_AddList(iuTestCase, IIUT_C_UNITTEST().list, test_case);
 
-				// 新しい TestCase から参照
+				/* 新しい TestCase から参照 */
 				test_case->list = p->list;
 			}
 		}

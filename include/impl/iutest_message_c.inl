@@ -52,7 +52,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ char* iuTest_FormatCompilerFileLoca
 	{
 		const char* const file_name = file == NULL ? "Unkown file" : file;
 		iu_strcpy(dst, file_name);
-		if( line >= 0 ) 
+		if( line >= 0 )
 		{
 			size_t len = iu_strlen(dst);
 			char* p = dst + len;
@@ -76,7 +76,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ char* iuTest_FormatCompilerIndepend
 	{
 		const char* const file_name = file == NULL ? "Unkown file" : file;
 		iu_strcpy(dst, file_name);
-		if( line >= 0 ) 
+		if( line >= 0 )
 		{
 			size_t len = iu_strlen(dst);
 			char* p = dst + len;

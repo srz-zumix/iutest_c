@@ -25,7 +25,7 @@
 /**
  * @brief	ûBñÜÇ» else ï∂ÇÃåxçêó}êß
 */
-#ifdef __INTEL_COMPILER 
+#ifdef __INTEL_COMPILER
 #  define IUTEST_AMBIGUOUS_ELSE_BLOCKER_
 #else
 #  define IUTEST_AMBIGUOUS_ELSE_BLOCKER_	switch(iuAlwaysZero()) case 0: default:
@@ -103,7 +103,7 @@
 #  elif defined(__MINGW32__)
 #    define IUTEST_C_BREAK()	DebugBreak()
 #  elif defined(IUTEST_OS_MAC)
-// http://www.cocoawithlove.com/2008/03/break-into-debugger.html
+/* http://www.cocoawithlove.com/2008/03/break-into-debugger.html */
 #    if defined(__ppc64__) || defined(__ppc__)
 #    define IUTEST_C_BREAK()	__asm__("li r0, 20\nsc\nnop\nli r0, 37\nli r4, 2\nsc\nnop\n" : : : "memory","r0","r3","r4" )
 #    else
@@ -117,7 +117,6 @@
 #    define IUTEST_C_BREAK()	do { __breakpoint(0xF02C); } while(::iutest::detail::AlwaysFalse())
 #  else
 #    define IUTEST_C_BREAK()	*static_cast<volatile int*>(NULL) = 1;
-//#    define IUTEST_C_BREAK()	(void)0
 #  endif
 #endif
 

@@ -41,48 +41,48 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowVersion(void)
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowHelp(void)
 {
 #if IUTEST_C_HAS_CONSOLEOUT
-	const char *name = 
+	const char *name =
 		"--------------------------------------------------\n"
 		"Name\n"
 		"    iutest_c - iris unit test framework\n"
 		;
-	const char *option0 = 
+	const char *option0 =
 		"--------------------------------------------------\n"
 		"Command Line Options\n"
 		"\n"
 		;
-	const char *option1 = 
+	const char *option1 =
 		"    --help, -h                      : generate help message.\n"
 		"    --iutest_output=xml[:path]      : path of xml report.\n"
 		;
-	const char *option2 = 
+	const char *option2 =
 		"    --iutest_list_tests             : list up tests.\n"
 		"    --iutest_color=<yes|no|auto>    : console color enable.\n"
 		;
-	const char *option3 = 
+	const char *option3 =
 		"    --iutest_filter=<filter>        : Select the test run.\n"
 		"    --iutest_shuffle                : do shuffle test.\n"
 		;
-	const char *option4 = 
+	const char *option4 =
 		"    --iutest_random_seed=<seed>     : set random seed.\n"
 		"    --iutest_also_run_disabled_tests: run disabled tests.\n"
 		;
-	const char *option5 = 
+	const char *option5 =
 		"    --iutest_break_on_failure[=0|1] : When that failed to break.\n"
 		"    --iutest_print_time=<0|1>       : Setting the display of elapsed time.\n"
 		;
-	const char *option6 = 
+	const char *option6 =
 		"    --iutest_repeat=<count>         : Set the number of repetitions of the test.\n"
 		"    --version, -v                   : show iutest version.\n"
 		;
-	const char *option_end = 
+	const char *option_end =
 		"\n"
 		"--------------------------------------------------\n"
 		;
-	const char *license = 
+	const char *license =
 		"License\n"
 		"\n"
-		"    Copyright (c) 2012-2013 Takazumi-Shirayanagi,\n"
+		"    Copyright (c) 2012-2014 Takazumi-Shirayanagi,\n"
 		"    All rights reserved.\n"
 		"\n"
 		"    The new(modified) BSD License is applied to this software, see LICENSE\n"

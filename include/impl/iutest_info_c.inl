@@ -105,7 +105,7 @@ IUTEST_C_INL_INLINE void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Filter(iuTestInfo *
 	if( test_info != NULL )
 	{
 		iuBOOL bRun = TRUE;
-		if( !iuTestEnv_IsEnableRunDisabledTests() 
+		if( !iuTestEnv_IsEnableRunDisabledTests()
 			&& iuTestInfo_IsDisabledTest(test_info) )
 		{
 			bRun = FALSE;
