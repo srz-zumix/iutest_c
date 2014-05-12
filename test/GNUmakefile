@@ -65,7 +65,7 @@ endif
 
 # coverage
 ifdef COVERAGE
-COVARALLS_EXCLUDE=-e doc -e projects -e samples -e tools -e test
+COVARALLS_EXCLUDE=-e doc -e projects -e samples -e tools
 COVARALLS_EXCLUDE_PATTERN  =-E "test/[^\.].*"
 COVARALLS_SRCEXT=-x .h -x .c -x .inl
 endif
@@ -73,7 +73,8 @@ endif
 send-coverage:
 ifdef COVERAGE
 	gcov -v
-	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
+	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
+#	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
 endif
 
 # Builds a sample test.  
