@@ -73,7 +73,7 @@ endif
 send-coverage:
 ifdef COVERAGE
 	gcov -v
-	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b ./test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
+	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b ./test --encodings shift_jis $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
 endif
 
 # Builds a sample test.  

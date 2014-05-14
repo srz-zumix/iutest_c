@@ -78,14 +78,14 @@
       <ul>
         <li><a href="#selecttest">テストの選択</a>
           <ul>
-          <li><a href="#opt_list">テストの一覧</a>
-          <li><a href="#opt_filter">テストの部分的な実行</a>
-          <li><a href="#opt_disabled">無効テストの実行</a>
+          <li><a href="#opt_list">テストの一覧</a></li>
+          <li><a href="#opt_filter">テストの部分的な実行</a></li>
+          <li><a href="#opt_disabled">無効テストの実行</a></li>
           </ul>
         </li>
         <li><a href="#repeattest">テストを繰り返す</a></li>
         <li><a href="#shuffletest">テストをシャッフルする</a></li>
-        <li><a href="#xmlreport">XML レポート</a></li>
+        <li><a href="#reportxml">XML レポート</a></li>
       </ul>
     </li>
   </ul>
@@ -121,7 +121,7 @@ IUTEST_C_WORKSPACE();
 </strong>
 int main(int argc, char** argv)
 {
-    IUTEST_INIT(&argc, argv);
+    IUTEST_INIT(&amp;argc, argv);
     return IUTEST_RUN_ALL_TESTS();
 }
 </pre>
@@ -154,7 +154,7 @@ int main(int argc, char** argv)
     /* 値のパラメータ化テストの場合は IUTEST_REGISTER_TEST_P もする */
     IUTEST_REGISTER_TEST_P(prefix, testcase_name);
 </strong>
-    IUTEST_INIT(&argc, argv);
+    IUTEST_INIT(&amp;argc, argv);
     return IUTEST_RUN_ALL_TESTS();
 }
 </pre>
@@ -259,7 +259,7 @@ iuCombine の書式は以下のようになります。
 
 <pre class="source">
 IUTEST_INSTANTIATE_TEST_CASE_P((int, char, unsigned int), A, TestName, iuCombine
-	   , (iuRange, (0, 2)), (iuStepRange, (100, 110, 2)), (iuValues, (0, 4, 2)) );
+    , (iuRange, (0, 2)), (iuStepRange, (100, 110, 2)), (iuValues, (0, 4, 2)) );
 
 </pre>
 IUTEST_INSTANTIATE_TEST_CASE_P の第一引数にはパラメータの各要素の型を括弧でくくって指定します。<br />
@@ -273,10 +273,10 @@ typedef IUTEST_P_TYPE((int, char, unsigned int)) TestCombineParamType;
 
 IUTEST_P(TestCombineParamType, TestCombine, Test)
 {
-	const int x0 = param.value0;
-	const char x1 = param.value1;
-	const unsigned int x2 = param.value2;
-	iuConsole_Output("%d %d %d\n", x0, x1, x2);
+    const int x0 = param.value0;
+    const char x1 = param.value1;
+    const unsigned int x2 = param.value2;
+    iuConsole_Output("%d %d %d\n", x0, x1, x2);
 }
 </pre>
 
@@ -338,7 +338,7 @@ iutest_c でも、DISABLED テストが使用できます。<br />
 上記オプション、または環境変数 IUTEST_SHUFFLE を指定すると、ランダムな順序でテストを実行します。<br />
 これによって、テスト間に良くない依存関係がないか調べることができます。<br />
 
-<h4><a name="xmlreport" id="xmlreport">XML レポート</a></h4>
+<h4><a name="reportxml" id="reportxml">XML レポート</a></h4>
 <pre>
 --iutest_output=xml[:filepath]
 </pre>
