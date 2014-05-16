@@ -85,7 +85,7 @@ ifdef COVERAGE
 	  iconv -f SHIFT-JIS -t UTF-8 "$$x" > "$$x.tmp"; \
 	  mv $$x.tmp $$x; \
 	done
-	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b ./test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
+	#gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b ./test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
 endif
 
 # Builds a sample test.  
