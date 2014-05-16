@@ -1,8 +1,8 @@
-ï»¿/*======================================================================
+/*======================================================================
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_skip_tests.c
- * @brief		IUTEST_SKIP ãƒ†ã‚¹ãƒˆ
+ * @brief		IUTEST_SKIP ƒeƒXƒg
  *
  * @author		t.sirayanagi
  * @par			copyright
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 {
 	IUTEST_INIT(&argc, argv);
 #if defined(OUTPUTXML)
-	// å¤±æ•—ãƒ†ã‚¹ãƒˆã‚’å«ã‚€ã®ã§ xml å‡ºåŠ›ã—ãªã„
+	// ¸”sƒeƒXƒg‚ğŠÜ‚Ş‚Ì‚Å xml o—Í‚µ‚È‚¢
 	IUTEST_FLAG(output) = NULL;
 #endif
 	{

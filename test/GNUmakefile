@@ -72,7 +72,7 @@ endif
 
 
 SRCFILES =$(shell find . -type f -name "*.c")
-SRCFILES =$(shell find . -type f -name "*.h")
+SRCFILES+=$(shell find . -type f -name "*.h")
 SRCFILES+=$(shell find ../include -type f)
 SRCFILES+=$(shell find ../src -type f)
 
