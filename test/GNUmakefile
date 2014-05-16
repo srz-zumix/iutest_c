@@ -80,8 +80,7 @@ encode-utf8:
 	@LIST="$(SRCFILES)";\
 	for x in $$LIST; do\
 	  echo $$x;\
-	  echo -ne '\xEF\xBB\xBF' > "$$x.tmp"; \
-	  iconv -f SHIFT-JIS -t UTF-8 "$$x" >> "$$x.tmp"; \
+	  iconv -f SHIFT-JIS -t UTF-8 "$$x" > "$$x.tmp"; \
 	  mv $$x.tmp $$x; \
 	done
 
