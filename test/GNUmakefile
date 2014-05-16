@@ -76,10 +76,7 @@ SRCFILES =$(shell find . -type f -name "*.h")
 SRCFILES+=$(shell find ../include -type f)
 SRCFILES+=$(shell find ../src -type f)
 
-send-coverage:
-ifdef COVERAGE
-	gcov -v
-	gcov -r *.gcda;
+encode-utf8:
 	@LIST="$(SRCFILES)";\
 	for x in $$LIST; do\
 	  echo $$x;\
@@ -87,7 +84,11 @@ ifdef COVERAGE
 	  iconv -f SHIFT-JIS -t UTF-8 "$$x" >> "$$x.tmp"; \
 	  mv $$x.tmp $$x; \
 	done
-	cd ../; $(COVERAGE) -n -r ./ -b ./test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
+
+send-coverage:
+ifdef COVERAGE
+	gcov -v
+	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b ./test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
 endif
 
 # Builds a sample test.  
