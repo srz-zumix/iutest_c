@@ -78,14 +78,15 @@ SRCFILES+=$(shell find ../src -type f)
 
 send-coverage:
 ifdef COVERAGE
-	gcov -v
 	@LIST="$(SRCFILES)";\
 	for x in $$LIST; do\
 	  echo $$x;\
-	  iconv -f SHIFT-JIS -t UTF-8 "$$x" > "$$x.tmp"; \
+	  echo -ne '\xEF\xBB\xBF' > "$$x.tmp"; \
+	  iconv -f SHIFT-JIS -t UTF-8 "$$x" >> "$$x.tmp"; \
 	  mv $$x.tmp $$x; \
 	done
-	#gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b ./test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
+	gcov -v
+	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b ./test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
 endif
 
 # Builds a sample test.  
