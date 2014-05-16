@@ -18,7 +18,6 @@ install:
 
 script:
   - cd ./test
-  - if [ "${USE_COVERAGE}" = '1' ]; then make encode-utf8; fi
   - make all
 
 after_success:
