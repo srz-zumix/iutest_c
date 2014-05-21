@@ -120,7 +120,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ char* iuTestOS_AllocHResultString(H
 #endif
 }
 
-static IUTEST_ATTRIBUTE_UNUSED_ void iuTestOS_FreeHResultString(char* ptr)
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTestOS_FreeHResultString(char* ptr)
 {
 	LocalFree(ptr);
 }
