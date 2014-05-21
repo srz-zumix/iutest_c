@@ -55,6 +55,59 @@ IUTEST_ATTRIBUTE_UNUSED_	char* iuTest_PrintToU64(char *dst, iuUInt64 data);
 
 #endif
 
+#if IUTEST_C_HAS_GENERIC
+
+#if IUTEST_C_HAS_FLOATINGPOINT
+
+#define IUTEST_PRINTF_FORMAT_PARAM(x, m, p) _Generic((x)	\
+	, char : m(p, "%c")				\
+	, signed char: m(p, "%hhd")		\
+	, unsigned char: m(p, "%hhu")	\
+	, signed short: m(p, "%hd")		\
+	, unsigned short: m(p, "%hu")	\
+	, signed int: m(p, "%d")		\
+	, unsigned int: m(p, "%u")		\
+	, signed long: m(p, "%ld")		\
+	, unsigned long: m(p, "%lu")	\
+	, char* : m(p, "%s")			\
+	, void* : m(p, "%p")			\
+	, float: m(p, "%f")				\
+	, double: m(p, "%lf")			\
+	, default: m(p, "%p")			\
+	)
+
+#else
+
+#define IUTEST_PRINTF_FORMAT_PARAM(x, m, p) _Generic((x)	\
+	, char : m(p, "%c")				\
+	, signed char: m(p, "%hhd")		\
+	, unsigned char: m(p, "%hhu")	\
+	, signed short: m(p, "%hd")		\
+	, unsigned short: m(p, "%hu")	\
+	, signed int: m(p, "%d")		\
+	, unsigned int: m(p, "%u")		\
+	, signed long: m(p, "%ld")		\
+	, unsigned long: m(p, "%lu")	\
+	, char* : m(p, "%s")			\
+	, void* : m(p, "%p")			\
+	, default: m(p, "%p")			\
+	)
+
+#endif
+
+/**
+ * @private
+* @{
+*/
+#define IIUT_PRINTF_FORMAT_M(p, c) c
+/**
+ * @}
+*/
+
+#define IUTEST_PRINTF_FORMAT(x) IUTEST_PRINTF_FORMAT_PARAM(x, IIUT_PRINTF_FORMAT_M, IUTEST_PP_EMPTY())
+
+#endif
+
 #if !IUTEST_C_HAS_LIB
 #  include "impl/iutest_printer_c.inl"
 #endif

@@ -99,12 +99,41 @@ typedef int iuBOOL;
 #  endif
 #endif
 
-#define IUTEST_HAS_C90		(IUTEST_STDC_VER == 199000L)
-#define IUTEST_HAS_AMD1		(IUTEST_STDC_VER == 199409L)
-#define IUTEST_HAS_C99		(IUTEST_STDC_VER == 199901L)
-#define IUTEST_HAS_C11		(IUTEST_STDC_VER == 201112L)
+#if !defined(IUTEST_C_HAS_C90)
+#  if IUTEST_STDC_VER == 199000L
+#    define IUTEST_C_HAS_C90	1
+#  else
+#    define IUTEST_C_HAS_C90	0
+#  endif
+#endif
+
+#if !defined(IUTEST_C_HAS_AMD1)
+#  if IUTEST_STDC_VER == 199409L
+#    define IUTEST_C_HAS_AMD1	1
+#  else
+#    define IUTEST_C_HAS_AMD1	0
+#  endif
+#endif
+
+#if !defined(IUTEST_C_HAS_C99)
+#  if IUTEST_STDC_VER == 199901L
+#    define IUTEST_C_HAS_C99	1
+#  else
+#    define IUTEST_C_HAS_C99	0
+#  endif
+#endif
+
+#if !defined(IUTEST_C_HAS_C11)
+#  if IUTEST_STDC_VER == 201112L
+#    define IUTEST_C_HAS_C11	1
+#  else
+#    define IUTEST_C_HAS_C11	0
+#  endif
+#endif
 
 /* attribute */
+
+/** attribute unused */
 #if !defined(IUTEST_ATTRIBUTE_UNUSED_)
 #  if defined(__GNUC__) && !defined(COMPILER_ICC)
 #    define IUTEST_ATTRIBUTE_UNUSED_	__attribute__ ((unused))
@@ -112,6 +141,22 @@ typedef int iuBOOL;
 #    define IUTEST_ATTRIBUTE_UNUSED_
 #  endif
 #endif
+
+/* C11 */
+
+/** has _Generic */
+#if !defined(IUTEST_C_HAS_GENERIC)
+#  if defined(__GNUC__)
+#    if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9))
+#      define IUTEST_C_HAS_GENERIC	1
+#    endif
+#  endif
+#endif
+
+#if !defined(IUTEST_C_HAS_GENERIC)
+#  define IUTEST_C_HAS_GENERIC		0
+#endif
+
 
 #if !defined(IUTEST_SECTION_)
 #  if defined(__GNUC__) && !defined(COMPILER_ICC)

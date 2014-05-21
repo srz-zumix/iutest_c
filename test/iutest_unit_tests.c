@@ -24,3 +24,30 @@ IUTEST(Unit, ItoA)
 	IUTEST_ASSERT_STREQ("128", iu_itoa(128, buf, 10));
 	IUTEST_ASSERT_STREQ("FF" , iu_itoa(255, buf, 16));
 }
+
+#if IUTEST_C_HAS_GENERIC
+IUTEST(GenericUnit, Format)
+{
+	{
+		char x=1;
+		if( x )
+		{
+			const char* p = IUTEST_PRINTF_FORMAT(x);
+			IUTEST_ASSERT_STREQ("%c", p);
+		}
+	}
+	{
+		unsigned int x=1;
+		if( x )
+		{
+			const char* p = IUTEST_PRINTF_FORMAT(x);
+			IUTEST_ASSERT_STREQ("%u", p);
+		}
+	}
+	{
+		const char* p = IUTEST_PRINTF_FORMAT(0);
+		IUTEST_ASSERT_STREQ("%d", p);
+	}
+}
+
+#endif
