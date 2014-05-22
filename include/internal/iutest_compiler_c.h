@@ -146,7 +146,11 @@ typedef int iuBOOL;
 
 /** has _Generic */
 #if !defined(IUTEST_C_HAS_GENERIC)
-#  if defined(__GNUC__)
+#  if   defined(__clang__)
+#    if __has_feature(c_generic_selections)
+#      define IUTEST_C_HAS_GENERIC	1
+#    endif
+#  elif defined(__GNUC__)
 #    if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9))
 #      define IUTEST_C_HAS_GENERIC	1
 #    endif

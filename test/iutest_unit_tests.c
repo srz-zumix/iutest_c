@@ -16,6 +16,12 @@
 /* include ===========================================================*/
 #include "../include/iutest_c.h"
 
+IUTEST(VersionTest, Check)
+{
+	unsigned long v = (IUTEST_C_MAJORVER << 24) | (IUTEST_C_MINORVER << 16) | (IUTEST_C_BUILD << 8) | IUTEST_C_REVISION;
+	IUTEST_ASSERT_EQ( IUTEST_C_VER, v );
+}
+
 IUTEST(Unit, ItoA)
 {
 	char buf[32];
@@ -47,6 +53,31 @@ IUTEST(GenericUnit, Format)
 	{
 		const char* p = IUTEST_PRINTF_FORMAT(0);
 		IUTEST_ASSERT_STREQ("%d", p);
+	}
+}
+
+IUTEST(GenericUnit, FormatMessage)
+{
+	{
+		signed short x=1;
+		if( x )
+		{
+			const char* p = IUTEST_PRINTF_FORMAT_MSG(x, "x=", ".");
+			IUTEST_ASSERT_STREQ("x=%hd.", p);
+		}
+	}
+}
+
+IUTEST(GenericUnit, FormatMessage2)
+{
+	{
+		char x=1;
+		int y=1;
+		if( x && y )
+		{
+			const char* p = IUTEST_PRINTF_FORMAT_MSG2(x, y, "x=", ", y=", ".");
+			IUTEST_ASSERT_STREQ("x=%c, y=%d.", p);
+		}
 	}
 }
 

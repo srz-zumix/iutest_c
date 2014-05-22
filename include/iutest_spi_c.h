@@ -75,7 +75,7 @@
 		if( result.type != expected_type ) {									\
 			on_failure("error: Expected: " expected_str "\n  Actual: different type.\n");	\
 		}																		\
-		if( iu_strstr(result.msg, substr) == NULL ) {							\
+		if( result.msg != NULL && iu_strstr(result.msg, substr) == NULL ) {		\
 			on_failure(iuTestSpi_SubstrFailureMessage( "error: Expected: "		\
 				expected_str " containing \"" substr "\"\n  Actual: ", result.msg, "\n") );	\
 		}																		\
@@ -97,6 +97,7 @@ typedef struct iuTestSpiCheckResult_t
 static IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTestSpiFailureCheck_OnCommitTestPartResult(iuTestPartResult* part_result, void* user)
 {
 	iuTestSpiCheckResult* result = (iuTestSpiCheckResult*)user;
+	if( result == NULL ) return TRUE;
 	++result->num;
 	result->type = part_result->type;
 	result->msg = part_result->message;

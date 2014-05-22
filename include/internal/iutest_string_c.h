@@ -90,6 +90,7 @@ IUTEST_ATTRIBUTE_UNUSED_ const char*	iuString_FindComma(const char* p);
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsStringEqual(const char* str1, const char* str2);
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsStringCaseEqual(const char* str1, const char* str2);
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsDisabledTestName(const char* name);
+IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsNullOrEmpty(const char* str);
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsWhitespace(char c);
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsValidXmlCharacter(char c);
 IUTEST_ATTRIBUTE_UNUSED_ char iuString_ToHex(int half_byte);

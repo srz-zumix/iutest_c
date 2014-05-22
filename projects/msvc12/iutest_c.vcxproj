@@ -142,10 +142,10 @@
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>lib$(ProjectName)-vc110-mtd</TargetName>
+    <TargetName>lib$(ProjectName)-vc120-mtd</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'">
-    <TargetName>lib$(ProjectName)-vc110-mdd</TargetName>
+    <TargetName>lib$(ProjectName)-vc120-mdd</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\..\..\lib\</OutDir>
@@ -160,10 +160,10 @@
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetName>lib$(ProjectName)-vc110-mt</TargetName>
+    <TargetName>lib$(ProjectName)-vc120-mt</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'">
-    <TargetName>lib$(ProjectName)-vc110-md</TargetName>
+    <TargetName>lib$(ProjectName)-vc120-md</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

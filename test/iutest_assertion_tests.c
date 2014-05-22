@@ -46,10 +46,16 @@ IUTEST(AssertionTest, False)
 IUTEST(AssertionTest, EQ)
 {
 	{
+#if IUTEST_C_HAS_GENERIC_ASSERTION
+		IUTEST_ASSERT_EQ(0, 0);
+		IUTEST_EXPECT_EQ(0, 0);
+		IUTEST_INFORM_EQ(0, 0);
+#else
 		int x0=0, y0=0;
 		IUTEST_ASSERT_EQ(x0, y0);
 		IUTEST_EXPECT_EQ(x0, y0);
 		IUTEST_INFORM_EQ(x0, y0);
+#endif
 	}
 	{
 		int* zero=NULL;

@@ -311,6 +311,11 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsDisabledTestName(
 	return name == NULL ? FALSE : (iu_strstr(name, "DISABLED_") == name ? TRUE : FALSE);
 }
 
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsNullOrEmpty(const char* str)
+{
+	return str == NULL || *str == '\0' ? TRUE : FALSE;
+}
+
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsWhitespace(char c)
 {
 	return (c == 0x9 || c == 0xA || c == 0xD) ? TRUE: FALSE;

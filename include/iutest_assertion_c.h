@@ -120,9 +120,21 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 #define iuTestAssertion_EqFailureMessageShowOnlyExpr(expected_str, actual_str, expected, actual)	\
 	iuAssertionFailureMessage("error: Expected: " expected_str " == " actual_str)
 
+#if IUTEST_C_HAS_GENERIC_ASSERTION
+#define iuTestAssertion_EqFailureMessageGeneric(expected_str, actual_str, expected, actual)	\
+	iuAssertionFailureFormatMessage(IUTEST_PRINTF_FORMAT_MSG2(actual, expected				\
+	, "error: Value of : " actual_str "\n  Actual: "										\
+	, "\nExpected: " expected_str "\nWhich is: ", "" ), actual, expected)
+
+#endif
+
 
 #if !defined(iuTestAssertion_EqFailureMessage)
-#  define iuTestAssertion_EqFailureMessage		iuTestAssertion_EqFailureMessageShowActual
+#if IUTEST_C_HAS_GENERIC_ASSERTION
+#    define iuTestAssertion_EqFailureMessage		iuTestAssertion_EqFailureMessageGeneric
+#  else
+#    define iuTestAssertion_EqFailureMessage		iuTestAssertion_EqFailureMessageShowActual
+#  endif
 #endif
 
 #define iuTestAssertion_StrEqFailureMessage(expected_str, actual_str, expected, actual)		\

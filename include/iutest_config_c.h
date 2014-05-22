@@ -206,6 +206,15 @@
  * @{
 */
 
+/*! _Generic を利用した型制限の少ないアサーションを利用できるかどうか */
+#if !defined(IUTEST_C_HAS_GENERIC_ASSERTION)
+#  if IUTEST_C_HAS_LIBC && IUTEST_C_HAS_STDARG && IUTEST_C_HAS_GENERIC
+#    define IUTEST_C_HAS_GENERIC_ASSERTION	1
+#  else
+#    define IUTEST_C_HAS_GENERIC_ASSERTION	0
+#  endif
+#endif
+
 /*! パラメタライズ関数コールテストが使用可能かどうか */
 #if !defined(IUTEST_C_HAS_PARAM_METHOD_TEST)
 #  if IUTEST_C_HAS_VARIADIC_MACROS
@@ -455,6 +464,8 @@
 #  define IUTEST_LIB_TOOLSET	"vc100"
 #elif	_MSC_VER == 1700
 #  define IUTEST_LIB_TOOLSET	"vc110"
+#elif	_MSC_VER == 1800
+#  define IUTEST_LIB_TOOLSET	"vc120"
 #else
 #  error unkown _MSC_VER.
 #endif

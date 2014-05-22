@@ -59,52 +59,77 @@ IUTEST_ATTRIBUTE_UNUSED_	char* iuTest_PrintToU64(char *dst, iuUInt64 data);
 
 #if IUTEST_C_HAS_FLOATINGPOINT
 
-#define IUTEST_PRINTF_FORMAT_PARAM(x, m, p) _Generic((x)	\
-	, char : m(p, "%c")				\
-	, signed char: m(p, "%hhd")		\
-	, unsigned char: m(p, "%hhu")	\
-	, signed short: m(p, "%hd")		\
-	, unsigned short: m(p, "%hu")	\
-	, signed int: m(p, "%d")		\
-	, unsigned int: m(p, "%u")		\
-	, signed long: m(p, "%ld")		\
-	, unsigned long: m(p, "%lu")	\
-	, char* : m(p, "%s")			\
-	, void* : m(p, "%p")			\
-	, float: m(p, "%f")				\
-	, double: m(p, "%lf")			\
-	, default: m(p, "%p")			\
+#define IUTEST_PRINTF_FORMAT_PARAM(x, prefix, postfix) _Generic((x)	\
+	, char : prefix "%c" postfix				\
+	, signed char: prefix "%hhd" postfix		\
+	, unsigned char: prefix "%hhu" postfix		\
+	, signed short: prefix "%hd" postfix		\
+	, unsigned short: prefix "%hu" postfix		\
+	, signed int: prefix "%d" postfix			\
+	, unsigned int: prefix "%u" postfix			\
+	, signed long: prefix "%ld" postfix			\
+	, unsigned long: prefix "%lu" postfix		\
+	, char* : prefix "%s" postfix				\
+	, void* : prefix "%p" postfix				\
+	, float: prefix "%f" postfix				\
+	, double: prefix "%lf" postfix				\
+	, default: prefix "%p" postfix				\
+	 )
+
+#define IUTEST_PRINTF_FORMAT_PARAM2(x, y, str0, str1, str2) _Generic((x)	\
+	, char : IUTEST_PRINTF_FORMAT_PARAM(y, str0 "%c" str1, str2)			\
+	, signed char: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%hhd" str1, str2)	\
+	, unsigned char: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%hhu" str1, str2)	\
+	, signed short: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%hd" str1, str2)	\
+	, unsigned short: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%hu" str1, str2)	\
+	, signed int: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%d" str1, str2)		\
+	, unsigned int: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%u" str1, str2)	\
+	, signed long: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%ld" str1, str2)	\
+	, unsigned long: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%lu" str1, str2)	\
+	, char* : IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%s" str1, str2)			\
+	, void* : IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%p" str1, str2)			\
+	, float: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%f" str1, str2)			\
+	, double: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%lf" str1, str2)			\
+	, default: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%p" str1, str2)			\
 	)
 
 #else
 
-#define IUTEST_PRINTF_FORMAT_PARAM(x, m, p) _Generic((x)	\
-	, char : m(p, "%c")				\
-	, signed char: m(p, "%hhd")		\
-	, unsigned char: m(p, "%hhu")	\
-	, signed short: m(p, "%hd")		\
-	, unsigned short: m(p, "%hu")	\
-	, signed int: m(p, "%d")		\
-	, unsigned int: m(p, "%u")		\
-	, signed long: m(p, "%ld")		\
-	, unsigned long: m(p, "%lu")	\
-	, char* : m(p, "%s")			\
-	, void* : m(p, "%p")			\
-	, default: m(p, "%p")			\
+#define IUTEST_PRINTF_FORMAT_PARAM(x, prefix, postfix) _Generic((x)	\
+	, char : prefix "%c" postfix				\
+	, signed char: prefix "%hhd" postfix		\
+	, unsigned char: prefix "%hhu" postfix		\
+	, signed short: prefix "%hd" postfix		\
+	, unsigned short: prefix "%hu" postfix		\
+	, signed int: prefix "%d" postfix			\
+	, unsigned int: prefix "%u" postfix			\
+	, signed long: prefix "%ld" postfix			\
+	, unsigned long: prefix "%lu" postfix		\
+	, char* : prefix "%s" postfix				\
+	, void* : prefix "%p" postfix				\
+	, default: prefix "%p" postfix				\
+	)
+
+#define IUTEST_PRINTF_FORMAT_PARAM2(x, y, str0, str1, str2) _Generic((x)	\
+	, char : IUTEST_PRINTF_FORMAT_PARAM(y, str0 "%c" str1, str2)			\
+	, signed char: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%hhd" str1, str2)	\
+	, unsigned char: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%hhu" str1, str2)	\
+	, signed short: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%hd" str1, str2)	\
+	, unsigned short: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%hu" str1, str2)	\
+	, signed int: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%d" str1, str2)		\
+	, unsigned int: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%u" str1, str2)	\
+	, signed long: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%ld" str1, str2)	\
+	, unsigned long: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%lu" str1, str2)	\
+	, char* : IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%s" str1, str2)			\
+	, void* : IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%p" str1, str2)			\
+	, default: IUTEST_PRINTF_FORMAT_PARAM(y, str0  "%p" str1, str2)			\
 	)
 
 #endif
 
-/**
- * @private
-* @{
-*/
-#define IIUT_PRINTF_FORMAT_M(p, c) c
-/**
- * @}
-*/
-
-#define IUTEST_PRINTF_FORMAT(x) IUTEST_PRINTF_FORMAT_PARAM(x, IIUT_PRINTF_FORMAT_M, IUTEST_PP_EMPTY())
+#define IUTEST_PRINTF_FORMAT(x) IUTEST_PRINTF_FORMAT_PARAM(x, IUTEST_PP_EMPTY(), IUTEST_PP_EMPTY())
+#define IUTEST_PRINTF_FORMAT_MSG(x, prefix, postfix) IUTEST_PRINTF_FORMAT_PARAM(x, prefix, postfix)
+#define IUTEST_PRINTF_FORMAT_MSG2(x, y, str0, str1, str2) IUTEST_PRINTF_FORMAT_PARAM2(x, y, str0, str1, str2)
 
 #endif
 
