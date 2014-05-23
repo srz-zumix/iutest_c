@@ -77,7 +77,6 @@ SRCFILES+=$(shell find ../include -type f)
 SRCFILES+=$(shell find ../src -type f)
 
 encode-utf8:
-	nkf --version
 	@LIST="$(SRCFILES)";\
 	for x in $$LIST; do\
 	  echo $$x;\
