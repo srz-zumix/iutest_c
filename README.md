@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/srz-zumix/iutest_c.png?branch=master)](https://travis-ci.org/srz-zumix/iutest_c)
-[![Coverage Status](https://coveralls.io/repos/srz-zumix/iutest_c/badge.png?branch=master)](https://coveralls.io/r/srz-zumix/iutest_c?branch=master)
 
 iutest_c
 ==========
