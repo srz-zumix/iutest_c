@@ -173,8 +173,20 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 #define iuTestAssertion_VsFailureMessageShowOnlyExpr(expression_str, val1, val2)		\
 	iuAssertionFailureMessage("error: Expected: " expression_str ) )
 
+#if IUTEST_C_HAS_GENERIC_ASSERTION
+#define iuTestAssertion_VsFailureMessageGeneric(expression_str, val1, val2)		\
+	iuAssertionFailureFormatMessage(IUTEST_PRINTF_FORMAT_MSG2(val1, val2		\
+	, "error: Expected of : " expression_str "\n  Actual: "						\
+	, " vs ", "" ), val1, val2)
+
+#endif
+
 #if !defined(iuTestAssertion_VsFailureMessage)
-#  define iuTestAssertion_VsFailureMessage		iuTestAssertion_VsFailureMessageShowActual12
+#if IUTEST_C_HAS_GENERIC_ASSERTION
+#    define iuTestAssertion_VsFailureMessage		iuTestAssertion_VsFailureMessageGeneric
+#  else
+#    define iuTestAssertion_VsFailureMessage		iuTestAssertion_VsFailureMessageShowActual12
+#  endif
 #endif
 
 /**
