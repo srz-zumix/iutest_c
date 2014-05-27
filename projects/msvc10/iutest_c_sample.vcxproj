@@ -15,8 +15,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\samples\assertion.c" />
+    <ClCompile Include="..\..\samples\fixture.c" />
     <ClCompile Include="..\..\samples\main.c" />
-    <ClCompile Include="..\..\samples\sub.c" />
+    <ClCompile Include="..\..\samples\parameterized.c" />
+    <ClCompile Include="..\..\samples\simple.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8F1874C6-C441-455C-ACB7-DA45D4BF82E9}</ProjectGuid>

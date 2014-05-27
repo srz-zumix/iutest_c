@@ -7,10 +7,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\samples\sub.c">
+    <ClCompile Include="..\..\samples\main.c">
       <Filter>samples</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\samples\main.c">
+    <ClCompile Include="..\..\samples\assertion.c">
+      <Filter>samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\samples\fixture.c">
+      <Filter>samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\samples\simple.c">
+      <Filter>samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\samples\parameterized.c">
       <Filter>samples</Filter>
     </ClCompile>
   </ItemGroup>

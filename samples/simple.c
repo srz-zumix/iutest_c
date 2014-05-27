@@ -1,7 +1,7 @@
 /*======================================================================
 ----------------------------------------------------------------------*/
 /**
- * @file		main.c
+ * @file		simple.c
  * @brief		sample code
  *
  * @author		t.sirayanagi
@@ -18,24 +18,14 @@
 */
 #include "../include/iutest_c.h"
 
-IUTEST_C_WORKSPACE();
-
-#ifdef UNICODE
-int wmain(int argc, wchar_t* argv[])
-#else
-int main(int argc, char* argv[])
-#endif
+/** --------------------------------------------------
+ * 簡単なテスト
+*//*--------------------------------------------------*/
+IUTEST(Test, Version)
 {
-	IUTEST_REGISTER_TEST(AssertionTest, Simple);
-#if IUTEST_C_HAS_PARAM_TEST
-	IUTEST_REGISTER_TEST(TestCombine, Test);
-	IUTEST_REGISTER_TEST_P(A, TestCombine);
-	IUTEST_REGISTER_TEST_P(B, TestCombine);
-#endif
-/*
-	iuUnitTest_SetVPrintfFunction(vprintf);
-*/
+	unsigned long v = (IUTEST_C_MAJORVER << 24) | (IUTEST_C_MINORVER << 16) | (IUTEST_C_BUILD << 8) | IUTEST_C_REVISION;
+	IUTEST_ASSERT_EQ( IUTEST_C_VER, v );
 
-	IUTEST_INIT(&argc, argv);
-	return IUTEST_RUN_ALL_TESTS();
+	iuTest_RecordProperty("test", "value");
 }
+

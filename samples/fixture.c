@@ -1,7 +1,7 @@
 /*======================================================================
 ----------------------------------------------------------------------*/
 /**
- * @file		sub.c
+ * @file		fixture.c
  * @brief		sample code
  *
  * @author		t.sirayanagi
@@ -12,17 +12,19 @@
 */
 /*----------------------------------------------------------------------
 ======================================================================*/
-
-/*
- * is not available vprintf, can be replaced.
-*/
-/*#define IUTEST_VPRINTF*/
-
 /*
  * include testing framework
 */
 #include "../include/iutest_c.h"
 
-IUTEST(SubTest1, A)
+static int s_count = 1;
+static void TestF_SetUp(void)
 {
+	s_count = 0;
 }
+static const iuTestFixture TestF = { NULL, NULL, TestF_SetUp, NULL, NULL };
+IUTEST_F(TestF, First)
+{
+	IUTEST_EXPECT_EQ(0, s_count);
+}
+

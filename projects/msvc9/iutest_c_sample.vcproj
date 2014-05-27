@@ -249,11 +249,23 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath="..\..\samples\assertion.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\samples\fixture.c"
+				>
+			</File>
+			<File
 				RelativePath="..\..\samples\main.c"
 				>
 			</File>
 			<File
-				RelativePath="..\..\samples\sub.c"
+				RelativePath="..\..\samples\parameterized.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\samples\simple.c"
 				>
 			</File>
 		</Filter>

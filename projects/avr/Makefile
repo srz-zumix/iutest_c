@@ -23,7 +23,14 @@ OBJCOPY=$(AVR)-objcopy
 IUTEST_DIR = ../..
 
 # sample code
-USER_DIR = ../../samples
+SAMPLE_DIR = ../../samples
+SAMPLE_SRCS = main.c \
+              assertion.c \
+              fixture.c \
+              parameterized.c \
+              simple.c
+              
+SAMPLE_OBJS = $(SAMPLE_SRCS:%.c=%.o)
 
 # Flags passed to the preprocessor.
 CFLAGS += -I$(IUTEST_DIR)/include
@@ -93,16 +100,13 @@ $(LIBS) : $(LIBRARY_INSTALL_PATH) $(LIBS_) Makefile
 
 # Builds a sample test.  
 
-main.o : $(USER_DIR)/main.c $(IUTEST_HEADERS) Makefile
-	$(CC) $(CFLAGS) -c $(USER_DIR)/main.c
-
-sub.o : $(USER_DIR)/sub.c $(IUTEST_HEADERS) Makefile
-	$(CC) $(CFLAGS) -c $(USER_DIR)/sub.c
+%.o : $(SAMPLE_DIR)/%.c $(IUTEST_HEADERS) Makefile
+	$(CC) $(CFLAGS) -c $<
 
 %.hex : %.elf
 	$(OBJCOPY) -O ihex $< $@
 
-sample.elf : main.o sub.o
+sample.elf : $(SAMPLE_OBJS)
 	$(CC) $^ -o $@
 
 sample : sample.hex
