@@ -85,7 +85,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <ul>
   <li>v1.5.0.0
     <ul>
-      <li></li>
+      <li>_Generic ‘Î‰ž</li>
     </ul>
   </li>
   <li>v1.4.0.0

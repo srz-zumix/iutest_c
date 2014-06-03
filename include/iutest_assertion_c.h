@@ -108,12 +108,12 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 */
 /* actual に rvalue を使用できなくなる */
 #define iuTestAssertion_EqFailureMessageShowActual(expected_str, actual_str, expected, actual)	\
-	iuAssertionFailureMessageComp("error: Value of : " actual_str "\n  Actual: "			\
+	iuAssertionFailureMessageComp("error: Value of : " actual_str "\n  Actual: "				\
 	, &actual, sizeof(actual), "\nExpected: " expected_str , NULL, 0u, NULL)
 
 /* どちらも rvalue を使用できなくなる */
 #define iuTestAssertion_EqFailureMessageShowWhichIs(expected_str, actual_str, expected, actual)	\
-	iuAssertionFailureMessageComp("error: Value of : " actual_str "\n  Actual: "			\
+	iuAssertionFailureMessageComp("error: Value of : " actual_str "\n  Actual: "				\
 	, &actual, sizeof(actual), "\nExpected: " expected_str "\nWhich is: ", &expected, sizeof(expected), NULL)
 
 /* どちらも rvalue を使用できるが、式しか表示されない */
@@ -145,7 +145,7 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 	iuAssertionStringFailureMessage("error: Value of : " actual_str "\n  Actual: \""		\
 	, actual, "\"\nExpected: " expected_str "\nWhich is: \"", expected, "\" (ignoring case)")
 
-#define iuTestAssertion_StrNeFailureMessage(val1_str, val2_str, val1, val2)					\
+#define iuTestAssertion_StrNeFailureMessage(val1_str, val2_str, val1, val2)							\
 	iuAssertionStringFailureMessage("error: Expected : " val1_str " != " val2_str "\n  Actual: \""	\
 	, val1, "\" vs \"" , val2, "\"")
 
@@ -165,7 +165,7 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 	, NULL, 0, #val1 " vs ", &val2, sizeof(val2), NULL)
 
 /* どちらも rvalue を使用できなくなる */
-#define iuTestAssertion_VsFailureMessageShowActual12(expression_str, val1, val2)			\
+#define iuTestAssertion_VsFailureMessageShowActual12(expression_str, val1, val2)		\
 	iuAssertionFailureMessageComp("error: Expected of : " expression_str "\n  Actual: "	\
 	, &val1, sizeof(val1), " vs ", &val2, sizeof(val2), NULL)
 
@@ -200,7 +200,7 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 
 /** NOT NULL テスト */
 #define iuTestAssertion_CompHelperNotNull(expression, actual)	\
-	(((actual) != NULL) ? iuAssertionSuccess() :			\
+	(((actual) != NULL) ? iuAssertionSuccess() :				\
 	iuAssertionFailureMessage("error: Expected: NULL != " expression) )
 
 /** == テスト */
@@ -210,17 +210,17 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 
 /** == テスト */
 #define iuTestAssertion_CompHelperLValueEQ(expected_str, actual_str, expected, actual)	\
-	((expected == actual) ? iuAssertionSuccess() :									\
+	((expected == actual) ? iuAssertionSuccess() :										\
 	iuTestAssertion_EqFailureMessageShowWhichIs(expected_str, actual_str, expected, actual))
 
 /** == テスト */
 #define iuTestAssertion_CompHelperRValueEQ(expected_str, actual_str, expected, actual)	\
-	((expected == actual) ? iuAssertionSuccess() :									\
+	((expected == actual) ? iuAssertionSuccess() :										\
 	 iuTestAssertion_EqFailureMessageShowOnlyExpr(expected_str, actual_str, expected, actual))
 
 /** アドレス比較テスト */
 #define iuTestAssertion_CompHelperSame(expected_str, actual_str, expected, actual)	\
-	((&expected == &actual) ? iuAssertionSuccess() :									\
+	((&expected == &actual) ? iuAssertionSuccess() :								\
 	iuTestAssertion_EqFailureMessage(expected_str, actual_str, expected, actual))
 
 /** != テスト */
