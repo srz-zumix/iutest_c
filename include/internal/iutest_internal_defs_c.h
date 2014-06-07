@@ -205,6 +205,13 @@
  * @}
 */
 
+#if IUTEST_C_HAS_GENERIC
+
+#define IUTEST_C_IS_TYPENAME_IS(name, t, f)	_Generic((void (*)(int (name)))0, void (*)(int): f, default: t)	
+#define IUTEST_C_IS_TYPENAME(name)			IUTEST_C_IS_TYPENAME_IS(name, TRUE, FALSE)
+
+#endif
+
 /* function ==========================================================*/
 static IUTEST_ATTRIBUTE_UNUSED_ int iuAlwaysZero(void) { return 0; }
 static IUTEST_ATTRIBUTE_UNUSED_ int iuAlwaysTrue(void) { return 1; }

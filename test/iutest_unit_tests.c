@@ -81,4 +81,12 @@ IUTEST(GenericUnit, FormatMessage2)
 	}
 }
 
+typedef char GenericUnitTestType;
+IUTEST(GenericUnit, IsTypeName)
+{
+	IUTEST_ASSERT_TRUE ( IUTEST_C_IS_TYPENAME(int) );
+	IUTEST_ASSERT_TRUE ( IUTEST_C_IS_TYPENAME(GenericUnitTestType) );
+	IUTEST_ASSERT_FALSE( IUTEST_C_IS_TYPENAME(test) );
+}
+
 #endif
