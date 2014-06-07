@@ -48,6 +48,41 @@ IUTEST_P(int, TestP, Test2)
 #endif
 }
 
+static int s_test_pf_count = 1;
+static void TestPF_SetUp(void)
+{
+	s_test_pf_count = 0;
+}
+static void TestPF_TearDown(void)
+{
+	s_test_pf_count = 1;
+}
+
+static const iuTestFixture TestPF ={ NULL, NULL, TestPF_SetUp, TestPF_TearDown, NULL };
+IUTEST_INSTANTIATE_TEST_CASE_P(int, A, TestPF, iuRange, 0, 2);
+
+IUTEST_P_F(int, TestPF, Test)
+{
+	const int x = param;
+	const int kMax = 10;
+	IUTEST_EXPECT_EQ(0, s_test_pf_count);
+	IUTEST_ASSERT_LT(x, kMax);
+#if IUTEST_C_HAS_CONSOLEOUT
+	iuConsole_Output("%d\n", x);
+#endif
+}
+
+IUTEST_P_F(int, TestPF, Test2)
+{
+	const int x = param;
+	const int kMax = 10;
+	IUTEST_EXPECT_EQ(0, s_test_pf_count);
+	IUTEST_ASSERT_LT(x, kMax);
+#if IUTEST_C_HAS_CONSOLEOUT
+	iuConsole_Output("%d\n", x);
+#endif
+}
+
 #if IUTEST_C_HAS_COMBINE
 
 typedef IUTEST_P_TYPE((int, char, unsigned int)) TestCombineParamType;
@@ -96,7 +131,7 @@ int main(int argc, char* argv[])
 	}
 #if IUTEST_C_HAS_PARAM_TEST
 	{
-		int nTestCaseCount = (4+11+6);
+		int nTestCaseCount = (4+11+6+2);
 #if IUTEST_C_HAS_COMBINE
 		nTestCaseCount += 2*5*3 * 2;
 #endif

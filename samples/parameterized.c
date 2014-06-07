@@ -64,6 +64,18 @@ IUTEST_P(int, TestP, Test2)
 	iuConsole_Output("%d\n", x);
 }
 
+static const iuTestFixture TestPF ={ NULL, NULL, TestF_SetUp, NULL, NULL };
+IUTEST_INSTANTIATE_TEST_CASE_P(int, A, TestPF, iuRange, 0, 2);
+
+IUTEST_P_F(int, TestPF, Test)
+{
+	const int x = param;
+	const int kMax = 10;
+	IUTEST_ASSERT_LT(x, kMax);
+	iuConsole_Output("%d\n", x);
+}
+
+
 #if IUTEST_C_HAS_COMBINE
 
 typedef IUTEST_P_TYPE((int, char, unsigned int)) TestCombineParamType;

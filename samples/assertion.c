@@ -32,13 +32,13 @@ IUTEST(AssertionTest, Simple)
 	IUTEST_EXPECT_LT(0, 1);
 	IUTEST_EXPECT_GE(1, 1);
 	IUTEST_EXPECT_GT(1, 0);
-#else
+#endif
 	IUTEST_EXPECT_NE(zero, one);
 	IUTEST_EXPECT_LE(one, one);
 	IUTEST_EXPECT_LT(zero, one);
 	IUTEST_EXPECT_GE(one, one);
 	IUTEST_EXPECT_GT(one, zero);
-#endif
+
 #if IUTEST_C_HAS_FLOATINGPOINT
 	{
 		float fa = 2.0f / 2;
@@ -59,13 +59,13 @@ IUTEST(AssertionTest, Simple)
 	IUTEST_ASSERT_LT(0, 1);
 	IUTEST_ASSERT_GE(1, 1);
 	IUTEST_ASSERT_GT(1, 0);
-#else
+#endif
 	IUTEST_ASSERT_NE(zero, one);
 	IUTEST_ASSERT_LE(one, one);
 	IUTEST_ASSERT_LT(zero, one);
 	IUTEST_ASSERT_GE(one, one);
 	IUTEST_ASSERT_GT(one, zero);
-#endif
+
 #if IUTEST_C_HAS_FLOATINGPOINT
 	{
 		float fa = 2.0f / 2;
@@ -139,13 +139,12 @@ IUTEST(ExpectFailureTest, Simple)
 	IUTEST_EXPECT_LT(1, 1);
 	IUTEST_EXPECT_GE(0, 1);
 	IUTEST_EXPECT_GT(1, 1);
-#else
+#endif
 	IUTEST_EXPECT_NE(zero, zero);
 	IUTEST_EXPECT_LE(one, zero);
 	IUTEST_EXPECT_LT(one, one);
 	IUTEST_EXPECT_GE(zero, one);
 	IUTEST_EXPECT_GT(one, one);
-#endif
 	{
 		float fa = 2.0f/2;
 		double da = 2.0/2;
