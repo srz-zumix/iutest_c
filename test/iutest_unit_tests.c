@@ -62,7 +62,7 @@ IUTEST(GenericUnit, FormatMessage)
 		signed short x=1;
 		if( x )
 		{
-			const char* p = IUTEST_PRINTF_FORMAT_MSG(x, "x=", ".");
+			const char* p = IUTEST_PRINTF_FORMAT_MSG("x=", x, ".");
 			IUTEST_ASSERT_STREQ("x=%hd.", p);
 		}
 	}
@@ -75,7 +75,7 @@ IUTEST(GenericUnit, FormatMessage2)
 		int y=1;
 		if( x && y )
 		{
-			const char* p = IUTEST_PRINTF_FORMAT_MSG2(x, y, "x=", ", y=", ".");
+			const char* p = IUTEST_PRINTF_FORMAT_MSG2("x=", x, ", y=", y, ".");
 			IUTEST_ASSERT_STREQ("x=%c, y=%d.", p);
 		}
 	}

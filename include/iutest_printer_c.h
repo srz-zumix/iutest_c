@@ -128,8 +128,8 @@ IUTEST_ATTRIBUTE_UNUSED_	char* iuTest_PrintToU64(char *dst, iuUInt64 data);
 #endif
 
 #define IUTEST_PRINTF_FORMAT(x) IUTEST_PRINTF_FORMAT_PARAM(x, IUTEST_PP_EMPTY(), IUTEST_PP_EMPTY())
-#define IUTEST_PRINTF_FORMAT_MSG(x, prefix, postfix) IUTEST_PRINTF_FORMAT_PARAM(x, prefix, postfix)
-#define IUTEST_PRINTF_FORMAT_MSG2(x, y, str0, str1, str2) IUTEST_PRINTF_FORMAT_PARAM2(x, y, str0, str1, str2)
+#define IUTEST_PRINTF_FORMAT_MSG(prefix, x, postfix) IUTEST_PRINTF_FORMAT_PARAM(x, prefix, postfix)
+#define IUTEST_PRINTF_FORMAT_MSG2(str0, x, str1, y, str2) IUTEST_PRINTF_FORMAT_PARAM2(x, y, str0, str1, str2)
 
 #endif
 

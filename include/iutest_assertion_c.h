@@ -122,9 +122,9 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 
 #if IUTEST_C_HAS_GENERIC_ASSERTION
 #define iuTestAssertion_EqFailureMessageGeneric(expected_str, actual_str, expected, actual)	\
-	iuAssertionFailureFormatMessage(IUTEST_PRINTF_FORMAT_MSG2(actual, expected				\
-	, "error: Value of : " actual_str "\n  Actual: "										\
-	, "\nExpected: " expected_str "\nWhich is: ", "" ), actual, expected)
+	iuAssertionFailureFormatMessage(IUTEST_PRINTF_FORMAT_MSG2(								\
+	  "error: Value of : " actual_str "\n  Actual: ", actual								\
+	, "\nExpected: " expected_str "\nWhich is: ", expected, "" ), actual, expected)
 
 #endif
 
@@ -175,9 +175,9 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 
 #if IUTEST_C_HAS_GENERIC_ASSERTION
 #define iuTestAssertion_VsFailureMessageGeneric(expression_str, val1, val2)		\
-	iuAssertionFailureFormatMessage(IUTEST_PRINTF_FORMAT_MSG2(val1, val2		\
-	, "error: Expected of : " expression_str "\n  Actual: "						\
-	, " vs ", "" ), val1, val2)
+	iuAssertionFailureFormatMessage(IUTEST_PRINTF_FORMAT_MSG2(					\
+	  "error: Expected of : " expression_str "\n  Actual: ",	val1			\
+	, " vs ", val2, "" ), val1, val2)
 
 #endif
 
