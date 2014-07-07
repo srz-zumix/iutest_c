@@ -45,7 +45,7 @@ ifdef OUTPUTXML
 	rm -f *.xml
 endif
 ifdef COVERAGE
-	$(RM) *.xml *.gcov *.gcno *.gcda
+	$(RM) *.xml *.gcov *.gcno *.gcda coverage.info
 endif
 
 run: test
@@ -84,7 +84,16 @@ encode-utf8:
 	  mv $$x.tmp $$x; \
 	done
 
-send-coverage:
+send-coverage: send-gcoverage
+
+send-lcoverage:
+ifdef COVERAGE
+	lcov -v
+	lcov -c -d . -o coverage.info && lcov -r coverage.info *gcc* -o coverage.info && lcov -r coverage.info */test/* -o coverage.info
+	cd ../; lcoveralls --retry-count 3 ./test/coverage.info
+endif
+
+send-gcoverage:
 ifdef COVERAGE
 	gcov -v
 	gcov -r *.gcda; cd ../; $(COVERAGE) -n -r ./ -b ./test $(COVARALLS_EXCLUDE_PATTERN) $(COVARALLS_EXCLUDE)
