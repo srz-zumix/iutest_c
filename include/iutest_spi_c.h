@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_spi_c.h
- * @brief		iris unit test spi ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test spi
  *
  * @author		t.sirayanagi
  * @par			copyright

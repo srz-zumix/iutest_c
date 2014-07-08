@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_env_c.inl
- * @brief		iris unit test ŠÂ‹« ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test environment
  *
  * @author		t.sirayanagi
  * @par			copyright

@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_default_printer_c.h
- * @brief		iris unit test デフォルト出力 イベントリスナー ファイル
+ * @brief		iris unit test デフォルト出力 イベントリスナー
  *
  * @author		t.sirayanagi
  * @par			copyright

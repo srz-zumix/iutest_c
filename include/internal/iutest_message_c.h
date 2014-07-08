@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_message_c.h
- * @brief		iris unit test 用 メッセージ ファイル
+ * @brief		iris unit test 用 メッセージ
  *
  * @author		t.sirayanagi
  * @par			copyright

@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_pred_c.h
- * @brief		iris unit test 述語 Assertion ファイル
+ * @brief		iris unit test 述語 Assertion
  *
  * @author		t.sirayanagi
  * @par			copyright

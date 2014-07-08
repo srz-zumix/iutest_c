@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_body_c.h
- * @brief		iris unit test テスト単体クラス ファイル
+ * @brief		iris unit test テスト単体クラス
  *
  * @author		t.sirayanagi
  * @par			copyright

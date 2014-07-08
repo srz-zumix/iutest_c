@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_pragma_c.h
- * @brief		iris unit test pragma ˆË‘¶‚Ì‹zû ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test pragma ˆË‘¶‚Ì‹zû
  *
  * @author		t.sirayanagi
  * @par			copyright

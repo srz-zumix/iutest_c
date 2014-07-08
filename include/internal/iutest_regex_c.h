@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_regex_c.h
- * @brief		iris unit test 用 regex ファイル
+ * @brief		iris unit test regex
  *
  * @author		t.sirayanagi
  * @par			copyright

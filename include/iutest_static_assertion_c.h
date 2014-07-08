@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_static_assertion_c.h
- * @brief		iris unit test static assertion 定義 ファイル
+ * @brief		iris unit test static assertion
  *
  * @author		t.sirayanagi
  * @par			copyright

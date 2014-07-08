@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_listener_c.h
- * @brief		iris unit test イベントリスナー 定義 ファイル
+ * @brief		iris unit test イベントリスナー 定義
  *
  * @author		t.sirayanagi
  * @par			copyright

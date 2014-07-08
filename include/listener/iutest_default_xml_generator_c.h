@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_default_xml_generator_c.h
- * @brief		iris unit test xml 出力イベントリスナー ファイル
+ * @brief		iris unit test xml 出力イベントリスナー
  *
  * @author		t.sirayanagi
  * @par			copyright

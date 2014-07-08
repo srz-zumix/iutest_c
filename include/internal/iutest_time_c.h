@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_time_c.h
- * @brief		iris unit test time utility ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test time utility
  *
  * @author		t.sirayanagi
  * @par			copyright

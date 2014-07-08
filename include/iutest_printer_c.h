@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_printer_c.h
- * @brief		iris unit test printer ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test printer
  *
  * @author		t.sirayanagi
  * @par			copyright

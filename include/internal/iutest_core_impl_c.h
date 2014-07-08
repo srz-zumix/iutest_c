@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_core_impl_c.h
- * @brief		iris unit test UnitTest ŽÀ‘• ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test UnitTest implement
  *
  * @author		t.sirayanagi
  * @par			copyright

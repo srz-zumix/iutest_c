@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_xml_file_c.inl
- * @brief		iris unit test XML ファイルヘルパー ファイル
+ * @brief		iris unit test XML file helper
  *
  * @author		t.sirayanagi
  * @par			copyright

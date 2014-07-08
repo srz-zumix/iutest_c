@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_pool_c.h
- * @brief		iris unit test memory pool ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test memory pool
  *
  * @author		t.sirayanagi
  * @par			copyright

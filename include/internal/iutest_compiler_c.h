@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_compiler_c.h
- * @brief		iris unit test compiler ˆË‘¶‚Ì‹zŽû ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test compiler 
  *
  * @author		t.sirayanagi
 * @par			copyright

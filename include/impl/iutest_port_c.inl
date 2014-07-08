@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_port_c.inl
- * @brief		iris unit portable ƒtƒ@ƒCƒ‹
+ * @brief		iris unit portable
  *
  * @author		t.sirayanagi
  * @par			copyright

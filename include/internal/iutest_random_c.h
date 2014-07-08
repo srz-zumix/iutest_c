@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_random_c.h
- * @brief		iris unit test 乱数生成器 定義 ファイル
+ * @brief		iris unit test 乱数生成器 定義
  *
  * @author		t.sirayanagi
  * @par			copyright

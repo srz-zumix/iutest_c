@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_internal_defs_c.h
- * @brief		iris unit test def ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test internal definition
  *
  * @author		t.sirayanagi
  * @par			copyright

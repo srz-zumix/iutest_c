@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_param_tests_c.h
- * @brief		iris unit test parameter 定義 ファイル
+ * @brief		iris unit test parameter 定義
  *
  * @author		t.sirayanagi
  * @par			copyright

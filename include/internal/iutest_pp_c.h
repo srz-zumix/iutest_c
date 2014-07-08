@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_pp_c.h
- * @brief		iris unit test プリプロセッサ 定義 ファイル
+ * @brief		iris unit test プリプロセッサ 定義
  *
  * @author		t.sirayanagi
  * @par			copyright

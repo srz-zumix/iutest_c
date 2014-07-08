@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_option_message_c.inl
- * @brief		iris unit test 用 オプションメッセージ ファイル
+ * @brief		iris unit test 用 オプションメッセージ
  *
  * @author		t.sirayanagi
  * @par			copyright

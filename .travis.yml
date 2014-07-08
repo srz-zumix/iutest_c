@@ -34,4 +34,4 @@ after_success:
 matrix:
   include:
     - compiler: gcc
-      env: USE_COVERAGE=lcov
+      env: USE_COVERAGE=gcov

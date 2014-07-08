@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_config_c.h
- * @brief		iris unit test config ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test config
  *
  * @author		t.sirayanagi
  * @par			copyright

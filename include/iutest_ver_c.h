@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_ver_c.h
- * @brief		iris unit test version 定義 ファイル
+ * @brief		iris unit test version
  *
  * @author		t.sirayanagi
  * @par			copyright

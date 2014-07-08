@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_params_util_c.h
- * @brief		iris unit test parameter テスト用 util ファイル
+ * @brief		iris unit test parameter テスト用 util
  *
  * @author		t.sirayanagi
  * @par			copyright

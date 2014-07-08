@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_info_c.inl
- * @brief		iris unit test info ƒtƒ@ƒCƒ‹
+ * @brief		iris unit test info
  *
  * @author		t.sirayanagi
  * @par			copyright
