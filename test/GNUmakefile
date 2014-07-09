@@ -8,7 +8,7 @@
 
 #
 # Flags passed to the C++ compiler.
-CCFLAGS += -g -Wall -Wextra
+CCFLAGS += -g -Wall -Wextra -Wno-unused-local-typedefs
 CCFLAGS += $(DEFS)
 
 ifdef OUTPUTXML

@@ -121,7 +121,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ char* iuTest_PrintTo(char* dst, con
 			++src;
 			if( size < MAX )
 			{
-				for( i=1; i < size; ++i, ++p )
+				for( i=1; i < size; ++i )
 				{
 					*dst++ = ',';
 					*dst++ = ' ';
@@ -131,7 +131,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ char* iuTest_PrintTo(char* dst, con
 			}
 			else
 			{
-				for( i=1; i < (MAX+1)/2; ++i, ++p )
+				for( i=1; i < (MAX+1)/2; ++i )
 				{
 					*dst++ = ',';
 					*dst++ = ' ';
@@ -142,8 +142,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ char* iuTest_PrintTo(char* dst, con
 				*dst++ = '.';
 				*dst++ = '.';
 				*dst++ = ' ';
-				p += size - MAX;
-				for( i=0; i < MAX/2; ++i, ++p )
+				for( i=0; i < MAX/2; ++i )
 				{
 					*dst++ = ',';
 					*dst++ = ' ';

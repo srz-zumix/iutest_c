@@ -112,11 +112,15 @@
 #  elif defined(__GUNC__) && (defined (__i386__) || defined (__x86_64__))
 #    define IUTEST_C_BREAK()	do { __asm{ int 3 } } while(::iutest::detail::AlwaysFalse())
 #  elif defined(__clang__) || defined(__GNUC__)
-#    define IUTEST_C_BREAK()	__builtin_trap()
+#    if IUTEST_C_HAS_LIBC
+#      define IUTEST_C_BREAK()	__builtin_trap()
+#    else
+#      define IUTEST_C_BREAK()	(void)0
+#    endif
 #  elif defined(__ARMCC_VERSION)
 #    define IUTEST_C_BREAK()	do { __breakpoint(0xF02C); } while(::iutest::detail::AlwaysFalse())
 #  else
-#    define IUTEST_C_BREAK()	*static_cast<volatile int*>(NULL) = 1;
+#    define IUTEST_C_BREAK()	*static_cast<volatile int*>(NULL) = 1
 #  endif
 #endif
 

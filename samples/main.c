@@ -18,7 +18,9 @@
 */
 #include "../include/iutest_c.h"
 
+#if !IUTEST_C_HAS_LIB
 IUTEST_C_WORKSPACE();
+#endif
 
 #ifdef UNICODE
 int wmain(int argc, wchar_t* argv[])
