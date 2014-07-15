@@ -35,3 +35,5 @@ matrix:
   include:
     - compiler: gcc
       env: USE_COVERAGE=gcov
+    - compiler: gcc
+      env: USE_COVERAGE=lcov
