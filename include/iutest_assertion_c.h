@@ -34,7 +34,7 @@ typedef struct iuAssertionResult_t
 
 /* define ============================================================*/
 /** @private */
-#define iuAssertionResult_ctor()	{ FALSE, NULL, NULL }
+#define iuAssertionResult_ctor(b)	{ b, NULL, NULL }
 
 /* function ==========================================================*/
 #if IUTEST_C_HAS_LIB

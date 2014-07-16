@@ -19,8 +19,8 @@
 #include "../iutest_assertion_c.h"
 
 /* function ==========================================================*/
-IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionSuccess(void)	{ iuAssertionResult res = { TRUE, NULL, NULL }; return res; }
-IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailure(void)	{ iuAssertionResult res = { FALSE, NULL, NULL }; return res; }
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionSuccess(void)	{ iuAssertionResult res = iuAssertionResult_ctor(TRUE); return res; }
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailure(void)	{ iuAssertionResult res = iuAssertionResult_ctor(FALSE); return res; }
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuAssertionHelper_Report(const char* file, int line, const char* message, eTestResultType type)
 {
@@ -29,12 +29,12 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuAssertionHelper_Report(const
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureMessage(const char* message)
 {
-	iuAssertionResult res = iuAssertionResult_ctor(); res.message = message;
+	iuAssertionResult res = iuAssertionFailure(); res.message = message;
 	return res;
 }
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureMessage2(const char* message, const char* append)
 {
-	iuAssertionResult res = iuAssertionResult_ctor();
+	iuAssertionResult res = iuAssertionFailure();
 	const size_t length = iu_strlen(message) + iu_strlen(append) + 1;
 	res.buf = iuTest_AllocTestFailureMessageString(length);
 	if(res.buf == NULL)
@@ -53,7 +53,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailur
 													, const void* val1, size_t size1, const char* msg1
 													, const void* val2, size_t size2, const char* msg2)
 {
-	iuAssertionResult res = iuAssertionResult_ctor();
+	iuAssertionResult res = iuAssertionFailure();
 	size_t length = iu_strlen(message) + iu_strlen(msg1) + iu_strlen(msg2);
 	length += size1 * 4 + 16;
 	length += size2 * 4 + 16;
@@ -83,7 +83,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailur
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionStringFailureMessage(const char* message, const char* val1, const char* msg1
 																				  , const char* val2, const char* msg2)
 {
-	iuAssertionResult res = iuAssertionResult_ctor();
+	iuAssertionResult res = iuAssertionFailure();
 	const size_t length = iu_strlen(message) + iu_strlen(msg1) + iu_strlen(msg2)
 		+ (val1 == NULL ? 6 : iu_strlen(val1)) + (val2 == NULL ? 6 : iu_strlen(val2)) + 1;
 
@@ -108,7 +108,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionString
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessageV(const char* fmt, va_list va)
 {
-	iuAssertionResult res = iuAssertionResult_ctor();
+	iuAssertionResult res = iuAssertionFailure();
 	res.buf = iuTest_AllocTestFailureMessageString(256);
 IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_BEGIN()
 	vsnprintf(res.buf, 256, fmt, va);
