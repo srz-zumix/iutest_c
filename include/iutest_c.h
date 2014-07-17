@@ -772,6 +772,7 @@ static IUTEST_ATTRIBUTE_UNUSED_ void iuInitIrisUnitTestW(int* argc, wchar_t** ar
 static IUTEST_ATTRIBUTE_UNUSED_ void iuTestInitialize(void)
 {
 #if IUTEST_C_HAS_CONSOLEOUT
+	iuUnitTest_ReleaseTestListener(&iuUnitTest_GetInstance()->def_printer);
 	{
 		iuTestListener* listener = iuTestListener_MakeListener(&iuUnitTest_GetInstance()->def_printer
 		, iuTestDefaultPrinter_OnTestProgramStart
@@ -804,9 +805,9 @@ static IUTEST_ATTRIBUTE_UNUSED_ void iuTestInitialize(void)
 static IUTEST_ATTRIBUTE_UNUSED_ int iuTestRun(void)
 {
 #if IUTEST_C_HAS_DEFAULT_XML_GENERATOR
+	iuUnitTest_ReleaseTestListener(&iuUnitTest_GetInstance()->def_xml_generator);
 	if(iuTestEnv_IsEnableOutputXml())
 	{
-		iuUnitTest_ReleaseTestListener(&iuUnitTest_GetInstance()->def_xml_generator);
 		{
 			iuTestListener* listener = iuTestListener_MakeListener(&iuUnitTest_GetInstance()->def_xml_generator
 			, iuTestDefaultXMLGenerator_OnTestProgramStart

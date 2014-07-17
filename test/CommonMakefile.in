@@ -5,6 +5,7 @@ IUTEST_INCLUDE = -I$(IUTEST_DIR)/include
 
 TARGETS = iutest_all_tests \
           iutest_assertion_only_tests \
+          iutest_commandline_tests \
           iutest_disabled_tests \
           iutest_env_var_tests \
           iutest_environment_tests \

@@ -32,7 +32,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowNotinitializedWarnin
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowVersion(void)
 {
 #if IUTEST_C_HAS_CONSOLEOUT
-	iuConsole_Output("iutest version %x.%x.%x.%x\n"
+	iuConsole_Output("iutest_c version %x.%x.%x.%x\n"
 			, IUTEST_C_MAJORVER, IUTEST_C_MINORVER, IUTEST_C_BUILD, IUTEST_C_REVISION);
 #endif
 	return 0;

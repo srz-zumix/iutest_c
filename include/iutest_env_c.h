@@ -45,9 +45,10 @@ typedef enum IUTESTENV_FLAG
 	IUTESTENV_OUTPUT_XML_REPORT		= 0x0100,	/*!< xml 出力 */
 	IUTESTENV_SHOWHELP_AND_SORRY	= 0x0400,	/*!< ヘルプを出力 */
 	IUTESTENV_SHOWHELP				= 0x0800,	/*!< ヘルプを出力 */
-	IUTESTENV_SHOWVER				= 0x1000,	/*!< バージョン出力 */
+	IUTESTENV_SHOWVERSION			= 0x1000,	/*!< バージョン出力 */
 	IUTESTENV_SHOWTESTSLIST			= 0x2000,	/*!< テストリスト出力 */
 	IUTESTENV_SHOWFEATURE			= 0x4000,	/*!< 機能情報出力 */
+	IUTESTENV_SHOWMASK				= 0xFF00,	/*!< 表示系マスク */
 
 	IUTESTENV_FLAG_DEFAULT			= 0
 } IUTESTENV_FLAG;

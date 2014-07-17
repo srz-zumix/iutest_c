@@ -574,7 +574,7 @@ IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseCommandLineElemA(const char* arg)
 			{
 				if( iuString_IsStringEqual(arg, "version") )
 				{
-					iuTestEnv_SetFlag(IUTESTENV_SHOWVER, -1);
+					iuTestEnv_SetFlag(IUTESTENV_SHOWVERSION, -1);
 				}
 				else if( iuString_IsStringEqual(arg, "help") )
 				{
@@ -594,7 +594,7 @@ IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseCommandLineElemA(const char* arg)
 		{
 			if( iuString_IsStringEqual(arg, "v") )
 			{
-				iuTestEnv_SetFlag(IUTESTENV_SHOWVER, -1);
+				iuTestEnv_SetFlag(IUTESTENV_SHOWVERSION, -1);
 			}
 			else if( iuString_IsStringEqual(arg, "h")
 				|| iuString_IsStringEqual(arg, "?") )

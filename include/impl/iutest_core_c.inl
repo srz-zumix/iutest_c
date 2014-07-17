@@ -376,33 +376,39 @@ IUTEST_C_INL_INLINE int iuTestRun_Run(iuUnitTest *unit_test)
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_Run(void)
 {
+	int ret=0;
 	if( IIUT_C_UNITTEST().initialized_count == 0 )
 	{
-		return iuTest_ShowNotinitializedWarning();
+		ret = iuTest_ShowNotinitializedWarning();
 	}
 #if IUTEST_C_HAS_ENVIRONMENTSVAR_OPTION || IUTEST_C_HAS_COMMANDLINE_OPTION
-	if(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVER))
+	else if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVERSION) )
 	{
-		return iuTest_ShowVersion();
+		ret = iuTest_ShowVersion();
 	}
-	if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP) )
+	else if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP) )
 	{
-		return iuTest_ShowHelp();
+		ret = iuTest_ShowHelp();
 	}
-	if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP_AND_SORRY) )
+	else if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP_AND_SORRY) )
 	{
-		return iuTest_ShowHelpAndSorry();
+		ret = iuTest_ShowHelpAndSorry();
 	}
-	if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWFEATURE) )
+	else if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWFEATURE) )
 	{
-		return iuTest_ShowFeature();
+		ret = iuTest_ShowFeature();
 	}
-	if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWTESTSLIST) )
+	else if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWTESTSLIST) )
 	{
-		return iuTest_ShowTestList(&IIUT_C_UNITTEST());
+		ret = iuTest_ShowTestList(&IIUT_C_UNITTEST());
 	}
 #endif
-	return iuTestRun_Run(&IIUT_C_UNITTEST());
+	else
+	{
+		return iuTestRun_Run(&IIUT_C_UNITTEST());
+	}
+	iuTestEnv_SetFlag(0, ~IUTESTENV_SHOWMASK);
+	return ret;
 }
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuTestCase* iuUnitTest_AddTestCase(const char* testcase_name
