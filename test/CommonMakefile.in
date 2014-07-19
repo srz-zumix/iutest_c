@@ -12,6 +12,7 @@ TARGETS = iutest_all_tests \
           iutest_filter_tests \
           iutest_help_tests \
           iutest_listener_tests \
+          iutest_invalid_commandline_tests \
           iutest_minimum_tests \
           iutest_no_test_tests \
           iutest_param_test_tests \
