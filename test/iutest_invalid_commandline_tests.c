@@ -56,7 +56,8 @@ int main(int argc, char* argv[])
 		if( IUTEST_RUN_ALL_TESTS() != 0 ) return 1;
 	}
 	{
-		int targc = 11;
+		int targc = 13;
+		int i;
 		DECAL_ARGV_BEGIN()
 		DECAL_ARGV_PARAM("--iutest_random_seed")
 		DECAL_ARGV_PARAM("--iutest_repeat")
@@ -64,7 +65,7 @@ int main(int argc, char* argv[])
 		DECAL_ARGV_PARAM("--iutest_print_time=")
 		DECAL_ARGV_PARAM("--iutest_color")
 		DECAL_ARGV_PARAM("--iutest_color=hoge")
-		DECAL_ARGV_PARAM("--iutest_shuffle")
+		DECAL_ARGV_PARAM("--iutest_shuffle=1")
 		DECAL_ARGV_PARAM("--iutest_output")
 		DECAL_ARGV_PARAM("--iutest_also_run_disabled_tests=1")
 		DECAL_ARGV_PARAM("--iutest_list_tests=1")
@@ -72,7 +73,7 @@ int main(int argc, char* argv[])
 		DECAL_ARGV_PARAM("-x")
 		DECAL_ARGV_END()
 		IUTEST_INIT(&targc, targv);
-		IUTEST_EXPECT_EQ(11, targc);
+		IUTEST_EXPECT_EQ(13, targc);
 		IUTEST_EXPECT_TRUE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP));
 		if( IUTEST_RUN_ALL_TESTS() != 0 ) return 1;
 	}

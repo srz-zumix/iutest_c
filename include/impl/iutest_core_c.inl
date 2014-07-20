@@ -352,7 +352,6 @@ IUTEST_C_INL_INLINE void iuTestRun_TestProgramEnd(iuUnitTest *unit_test)
 
 IUTEST_C_INL_INLINE int iuTestRun_Run(iuUnitTest *unit_test)
 {
-	iuBOOL result = TRUE;
 	int repeat = IUTEST_FLAG(repeat);
 	if( repeat == 0 ) return 0;
 	iuTestRun_TestProgramStart(unit_test);
@@ -363,7 +362,6 @@ IUTEST_C_INL_INLINE int iuTestRun_Run(iuUnitTest *unit_test)
 		{
 			if( !iuTestRun_Iteration(unit_test, iteration) )
 			{
-				result = FALSE;
 			}
 			++iteration;
 			if( repeat > 0 ) --repeat;
@@ -371,13 +369,14 @@ IUTEST_C_INL_INLINE int iuTestRun_Run(iuUnitTest *unit_test)
 	}
 
 	iuTestRun_TestProgramEnd(unit_test);
-	return result ? 0 : 1;
+	return iuUnitTest_Passed(unit_test) ? 0 : 1;
 }
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_Run(void)
 {
 	int ret=0;
-	if( IIUT_C_UNITTEST().initialized_count == 0 )
+	iuUnitTest *unit_test = iuUnitTest_GetInstance();
+	if( unit_test->initialized_count == 0 )
 	{
 		ret = iuTest_ShowNotinitializedWarning();
 	}
@@ -400,14 +399,18 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuUnitTest_Run(void)
 	}
 	else if( iuTestEnv_IsEnableFlag(IUTESTENV_SHOWTESTSLIST) )
 	{
-		ret = iuTest_ShowTestList(&IIUT_C_UNITTEST());
+		ret = iuTest_ShowTestList(unit_test);
 	}
 #endif
 	else
 	{
-		return iuTestRun_Run(&IIUT_C_UNITTEST());
+		return iuTestRun_Run(unit_test);
 	}
 	iuTestEnv_SetFlag(0, ~IUTESTENV_SHOWMASK);
+	if( ret == 0 )
+	{
+		return iuUnitTest_Passed(unit_test) ? 0 : 1;
+	}
 	return ret;
 }
 

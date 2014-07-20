@@ -340,7 +340,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTestEnv_SetUp(iuTestEnv* tes
 IUTEST_C_INL_INLINE const char* iuTestEnv_ParseOptionSettingStr(const char* opt)
 {
 	const char* eq = iu_strchr(opt, '=');
-	if( eq == NULL ) return eq;
+	if( eq == NULL ) return NULL;
 	return eq+1;
 }
 
@@ -468,6 +468,10 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL	iuTestEnv_ParseYesNoFlagOpti
 IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseOutputOption(const char* option)
 {
 	IIUT_C_TESTENV().option.output = option;
+	if( option == NULL )
+	{
+		return FALSE;
+	}
 	return TRUE;
 }
 
