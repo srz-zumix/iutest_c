@@ -38,7 +38,6 @@ IUTEST_EXTERN_C_BEGIN()
 /* enum ==============================================================*/
 typedef enum IUTESTENV_FLAG
 {
-	IUTESTENV_FILTERING_TESTS		= 0x0004,	/*!< フィルタリング */
 	IUTESTENV_CONSOLECOLOR_ON		= 0x0010,	/*!< 色つき出力ON */
 	IUTESTENV_CONSOLECOLOR_OFF		= 0x0020,	/*!< 色つき出力OFF */
 	IUTESTENV_CONSOLECOLOR_ANSI		= 0x0040,	/*!< エスケープシーケンスで出力 */

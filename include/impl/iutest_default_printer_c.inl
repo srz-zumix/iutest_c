@@ -25,7 +25,7 @@ IUTEST_C_INL_INLINE void iuTestDefaultPrinter_OnTestProgramStart(struct iuUnitTe
 {
 	IUTEST_UNUSED_VAR(unit_test);
 	/* フィルタリング */
-	if( iuTestEnv_IsEnableFlag(IUTESTENV_FILTERING_TESTS) )
+	if( !iuString_IsNullOrEmpty(IUTEST_FLAG(filter)) )
 	{
 		iuConsole_ColorOutput(PRINT_YELLOW, "Note: iutest filter = %s\n", IUTEST_FLAG(filter));
 	}

@@ -513,7 +513,6 @@ IUTEST_C_INL_INLINE iuBOOL	iuTestEnv_ParseCommandLineElemA(const char* arg)
 					if( opt != NULL )
 					{
 						IUTEST_FLAG(filter) = opt;
-						iuTestEnv_SetFlag(IUTESTENV_FILTERING_TESTS, -1);
 					}
 				}
 				else if( iu_strstr(arg, "output") == arg )
