@@ -71,9 +71,11 @@ iuBOOL FilterTest(const char* filter
 	, int ranFooQux)
 {
 	IUTEST_FLAG(filter) = filter;
-	const int ret = IUTEST_RUN_ALL_TESTS();
 	
-	if( ret != 0 ) return FALSE;
+	{
+		const int ret = IUTEST_RUN_ALL_TESTS();
+		if( ret != 0 ) return FALSE;
+	}
 
 	IUTEST_EXPECT_LVALUE_EQ( ranTestHoge  , state[0] );
 	IUTEST_EXPECT_LVALUE_EQ( ranHogeTest  , state[1] );

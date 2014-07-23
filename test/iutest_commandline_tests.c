@@ -127,7 +127,7 @@ int main(int argc, char* argv[])
 		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWFEATURE));
 		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVERSION));
 
-		int targc = 9;
+		int targc = 10;
 		DECAL_ARGV_BEGIN()
 		DECAL_ARGV_PARAM("--iutest_break_on_failure=1")
 		DECAL_ARGV_PARAM("--iutest_also_run_disabled_tests")
@@ -136,6 +136,7 @@ int main(int argc, char* argv[])
 		DECAL_ARGV_PARAM("--iutest_color=ansi")
 		DECAL_ARGV_PARAM("--iutest_random_seed=200")
 		DECAL_ARGV_PARAM("--iutest_repeat=2")
+		DECAL_ARGV_PARAM("--iutest_color=ansi")
 		DECAL_ARGV_PARAM("--iutest_filter=Flag*")
 		DECAL_ARGV_END()
 		IUTEST_INIT(&targc, targv);
@@ -145,6 +146,7 @@ int main(int argc, char* argv[])
 		IUTEST_EXPECT_TRUE ( IUTEST_FLAG(break_on_failure) );
 		IUTEST_EXPECT_FALSE( IUTEST_FLAG(print_time) );
 		IUTEST_EXPECT_TRUE ( IUTEST_FLAG(shuffle) );
+		IUTEST_EXPECT_TRUE ( iuConsole_IsColorModeAnsi() );
 		
 		IUTEST_EXPECT_EQ( 200u, IUTEST_FLAG(random_seed) );
 		IUTEST_EXPECT_EQ(   2 , IUTEST_FLAG(repeat) );

@@ -57,7 +57,6 @@ int main(int argc, char* argv[])
 	}
 	{
 		int targc = 13;
-		int i;
 		DECAL_ARGV_BEGIN()
 		DECAL_ARGV_PARAM("--iutest_random_seed")
 		DECAL_ARGV_PARAM("--iutest_repeat")

@@ -16,11 +16,11 @@
 #define INCG_IRIS_IUTEST_VER_C_H_D65CB7A7_D2AD_40FE_8F5F_8FBF376A0010_
 
 /* define ============================================================*/
-#define	IUTEST_C_VER			0x01049909	/*!< iutest version 1.4.99.9 */
+#define	IUTEST_C_VER			0x01049910	/*!< iutest version 1.4.99.10 */
 #define IUTEST_C_MAJORVER		0x01		/*!< Major Version */
 #define IUTEST_C_MINORVER		0x04		/*!< Minor Version */
 #define IUTEST_C_BUILD			0x99		/*!< Build */
-#define IUTEST_C_REVISION		0x09		/*!< Revision */
+#define IUTEST_C_REVISION		0x10		/*!< Revision */
 
 /**
  * @mainpage

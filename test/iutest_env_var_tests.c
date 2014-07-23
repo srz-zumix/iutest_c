@@ -27,6 +27,7 @@ int SetUpEnvironment(void)
 	iuTestOS_PutEnv("IUTEST_C_BREAK_ON_FAILURE=1");
 	iuTestOS_PutEnv("IUTEST_C_PRINT_TIME=1");
 	iuTestOS_PutEnv("IUTEST_C_REPEAT=2");
+	iuTestOS_PutEnv("IUTEST_C_COLOR=no");
 	iuTestOS_PutEnv("IUTEST_C_FILTER=Flag*");
 	return 0;
 }
@@ -37,6 +38,7 @@ IUTEST(FlagTest, Check)
 	IUTEST_EXPECT_TRUE( IUTEST_FLAG(break_on_failure) );
 	IUTEST_EXPECT_TRUE( IUTEST_FLAG(print_time) );
 	IUTEST_EXPECT_TRUE( IUTEST_FLAG(shuffle) );
+	IUTEST_EXPECT_TRUE( iuConsole_IsColorModeOff() );
 	
 	IUTEST_EXPECT_EQ( 200, IUTEST_FLAG(random_seed) );
 	IUTEST_EXPECT_EQ(   2, IUTEST_FLAG(repeat) );
