@@ -109,19 +109,35 @@ int main(int argc, char* argv[])
 	}
 
 	{
-		int targc = 3;
+		int targc = 2;
+		DECAL_ARGV_BEGIN()
+		DECAL_ARGV_PARAM("--iutest_color=no")
+		DECAL_ARGV_END()
+		IUTEST_INIT(&targc, targv);
+		IUTEST_EXPECT_EQ(1, targc);
+		
+		IUTEST_EXPECT_TRUE ( iuConsole_IsColorModeOff() );
+		
+		if( iuUnitTest_IsFaild(iuUnitTest_GetInstance()) ) return 1;
+	}
+
+	{
+		int targc = 4;
 		DECAL_ARGV_BEGIN()
 		DECAL_ARGV_PARAM("--iutest_break_on_failure")
 		DECAL_ARGV_PARAM("--iutest_filter")
+		DECAL_ARGV_PARAM("--iutest_color=1")
 		DECAL_ARGV_END()
 		IUTEST_INIT(&targc, targv);
 		IUTEST_EXPECT_EQ(1, targc);
 		
 		IUTEST_EXPECT_TRUE( IUTEST_FLAG(break_on_failure) );
 		IUTEST_EXPECT_EQ(NULL, IUTEST_FLAG(filter));
+		IUTEST_EXPECT_TRUE ( iuConsole_IsColorModeOn() );
 		
 		if( iuUnitTest_IsFaild(iuUnitTest_GetInstance()) ) return 1;
 	}
+	
 	{
 		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP));
 		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWFEATURE));
