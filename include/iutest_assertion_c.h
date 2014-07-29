@@ -75,7 +75,7 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureMessageComp(const c
 IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionStringFailureMessage(const char* message, const char* val1, const char* msg1
 																				  , const char* val2, const char* msg2);
 
-#if IUTEST_C_HAS_LIBC && IUTEST_C_HAS_STDARG
+#if IUTEST_C_HAS_LIBC && IUTEST_C_HAS_STDARG && !defined(__STRICT_ANSI__)
 
 /**
  * @brief	メッセージの作成

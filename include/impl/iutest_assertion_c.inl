@@ -104,7 +104,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionString
 	return res;
 }
 
-#if IUTEST_C_HAS_LIBC && IUTEST_C_HAS_STDARG
+#if IUTEST_C_HAS_LIBC && IUTEST_C_HAS_STDARG && !defined(__STRICT_ANSI__)
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessageV(const char* fmt, va_list va)
 {

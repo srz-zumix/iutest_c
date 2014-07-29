@@ -159,6 +159,10 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ const char * iu_strchr(const char *
 	return NULL;
 }
 
+#endif
+
+#if !IUTEST_C_HAS_LIBC || defined(__STRICT_ANSI__)
+
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iu_toupper(int ch)
 {
 	if( ch >= 'a' && ch <= 'z' )
@@ -176,7 +180,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iu_stricmp(const char* str1, co
 	return _stricmp(str1, str2);
 #elif	defined(__ARMCC_VERSION) || (defined(IUTEST_OS_LINUX))
 	return strcasecmp(str1, str2);
-#elif	IUTEST_C_HAS_LIBC
+#elif	IUTEST_C_HAS_LIBC && !defined(__STRICT_ANSI__)
 	return stricmp(str1, str2);
 #else
 	const char* l = str1;

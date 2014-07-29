@@ -124,7 +124,7 @@
 
 /*! putenv があるかどうか */
 #if !defined(IUTEST_C_NO_PUTENV)
-#  if !IUTEST_C_HAS_LIBC
+#  if !IUTEST_C_HAS_LIBC || defined(__STRICT_ANSI__)
 #    define IUTEST_C_NO_PUTENV
 #  endif
 #endif
@@ -208,7 +208,7 @@
 
 /*! _Generic を利用した型制限の少ないアサーションを利用できるかどうか */
 #if !defined(IUTEST_C_HAS_GENERIC_ASSERTION)
-#  if IUTEST_C_HAS_LIBC && IUTEST_C_HAS_STDARG && IUTEST_C_HAS_GENERIC
+#  if IUTEST_C_HAS_LIBC && IUTEST_C_HAS_STDARG && !defined(__STRICT_ANSI__) && IUTEST_C_HAS_GENERIC
 #    define IUTEST_C_HAS_GENERIC_ASSERTION	1
 #  else
 #    define IUTEST_C_HAS_GENERIC_ASSERTION	0

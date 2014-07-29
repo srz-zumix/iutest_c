@@ -36,9 +36,13 @@ IUTEST_EXTERN_C_BEGIN()
 #define iu_strstr	strstr
 #define iu_strchr	strchr
 #define iu_strcmp	strcmp
+
+#if !defined(__STRICT_ANSI__)
 #define iu_toupper	toupper
+#endif
 
 #endif
+
 
 /* function ==========================================================*/
 #if IUTEST_C_HAS_LIB
@@ -51,13 +55,16 @@ IUTEST_ATTRIBUTE_UNUSED_ size_t iu_strlen(const char *str);
 IUTEST_ATTRIBUTE_UNUSED_ size_t iu_wcslen(const wchar_t *str);
 #endif
 
-#if IUTEST_C_HAS_LIBC
-
-#else
+#if !IUTEST_C_HAS_LIBC
 
 IUTEST_ATTRIBUTE_UNUSED_ int iu_strcmp(const char* str1, const char* str2);
 IUTEST_ATTRIBUTE_UNUSED_ const char * iu_strstr(const char *str1, const char *str2);
 IUTEST_ATTRIBUTE_UNUSED_ const char * iu_strchr(const char *str, char ch);
+
+#endif
+
+#if !IUTEST_C_HAS_LIBC || defined(__STRICT_ANSI__)
+
 IUTEST_ATTRIBUTE_UNUSED_ int iu_toupper(int ch);
 
 #endif
