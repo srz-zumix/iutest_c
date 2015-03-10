@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -16,11 +16,11 @@
 #define INCG_IRIS_IUTEST_VER_C_H_D65CB7A7_D2AD_40FE_8F5F_8FBF376A0010_
 
 /* define ============================================================*/
-#define	IUTEST_C_VER			0x01050000	/*!< iutest version 1.5.0.0 */
+#define	IUTEST_C_VER			0x01050001	/*!< iutest version 1.5.0.1 */
 #define IUTEST_C_MAJORVER		0x01		/*!< Major Version */
 #define IUTEST_C_MINORVER		0x05		/*!< Minor Version */
 #define IUTEST_C_BUILD			0x00		/*!< Build */
-#define IUTEST_C_REVISION		0x00		/*!< Revision */
+#define IUTEST_C_REVISION		0x01		/*!< Revision */
 
 /**
  * @mainpage

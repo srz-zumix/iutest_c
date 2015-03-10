@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -73,7 +73,10 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowHelp(void)
 		;
 	const char *option6 =
 		"    --iutest_repeat=<count>          : Set the number of repetitions of the test.\n"
-		"    --version, -v                    : show iutest version.\n"
+		"    --feature                        : show iutest_c feature.\n"
+		;
+	const char *option7 =
+		"    --version, -v                    : show iutest_c version.\n"
 		;
 	const char *option_end =
 		"\n"
@@ -82,7 +85,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowHelp(void)
 	const char *license =
 		"License\n"
 		"\n"
-		"    Copyright (c) 2012-2014 Takazumi-Shirayanagi,\n"
+		"    Copyright (c) 2012-2015 Takazumi-Shirayanagi,\n"
 		"    All rights reserved.\n"
 		"\n"
 		"    This software is released under the new BSD License, see LICENSE\n"
@@ -97,6 +100,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuTest_ShowHelp(void)
 	iuConsole_ColorOutput(color, option4);
 	iuConsole_ColorOutput(color, option5);
 	iuConsole_ColorOutput(color, option6);
+	iuConsole_ColorOutput(color, option7);
 	iuConsole_ColorOutput(color, option_end);
 	iuConsole_ColorOutput(color, license);
 #endif

@@ -40,7 +40,7 @@ default: $(TARGETS)
 all : clean default test
 
 clean:
-	rm -f $(TARGETS) *.o
+	rm -f $(TARGETS) *.o *.obj
 ifdef OUTPUTXML
 	rm -f *.xml
 endif

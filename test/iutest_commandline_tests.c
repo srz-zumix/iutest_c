@@ -56,35 +56,32 @@ int main(int argc, char* argv[])
 		if( IUTEST_RUN_ALL_TESTS() != 0 ) return 1;
 	}
 	{
-		int targc = 2;
-		DECAL_ARGV("--version");
-
 		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP));
 
+		int targc = 2;
+		DECAL_ARGV("--version");
 		IUTEST_INIT(&targc, targv);
 		IUTEST_EXPECT_EQ(1, targc);
 		if( IUTEST_RUN_ALL_TESTS() != 0 ) return 1;
 	}
 	{
-		int targc = 2;
-		DECAL_ARGV("--feature");
-		
 		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVERSION));
 
+		int targc = 2;
+		DECAL_ARGV("--feature");
 		IUTEST_INIT(&targc, targv);
 		IUTEST_EXPECT_EQ(1, targc);
 		if( IUTEST_RUN_ALL_TESTS() != 0 ) return 1;
 	}
 	{
+		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWFEATURE));
+
 		int targc = 4;
 		DECAL_ARGV_BEGIN()
 		DECAL_ARGV_PARAM("test1")
 		DECAL_ARGV_PARAM("-v")
 		DECAL_ARGV_PARAM("test2")
 		DECAL_ARGV_END()
-
-		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWFEATURE));
-
 		IUTEST_INIT(&targc, targv);
 		IUTEST_EXPECT_EQ(3, targc);
 		IUTEST_EXPECT_STREQ("test1", targv[1]);
@@ -93,21 +90,19 @@ int main(int argc, char* argv[])
 	}
 
 	{
-		int targc = 2;
-		DECAL_ARGV("-h");
-
 		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVERSION));
 
+		int targc = 2;
+		DECAL_ARGV("-h");
 		IUTEST_INIT(&targc, targv);
 		IUTEST_EXPECT_EQ(1, targc);
 		if( IUTEST_RUN_ALL_TESTS() != 0 ) return 1;
 	}
 	{
-		int targc = 2;
-		DECAL_ARGV("-?");
-
 		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP));
 
+		int targc = 2;
+		DECAL_ARGV("-?");
 		IUTEST_INIT(&targc, targv);
 		IUTEST_EXPECT_EQ(1, targc);
 		if( IUTEST_RUN_ALL_TESTS() != 0 ) return 1;
@@ -144,6 +139,10 @@ int main(int argc, char* argv[])
 	}
 	
 	{
+		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP));
+		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWFEATURE));
+		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVERSION));
+
 		int targc = 10;
 		DECAL_ARGV_BEGIN()
 		DECAL_ARGV_PARAM("--iutest_break_on_failure=1")
@@ -156,11 +155,6 @@ int main(int argc, char* argv[])
 		DECAL_ARGV_PARAM("--iutest_color=ansi")
 		DECAL_ARGV_PARAM("--iutest_filter=Flag*")
 		DECAL_ARGV_END()
-
-		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWHELP));
-		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWFEATURE));
-		IUTEST_EXPECT_FALSE(iuTestEnv_IsEnableFlag(IUTESTENV_SHOWVERSION));
-
 		IUTEST_INIT(&targc, targv);
 		IUTEST_EXPECT_EQ(1, targc);
 		

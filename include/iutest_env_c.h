@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -100,7 +100,9 @@ typedef struct iuTestEnv_t
 	iuTestGlobalEnvSetUp*		env_setup;		/*!< グローバル環境 SetUp リスト */
 	iuTestGlobalEnvTearDown*	env_teardown;	/*!< グローバル環境 TearDown リスト */
 #if IUTEST_C_HAS_STDARG
-	iuVPrintf		pfnvpritf;		/*!< vprintf 関数ポインタ */
+	iuVPrintf		pfnvprintf;		/*!< vprintf 関数ポインタ */
+#else
+	void*			pfnvprintf;
 #endif
 	iuUInt32		flag;			/*!< フラグ */
 	iuUInt32		current_seed;	/*!< 乱数シードの現在値 */
@@ -126,13 +128,8 @@ typedef struct iuTestEnv_t
  * @{
 */
 #define iuTestEnvOption_ctor()	{ NULL, NULL, 1, 0, FALSE, TRUE, FALSE, FALSE }
-#if IUTEST_C_HAS_STDARG
-#define iuTestEnv_ctor()	{ NULL, NULL, NULL, NULL, IUTESTENV_FLAG_DEFAULT, 0		\
+#define iuTestEnv_ctor()		{ NULL, NULL, NULL, NULL, IUTESTENV_FLAG_DEFAULT, 0		\
 								, iuRandomContext_ctor(), { NULL, NULL }, iuTestEnvOption_ctor() }
-#else
-#define iuTestEnv_ctor()	{ NULL, NULL, NULL, IUTESTENV_FLAG_DEFAULT, 0		\
-								, iuRandomContext_ctor(), { NULL, NULL }, iuTestEnvOption_ctor() }
-#endif
 /**
  * @}
 */

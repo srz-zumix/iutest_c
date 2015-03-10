@@ -49,7 +49,7 @@ IUTEST_C_INL_INLINE iuTestGlobalEnvTearDown*	iuTestEnv_AllocGlobalEnvTearDown(vo
 #if IUTEST_C_HAS_STDARG
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTestEnv_SetVPrintfFunction(iuTestEnv* test_env, iuVPrintf proc)
 {
-	test_env->pfnvpritf = proc;
+	test_env->pfnvprintf = proc;
 }
 #endif
 

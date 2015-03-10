@@ -136,7 +136,10 @@ IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_END()
 static IUTEST_ATTRIBUTE_UNUSED_ iuUInt32 iuTest_GetIndefiniteValue(void)
 {
 #if !defined(IUTEST_C_NO_GETTIMEINMILLIS)
-	return (iuUInt32)(iuTest_GetTimeInMillis());
+	/* ‚È‚é‚×‚­“¯‚¶‚É‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é */
+	static iuUInt32 s = 0u;
+	s += 1u;
+	return (iuUInt32)(iuTest_GetTimeInMillis()) + s;
 #else
 	/* ‚È‚é‚×‚­“¯‚¶‚É‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é */
 	static iuUInt32 s = 20120206u;

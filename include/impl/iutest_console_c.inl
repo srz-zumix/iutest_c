@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -23,9 +23,9 @@
 
 IUTEST_C_INL_INLINE void IUTEST_ATTRIBUTE_UNUSED_ iuConsole_VPrint(const char *fmt, va_list va)
 {
-	if( iuTestEnv_GetInstance()->pfnvpritf != NULL )
+	if( iuTestEnv_GetInstance()->pfnvprintf != NULL )
 	{
-		(void)(iuTestEnv_GetInstance()->pfnvpritf)(fmt, va);
+		(void)(iuTestEnv_GetInstance()->pfnvprintf)(fmt, va);
 	}
 	else
 	{
