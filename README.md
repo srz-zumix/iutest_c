@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/srz-zumix/iutest_c.png?branch=master)](https://travis-ci.org/srz-zumix/iutest_c)
+[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/f0yblea4gpyd7v69?svg=true)](https://ci.appveyor.com/project/srz-zumix/iutest-c)
+[![Coverage Status](https://coveralls.io/repos/srz-zumix/iutest_c/badge.svg?branch=master)](https://coveralls.io/r/srz-zumix/iutest_c?branch=master)
 
 iutest_c
 ==========
