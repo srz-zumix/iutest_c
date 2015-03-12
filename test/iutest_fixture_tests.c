@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -22,6 +22,12 @@ int TestFixed_y = 0;
 void TestFixed_SetUp(void)
 {
 	++TestFixed_x;
+	IUTEST_EXPECT_NE(TestFixed_y, TestFixed_x);
+}
+
+void TestFixed_TearDown(void)
+{
+	IUTEST_EXPECT_EQ(TestFixed_y, TestFixed_x);
 }
 
 void TestFixed_SetUpTestCase(void)
@@ -30,11 +36,17 @@ void TestFixed_SetUpTestCase(void)
 	TestFixed_y = 0;
 }
 
+void TestFixed_TearDownTestCase(void)
+{
+	IUTEST_EXPECT_EQ(2, TestFixed_x);
+	IUTEST_EXPECT_EQ(2, TestFixed_y);
+}
+
 iuTestFixture TestFixed = {
 	TestFixed_SetUpTestCase
-	, NULL
+	, TestFixed_TearDownTestCase
 	, TestFixed_SetUp
-	, NULL
+	, TestFixed_TearDown
 	, NULL
 };
 
