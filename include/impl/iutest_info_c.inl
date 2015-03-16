@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -35,7 +35,7 @@ IUTEST_C_INL_INLINE iuBOOL IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Run(struct iuTest
 
 		if( test_info->test.setup != NULL )
 		{
-			(*test_info->test.setup)();
+			(*test_info->test.setup)(test_info);
 		}
 		if( test_info->test.body != NULL )
 		{
@@ -43,12 +43,13 @@ IUTEST_C_INL_INLINE iuBOOL IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Run(struct iuTest
 		}
 		if( test_info->test.teardown != NULL )
 		{
-			(*test_info->test.teardown)();
+			(*test_info->test.teardown)(test_info);
 		}
 
 		test_info->result.elapsedmsec = iuTest_StopWatchStop(&watch);
 	}
 	iuTestEnv_ListenerEvent_OnTestEnd(test_case, test_info);
+	iuUnitTest_SetCurrentTestInfo(NULL);
 
 	return test_info->result.result;
 }

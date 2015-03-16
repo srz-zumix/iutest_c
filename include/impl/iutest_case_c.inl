@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -214,6 +214,24 @@ IUTEST_C_INL_INLINE iuBOOL iuTestCase_Run(iuTestCase* test_case)
 		{
 			(*test_case->setup)();
 		}
+
+		if( iuTestResult_IsFailed(&test_case->result) )
+		{
+			return FALSE;
+
+		}
+
+		if( iuTestResult_IsSkipped(&test_case->result) )
+		{
+			iuTestInfo* curr = test_case->list;
+			while( curr != NULL )
+			{
+				iuTestInfo_Skip(curr);
+				curr = curr->next;
+			}
+			return TRUE;
+		}
+
 		{
 			iuTestInfo* curr = test_case->list;
 			while( curr != NULL )

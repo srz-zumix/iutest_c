@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2013-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2013-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -22,8 +22,9 @@ IUTEST(Foo, Bar)
 {
 }
 
-void TestFixed_SetUp(void)
+void TestFixed_SetUp(iuTestInfo* test_info)
 {
+	IUTEST_UNUSED_VAR(test_info);
 }
 
 void TestFixed_SetUpTestCase(void)

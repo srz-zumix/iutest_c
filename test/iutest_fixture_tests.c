@@ -19,14 +19,16 @@
 int TestFixed_x = 0;
 int TestFixed_y = 0;
 
-void TestFixed_SetUp(void)
+void TestFixed_SetUp(iuTestInfo* test_info)
 {
+	IUTEST_UNUSED_VAR(test_info);
 	++TestFixed_x;
 	IUTEST_EXPECT_NE(TestFixed_y, TestFixed_x);
 }
 
-void TestFixed_TearDown(void)
+void TestFixed_TearDown(iuTestInfo* test_info)
 {
+	IUTEST_UNUSED_VAR(test_info);
 	IUTEST_EXPECT_EQ(TestFixed_y, TestFixed_x);
 }
 

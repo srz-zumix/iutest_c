@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2013-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2013-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -49,12 +49,14 @@ IUTEST_P(int, TestP, Test2)
 }
 
 static int s_test_pf_count = 1;
-static void TestPF_SetUp(void)
+static void TestPF_SetUp(iuTestInfo* test_info)
 {
+	IUTEST_UNUSED_VAR(test_info);
 	s_test_pf_count = 0;
 }
-static void TestPF_TearDown(void)
+static void TestPF_TearDown(iuTestInfo* test_info)
 {
+	IUTEST_UNUSED_VAR(test_info);
 	s_test_pf_count = 1;
 }
 

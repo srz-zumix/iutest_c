@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014 Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -264,7 +264,7 @@
 		on_failure("\nExpected: " #statement " doesn't generate new fatal failure.\n  Actual: it does.")
 
 #define IUTEST_TEST_SKIP()				\
-	IUTEST_SKIP_MESSAGE(iuTestInfo_HasFailure(iuUnitTest_GetCurrentTestInfo()) ? "Skipped. but already failed. " : "Skipped. ")
+	IUTEST_SKIP_MESSAGE(iuTestResult_IsFailed(iuUnitTest_GetCurrentTestResult()) ? "Skipped. but already failed. " : "Skipped. ")
 
 /**
  * @}

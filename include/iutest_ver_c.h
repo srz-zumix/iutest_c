@@ -16,11 +16,11 @@
 #define INCG_IRIS_IUTEST_VER_C_H_D65CB7A7_D2AD_40FE_8F5F_8FBF376A0010_
 
 /* define ============================================================*/
-#define	IUTEST_C_VER			0x01050001	/*!< iutest version 1.5.0.1 */
+#define	IUTEST_C_VER			0x01050003	/*!< iutest version 1.5.0.3 */
 #define IUTEST_C_MAJORVER		0x01		/*!< Major Version */
 #define IUTEST_C_MINORVER		0x05		/*!< Minor Version */
 #define IUTEST_C_BUILD			0x00		/*!< Build */
-#define IUTEST_C_REVISION		0x01		/*!< Revision */
+#define IUTEST_C_REVISION		0x03		/*!< Revision */
 
 /**
  * @mainpage
@@ -83,6 +83,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * @page	CHANGELOG		•ÏX—š—ğ
  * @par		Changes
 <ul>
+  <li>v1.6.0.0
+    <ul>
+      <li>iuTestSetUp,iuTestTearDown ŠÖ”‚Ìˆø”‚ğ•ÏX</li>
+    </ul>
+  </li>
   <li>v1.5.0.0
     <ul>
       <li>_Generic ‘Î‰</li>

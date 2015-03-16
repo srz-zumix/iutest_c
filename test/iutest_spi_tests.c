@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2013-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2013-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -22,12 +22,14 @@ int  aa[5];
 int  ab[6];
 char ac[5];
 
-void SPITest_SetUp(void)
+void SPITest_SetUp(iuTestInfo* test_info)
 {
 	int  aa_[5] = { 0, 1, 2, 3, 4 };
 	int  ab_[6] = { 0, 1, 2, 3, 4, 5 };
 	char ac_[5] = { 0, 0, 2, 3, 5 };
 	int i;
+	IUTEST_UNUSED_VAR(test_info);
+
 	null_str = NULL;
 	a = b = 0;
 	n1 = 1;

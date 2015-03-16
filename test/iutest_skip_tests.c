@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2014-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -38,6 +38,25 @@ IUTEST(SkipTest, Failed)
 	IUTEST_EXPECT_TRUE(FALSE);
 }
 
+
+void SkipTestFixed_SetUpTestCase(void)
+{
+	IUTEST_SKIP();
+}
+
+iuTestFixture SkipTestFixed = {
+	SkipTestFixed_SetUpTestCase
+	, NULL
+	, NULL
+	, NULL
+	, NULL
+};
+
+IUTEST_F(SkipTestFixed, Test1)
+{
+	IUTEST_EXPECT_TRUE(FALSE);
+}
+
 #ifdef UNICODE
 int wmain(int argc, wchar_t* argv[])
 #else
@@ -53,9 +72,9 @@ int main(int argc, char* argv[])
 		const int ret = IUTEST_RUN_ALL_TESTS();
 		if( ret == 0 ) return 1;
 	}
-	IUTEST_ASSERT( iuUnitTest_GetTestToRunCount(iuUnitTest_GetInstance()) == 2 );
-	IUTEST_ASSERT( iuUnitTest_GetRunSkippedTestCount(iuUnitTest_GetInstance()) == 1 );
-	IUTEST_ASSERT( iuUnitTest_GetSkipTestCount(iuUnitTest_GetInstance()) == 2 );
+	IUTEST_ASSERT( iuUnitTest_GetTestToRunCount(iuUnitTest_GetInstance()) == 3 );
+	IUTEST_ASSERT( iuUnitTest_GetRunSkippedTestCount(iuUnitTest_GetInstance()) == 2 );
+	IUTEST_ASSERT( iuUnitTest_GetSkipTestCount(iuUnitTest_GetInstance()) == 3 );
 	IUTEST_ASSERT( iuUnitTest_GetSuccessfulTestCount(iuUnitTest_GetInstance()) == 0 );
 	IUTEST_ASSERT( iuUnitTest_GetFailureTestCount(iuUnitTest_GetInstance()) == 1 );
 	IUTEST_ASSERT( skip_check );

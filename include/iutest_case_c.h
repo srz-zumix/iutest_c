@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -50,6 +50,7 @@ typedef struct iuTestCase_t
 	iuTimeInMillisec		elapsedmsec;/*!< 実行時間 */
 	iuUInt32	flag;		/*!< bit フラグ */
 	void*		param;		/*!< パラメータへのポインタ */
+	iuTestResult	result;			/*!< テスト結果 */
 	struct iuTestCase_t	*next;		/*!< 次の TestCase のノード */
 } iuTestCase;
 

@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -80,6 +80,11 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo* iuUnitTest_GetCurrentTe
 	return IIUT_C_UNITTEST().current_test_info;
 }
 
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuTestCase* iuUnitTest_GetCurrentTestCase(void)
+{
+	return IIUT_C_UNITTEST().current_test_case;
+}
+
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void* iuUnitTest_GetCurrentUserData(void)
 {
 	if( iuUnitTest_GetCurrentTestInfo() == NULL ) return NULL;
@@ -93,7 +98,9 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuUnitTest_SetCurrentTestInfo(
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuTestResult* iuUnitTest_GetCurrentTestResult(void)
 {
-	return iuUnitTest_GetCurrentTestInfo() == NULL ? &iuUnitTest_GetInstance()->adhoc_testresult : &iuUnitTest_GetCurrentTestInfo()->result;
+	return iuUnitTest_GetCurrentTestInfo() != NULL ? &iuUnitTest_GetCurrentTestInfo()->result
+		: iuUnitTest_GetCurrentTestCase() != NULL ? &iuUnitTest_GetCurrentTestCase()->result
+		: &iuUnitTest_GetInstance()->adhoc_testresult;
 }
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuUInt32 iuUnitTest_GetCurrentRandomSeed(void)
@@ -295,7 +302,9 @@ IUTEST_C_INL_INLINE iuBOOL iuTestRun_RunOnce(iuUnitTest *unit_test)
 
 		while( curr != NULL )
 		{
+			unit_test->current_test_case = curr;
 			if( !iuTestCase_Run(curr) ) ret = FALSE;
+			unit_test->current_test_case = NULL;
 			curr = curr->next;
 		}
 
@@ -430,6 +439,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuTestCase* iuUnitTest_AddTestCase(
 		{
 			test_case->flag |= IUTESTCASE_DISABLED;
 		}
+		iuTestResult_Clear(&test_case->result);
 		iuTestHelper_AddList(iuTestCase, IIUT_C_UNITTEST().list, test_case);
 	}
 	return test_case;

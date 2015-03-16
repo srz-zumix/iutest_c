@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -39,10 +39,10 @@ IUTEST_EXTERN_C_BEGIN()
 
 #if IUTEST_C_HAS_PARAM_TEST
 #  define IIUT_C_UNITTEST_DEF_INSTANCE()	\
-	iuUnitTest	IIUT_C_UNITTEST_NAME = { NULL, NULL, 0, iuTestResult_ctor(), iuTestListener_ctor(), iuTestListener_ctor(), 0, NULL, NULL }
+	iuUnitTest	IIUT_C_UNITTEST_NAME = { NULL, NULL, NULL, 0, iuTestResult_ctor(), iuTestListener_ctor(), iuTestListener_ctor(), 0, NULL, NULL }
 #else
 #  define IIUT_C_UNITTEST_DEF_INSTANCE()	\
-	iuUnitTest	IIUT_C_UNITTEST_NAME = { NULL, NULL, 0, iuTestResult_ctor(), iuTestListener_ctor(), iuTestListener_ctor(), 0 }
+	iuUnitTest	IIUT_C_UNITTEST_NAME = { NULL, NULL, NULL, 0, iuTestResult_ctor(), iuTestListener_ctor(), iuTestListener_ctor(), 0 }
 #endif
 
 #if IUTEST_C_HAS_LIB
@@ -68,6 +68,7 @@ typedef struct iuUnitTest_t
 {
 	iuTestCase*			list;				/*!< TestCase リスト */
 	iuTestInfo*			current_test_info;	/*!< 実行中の TestInfo */
+	iuTestCase*			current_test_case;	/*!< 実行中の TestCase */
 	iuTimeInMillisec	elapsedmsec;		/*!< 実行時間 */
 	iuTestResult		adhoc_testresult;	/*!< テスト実行中でないときのテスト結果 */
 	iuTestListener		def_printer;		/*!< デフォルトPrinter */
@@ -161,6 +162,11 @@ iuTestCase* iuUnitTest_FindTestCase(iuTestCase* list, const char* testcase_name)
  * @brief	現在実行中の TestInfo 取得
 */
 IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo* iuUnitTest_GetCurrentTestInfo(void);
+
+/**
+ * @brief	現在実行中の TestCase 取得
+*/
+IUTEST_ATTRIBUTE_UNUSED_ iuTestCase* iuUnitTest_GetCurrentTestCase(void);
 
 /**
  * @brief	現在実行中の Test のユーザーデータ取得

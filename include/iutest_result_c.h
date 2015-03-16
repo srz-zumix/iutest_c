@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -94,6 +94,18 @@ static IUTEST_ATTRIBUTE_UNUSED_ iuTestPartResult* iuTestResult_CreatePartResult(
 	part->message = message;	/* メモリ確保されたものとする */
 	part->type = type;
 	return part;
+}
+
+/**
+ * @brief	テスト結果のクリア
+*/
+static IUTEST_ATTRIBUTE_UNUSED_ void iuTestResult_Clear(iuTestResult *result)
+{
+	if( result == NULL ) return;
+	result->result = TRUE;
+	result->list = NULL;
+	result->properties = NULL;
+	result->elapsedmsec = 0;
 }
 
 /**
