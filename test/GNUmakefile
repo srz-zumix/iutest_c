@@ -8,7 +8,7 @@
 
 #
 # Flags passed to the C++ compiler.
-CCFLAGS += -g -Wall -Wextra -Werror -Wno-unused-local-typedefs
+CCFLAGS += -g -Wall -Wextra -Werror
 CCFLAGS += $(DEFS) $(STDFLAG)
 
 ifdef OUTPUTXML
@@ -18,6 +18,13 @@ endif
 ifdef USE_COVERAGE
 COVERAGE = coveralls
 CCFLAGS += -coverage
+endif
+
+#
+# GCC
+#
+ifeq ($(CXX),g++)
+CCFLAGS += -Wno-unused-local-typedefs
 endif
 
 MAKEFILE=GNUmakefile CommonMakefile.in
