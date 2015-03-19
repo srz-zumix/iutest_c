@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
  * 
@@ -105,7 +105,7 @@
 
 /**
  * @ingroup		IUTEST_UTIL
- * @brief		–¾Ž¦“I‚ÈŽ¸”s
+ * @brief		–¾Ž¦“I‚ÈŽ¸”s (FATAL)
 */
 #ifndef IUTEST_FAIL
 #  define IUTEST_FAIL()								IIUT_FAIL()
