@@ -98,6 +98,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuUnitTest_SetCurrentTestInfo(
 
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuTestResult* iuUnitTest_GetCurrentTestResult(void)
 {
+	if( IIUT_C_UNITTEST().temp_result != NULL ) return IIUT_C_UNITTEST().temp_result;
 	return iuUnitTest_GetCurrentTestInfo() != NULL ? &iuUnitTest_GetCurrentTestInfo()->result
 		: iuUnitTest_GetCurrentTestCase() != NULL ? &iuUnitTest_GetCurrentTestCase()->result
 		: &iuUnitTest_GetInstance()->adhoc_testresult;

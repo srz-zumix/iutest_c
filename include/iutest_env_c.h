@@ -89,6 +89,7 @@ typedef struct iuTestCommitPartResultInfo_t
 {
 	iuTestCommitTestPartResult func;
 	void* user;
+	iuBOOL can_continue;
 } iuTestCommitPartResultInfo;
 
 /**
@@ -129,7 +130,7 @@ typedef struct iuTestEnv_t
 */
 #define iuTestEnvOption_ctor()	{ NULL, NULL, 1, 0, FALSE, TRUE, FALSE, FALSE }
 #define iuTestEnv_ctor()		{ NULL, NULL, NULL, NULL, IUTESTENV_FLAG_DEFAULT, 0		\
-								, iuRandomContext_ctor(), { NULL, NULL }, iuTestEnvOption_ctor() }
+								, iuRandomContext_ctor(), { NULL, NULL, FALSE }, iuTestEnvOption_ctor() }
 /**
  * @}
 */

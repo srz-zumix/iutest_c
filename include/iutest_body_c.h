@@ -71,8 +71,20 @@ IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_RecordProperty(const char *key, const cha
 
 /**
  * @brief	テスト結果を報告
+ * @return	続行可能かどうか
 */
-void iuTest_CommitResult(iuTestPartResult* part_result);
+iuBOOL iuTest_CommitResult(iuTestPartResult* part_result);
+
+/**
+ * @brief	テスト結果を報告
+*/
+void iuTest_CommitResults(iuTestResult* result);
+
+/**
+* @brief	ダミー
+* @return	続行可能かどうか
+*/
+iuBOOL iuTest_DummyCommitResult(iuTestPartResult* part_result, void* user);
 
 #endif
 

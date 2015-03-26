@@ -131,7 +131,7 @@
 */
 #define IUTEST_ASSERT_FAILURE(msg)					IUTEST_ASSERT_FAILURE_AT(msg, __FILE__, __LINE__)
 
-#define IUTEST_ASSERT_FAILURE_AT(msg, file, line)	if( IUTEST_MESSAGE_AT(file, line, msg, kTestResultFatalFailure), iuAlwaysTrue()) return
+#define IUTEST_ASSERT_FAILURE_AT(msg, file, line)	if( !IUTEST_MESSAGE_AT(file, line, msg, kTestResultFatalFailure) ) return
 
 /**
  * @internal
@@ -155,7 +155,7 @@
 */
 #define IUTEST_ASSUME_FAILURE(msg)					IUTEST_ASSUME_FAILURE_AT(msg, __FILE__, __LINE__)
 
-#define IUTEST_ASSUME_FAILURE_AT(msg, file, line)	if( IUTEST_MESSAGE_AT(file, line, msg, kTestResultAssume), iuAlwaysTrue()) return
+#define IUTEST_ASSUME_FAILURE_AT(msg, file, line)	if( !IUTEST_MESSAGE_AT(file, line, msg, kTestResultAssume) ) return
 
 /**
 * @internal
@@ -163,7 +163,7 @@
 */
 #define IUTEST_SKIP_MESSAGE(msg)					IUTEST_SKIP_MESSAGE_AT(msg, __FILE__, __LINE__)
 
-#define IUTEST_SKIP_MESSAGE_AT(msg, file, line)		if( IUTEST_MESSAGE_AT(file, line, msg, kTestResultSkip), iuAlwaysTrue()) return
+#define IUTEST_SKIP_MESSAGE_AT(msg, file, line)		if( !IUTEST_MESSAGE_AT(file, line, msg, kTestResultSkip) ) return
 
 
 /**
@@ -238,13 +238,19 @@
 
 #define IUTEST_TEST_SAME(v1, v2, on_failure)			IUTEST_PRED_FORMAT2_( iuTestAssertion_CompHelperSame, v1, v2, on_failure )
 
-
 #define IUTEST_TEST_NO_FATAL_FAILURE_(statement, on_failure)					\
 	if( iuAlwaysTrue() ) {														\
-		const iuTestInfo* pInfo = iuUnitTest_GetCurrentTestInfo();				\
-		const int prevCount = iuTestResult_GetPartCount(&pInfo->result, kTestResultFatalFailure);	\
-		IUTEST_SUPPRESS_UNREACHABLE_CODE_WARNING( { (void)0; statement; } );						\
-		if( prevCount < iuTestResult_GetPartCount(&pInfo->result, kTestResultFatalFailure) ) {		\
+		iuTestResult temp_result;												\
+		iuTestEnv* env = iuTestEnv_GetInstance();								\
+		iuTestCommitTestPartResult pfnPrev = env->commit_result.func;			\
+		env->commit_result.func = iuTest_DummyCommitResult;						\
+		iuTestResult_Clear(&temp_result);										\
+		iuUnitTest_GetInstance()->temp_result = &temp_result;					\
+		IUTEST_SUPPRESS_UNREACHABLE_CODE_WARNING( { (void)0; statement; } );	\
+		env->commit_result.func = pfnPrev;										\
+		iuUnitTest_GetInstance()->temp_result = NULL;							\
+		if( pfnPrev == NULL ) iuTest_CommitResults(&temp_result);				\
+		if( 0 < iuTestResult_GetPartCount(&temp_result, kTestResultFatalFailure) ) {	\
 			goto IUTEST_PP_CAT(iutest_label_test_no_fatalfailure_, __LINE__);	\
 		}																		\
 	} else																		\
@@ -253,15 +259,23 @@
 
 #define IUTEST_TEST_NO_FAILURE_(statement, on_failure)							\
 	if( iuAlwaysTrue() ) {														\
-		const iuTestInfo* pInfo = iuUnitTest_GetCurrentTestInfo();				\
-		const int prevCount = iuTestResult_FailurePartCount(&pInfo->result);	\
+		iuTestResult temp_result;												\
+		iuTestEnv* env = iuTestEnv_GetInstance();								\
+		iuTestCommitTestPartResult pfnPrev = env->commit_result.func;			\
+		env->commit_result.func = iuTest_DummyCommitResult;						\
+		iuTestResult_Clear(&temp_result);										\
+		iuUnitTest_GetInstance()->temp_result = &temp_result;					\
 		IUTEST_SUPPRESS_UNREACHABLE_CODE_WARNING( { (void)0; statement; } );	\
-		if( prevCount < iuTestResult_FailurePartCount(&pInfo->result) ) {		\
+		env->commit_result.func = pfnPrev;										\
+		iuUnitTest_GetInstance()->temp_result = NULL;							\
+		if( pfnPrev == NULL ) iuTest_CommitResults(&temp_result);				\
+		if( 0 < iuTestResult_FailurePartCount(&temp_result) ) {					\
 			goto IUTEST_PP_CAT(iutest_label_test_no_failure_, __LINE__);		\
 		}																		\
 	} else																		\
 		IUTEST_PP_CAT(iutest_label_test_no_failure_, __LINE__):					\
 		on_failure("\nExpected: " #statement " doesn't generate new fatal failure.\n  Actual: it does.")
+
 
 #define IUTEST_TEST_SKIP()				\
 	IUTEST_SKIP_MESSAGE(iuTestResult_IsFailed(iuUnitTest_GetCurrentTestResult()) ? "Skipped. but already failed. " : "Skipped. ")

@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2013-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2013-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -43,13 +43,17 @@
 */
 #define IUTEST_EXPECT_NONFATAL_FAILURE(statement, substr)	IUTEST_TEST_NONFATAL_FAILURE_(statement, #statement, substr, IUTEST_EXPECT_FAILURE)
 
+/**
+ * @private
+ * @{
+*/
 
-#define IIUT_PUSH_COMMITRESULT_FUNC(env)					\
+#define IIUT_PUSH_COMMITRESULT_FUNC(env)							\
 	iuTestCommitTestPartResult pfnPrev = env->commit_result.func;	\
 	void* pUserPrev = env->commit_result.user
 
-#define IIUT_POP_COMMITRESULT_FUNC(env)						\
-	env->commit_result.func = pfnPrev;	\
+#define IIUT_POP_COMMITRESULT_FUNC(env)		\
+	env->commit_result.func = pfnPrev;		\
 	env->commit_result.user = pUserPrev
 
 #define IUTEST_TEST_FATAL_FAILURE_(statement, text, substr, on_failure)			\
@@ -66,6 +70,7 @@
 		result.num = 0; result.type = kTestResultSuccess; result.msg = NULL;	\
 		env->commit_result.func = iuTestSpiFailureCheck_OnCommitTestPartResult;	\
 		env->commit_result.user = (void*)&result;								\
+		env->commit_result.can_continue = TRUE;									\
 		statement;																\
 		IIUT_POP_COMMITRESULT_FUNC(env);										\
 		if( result.num != 1 ) {													\
@@ -80,6 +85,10 @@
 				expected_str " containing \"" substr "\"\n  Actual: ", result.msg, "\n") );	\
 		}																		\
 	} while(iuAlwaysZero())
+
+/**
+ * }
+*/
 
 /* struct ============================================================*/
 typedef struct iuTestSpiCheckResult_t

@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -49,8 +49,9 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailure(void);
 
 /**
  * @brief	メッセージ報告関数
+ * @return	続行可能かどうか
 */
-IUTEST_ATTRIBUTE_UNUSED_ void iuAssertionHelper_Report(const char* file, int line, const char* message, eTestResultType type);
+IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuAssertionHelper_Report(const char* file, int line, const char* message, eTestResultType type);
 
 /**
  * @brief	メッセージの作成

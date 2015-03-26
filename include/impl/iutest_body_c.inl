@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -64,23 +64,25 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_RecordProperty(const 
 	return TRUE;
 }
 
-IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTest_CommitResult(iuTestPartResult* part_result)
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_CommitResult(iuTestPartResult* part_result)
 {
+	iuBOOL bContinue = FALSE;
 	iuTestResult* test_result = iuUnitTest_GetCurrentTestResult();
-	if(test_result == NULL) return;
+	if(test_result == NULL) return FALSE;
 
 	{
 		iuTestEnv* env = iuTestEnv_GetInstance();
-		if(env->commit_result.func != NULL)
+		if( env->commit_result.func != NULL )
 		{
-			if((*env->commit_result.func)(part_result
-				, env->commit_result.user))
+			bContinue = env->commit_result.can_continue;
+			if( (*env->commit_result.func)(part_result
+				, env->commit_result.user) )
 			{
-				return;
+				return bContinue;
 			}
 		}
 	}
-	if( part_result == NULL || part_result->type != kTestResultSuccess )
+	if( part_result == NULL || part_result->type > kTestResultSuccess )
 	{
 		test_result->result = FALSE;
 		if( iuTestEnv_IsEnableBreakOnFailure() )
@@ -90,6 +92,24 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTest_CommitResult(iuTestPart
 	}
 	iuTestResult_AddPartResult(test_result, part_result);
 	iuTestEnv_ListenerEvent_OnTestPartResult(part_result);
+	return bContinue;
+}
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTest_CommitResults(iuTestResult* result)
+{
+	iuTestPartResult* curr = result->list;
+	while( curr != NULL )
+	{
+		iuTest_CommitResult(curr);
+		curr = curr->next;
+	}
+}
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_DummyCommitResult(iuTestPartResult* part_result, void* user)
+{
+	IUTEST_UNUSED_VAR(part_result);
+	IUTEST_UNUSED_VAR(user);
+	return FALSE;
 }
 
 #endif

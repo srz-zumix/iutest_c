@@ -39,10 +39,10 @@ IUTEST_EXTERN_C_BEGIN()
 
 #if IUTEST_C_HAS_PARAM_TEST
 #  define IIUT_C_UNITTEST_DEF_INSTANCE()	\
-	iuUnitTest	IIUT_C_UNITTEST_NAME = { NULL, NULL, NULL, 0, iuTestResult_ctor(), iuTestListener_ctor(), iuTestListener_ctor(), 0, NULL, NULL }
+	iuUnitTest	IIUT_C_UNITTEST_NAME = { NULL, NULL, NULL, 0, iuTestResult_ctor(), NULL, iuTestListener_ctor(), iuTestListener_ctor(), 0, NULL, NULL }
 #else
 #  define IIUT_C_UNITTEST_DEF_INSTANCE()	\
-	iuUnitTest	IIUT_C_UNITTEST_NAME = { NULL, NULL, NULL, 0, iuTestResult_ctor(), iuTestListener_ctor(), iuTestListener_ctor(), 0 }
+	iuUnitTest	IIUT_C_UNITTEST_NAME = { NULL, NULL, NULL, 0, iuTestResult_ctor(), NULL, iuTestListener_ctor(), iuTestListener_ctor(), 0 }
 #endif
 
 #if IUTEST_C_HAS_LIB
@@ -71,6 +71,7 @@ typedef struct iuUnitTest_t
 	iuTestCase*			current_test_case;	/*!< 実行中の TestCase */
 	iuTimeInMillisec	elapsedmsec;		/*!< 実行時間 */
 	iuTestResult		adhoc_testresult;	/*!< テスト実行中でないときのテスト結果 */
+	iuTestResult*		temp_result;		/*!< 一時的な結果格納 */
 	iuTestListener		def_printer;		/*!< デフォルトPrinter */
 	iuTestListener		def_xml_generator;	/*!< デフォルトXML出力 */
 	int					initialized_count;	/*!< 初期化回数 */
