@@ -38,6 +38,25 @@ IUTEST(Foo, Bar_DISABLED_)
 	IUTEST_ASSERT_RVALUE_EQ(3, 3);
 }
 
+#if IUTEST_C_HAS_PARAM_TEST
+
+IUTEST_INSTANTIATE_TEST_CASE_P(int, A, TestP, iuValues, 0, 1, 2, 3 );
+IUTEST_INSTANTIATE_TEST_CASE_P(int, A, DISABLED_TestP, iuValues, 0, 1, 2, 3 );
+
+IUTEST_P(int, TestP, DISABLED_Test)
+{
+	const int x = param;
+	IUTEST_ASSERT_RVALUE_EQ(10, x);
+}
+
+IUTEST_P(int, DISABLED_TestP, Test)
+{
+	const int x = param;
+	IUTEST_ASSERT_RVALUE_EQ(10, x);
+}
+
+#endif
+
 #ifdef UNICODE
 int wmain(int argc, wchar_t* argv[])
 #else
@@ -52,17 +71,28 @@ int main(int argc, char* argv[])
 	{
 		const int ret = IUTEST_RUN_ALL_TESTS();
 		if( ret != 0 ) return 1;
+#if IUTEST_C_HAS_PARAM_TEST
+		IUTEST_ASSERT( iuUnitTest_GetDisableTestCount(iuUnitTest_GetInstance()) == 10 );
+#else
 		IUTEST_ASSERT( iuUnitTest_GetDisableTestCount(iuUnitTest_GetInstance()) == 2 );
+#endif
 	}
 	
 	{
 		int ret = 0;
 		IUTEST_FLAG(also_run_disabled_tests) = TRUE;
 		ret = IUTEST_RUN_ALL_TESTS();
+#if IUTEST_C_HAS_PARAM_TEST
+		IUTEST_ASSERT( iuUnitTest_GetDisableTestCount(iuUnitTest_GetInstance()) == 10 );
+		IUTEST_ASSERT( iuUnitTest_GetTestToRunCount(iuUnitTest_GetInstance()) == 12 );
+		IUTEST_ASSERT( iuUnitTest_GetFailureTestCount(iuUnitTest_GetInstance()) == 10 );
+		IUTEST_ASSERT( iuUnitTest_GetTotalTestCount(iuUnitTest_GetInstance()) == 12 );
+#else
 		IUTEST_ASSERT( iuUnitTest_GetDisableTestCount(iuUnitTest_GetInstance()) == 2 );
 		IUTEST_ASSERT( iuUnitTest_GetTestToRunCount(iuUnitTest_GetInstance()) == 4 );
 		IUTEST_ASSERT( iuUnitTest_GetFailureTestCount(iuUnitTest_GetInstance()) == 2 );
 		IUTEST_ASSERT( iuUnitTest_GetTotalTestCount(iuUnitTest_GetInstance()) == 4 );
+#endif
 		if( ret == 0 ) return 1;
 	}
 

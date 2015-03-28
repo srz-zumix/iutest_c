@@ -500,7 +500,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuUnitTest_ParamHolderRegister
 				test_case->teardown = p->teardown;
 				test_case->flag = 0;
 				test_case->param = ((char*)curr->params + curr->align*i);
-				if( iuString_IsDisabledTestName(test_case->name) )
+				if( iuString_IsDisabledTestName(curr->testcase_base_name) )
 				{
 					test_case->flag |= IUTESTCASE_DISABLED;
 				}
