@@ -99,6 +99,7 @@ IUTEST_C_INL_INLINE void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Skip(iuTestInfo* te
 IUTEST_C_INL_INLINE void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Clear(iuTestInfo* test_info)
 {
 	test_info->flag &= ~IUTESTINFO_RAN;
+	iuTestResult_Clear(&test_info->result);
 }
 
 IUTEST_C_INL_INLINE void IUTEST_ATTRIBUTE_UNUSED_ iuTestInfo_Filter(iuTestInfo *test_info)

@@ -1,12 +1,12 @@
-ï»¿/*======================================================================
+/*======================================================================
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_invalid_commandline_tests.c
- * @brief		ä¸æ­£ãªã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°å¯¾å¿œãƒ†ã‚¹ãƒˆ
+ * @brief		•s³‚ÈƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‘Î‰ƒeƒXƒg
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2014-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 {
 	(void)argc;
 #if defined(OUTPUTXML)
-	// å®Ÿè¡Œå¯¾è±¡ãƒ†ã‚¹ãƒˆãŒãªã„ã®ã§ xml å‡ºåŠ›ã—ãªã„
+	// Às‘ÎÛƒeƒXƒg‚ª‚È‚¢‚Ì‚Å xml o—Í‚µ‚È‚¢
 	IUTEST_FLAG(output) = NULL;
 #endif
 

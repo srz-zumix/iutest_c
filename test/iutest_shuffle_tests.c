@@ -1,4 +1,4 @@
-﻿/*======================================================================
+/*======================================================================
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_shuffle_tests.c
@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2014-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */

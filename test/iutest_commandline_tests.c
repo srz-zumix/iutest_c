@@ -1,12 +1,12 @@
-ï»¿/*======================================================================
+/*======================================================================
 ----------------------------------------------------------------------*/
 /**
  * @file		iutest_commandline_tests.c
- * @brief		CommandLine å¯¾å¿œãƒ†ã‚¹ãƒˆ
+ * @brief		CommandLine test
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2014-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 {
 	(void)argc;
 #if defined(OUTPUTXML)
-	// å®Ÿè¡Œå¯¾è±¡ãƒ†ã‚¹ãƒˆãŒãªã„ã®ã§ xml å‡ºåŠ›ã—ãªã„
+	// Às‘ÎÛƒeƒXƒg‚ª‚È‚¢‚Ì‚Å xml o—Í‚µ‚È‚¢
 	IUTEST_FLAG(output) = NULL;
 #endif
 

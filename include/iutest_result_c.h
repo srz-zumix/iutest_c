@@ -273,4 +273,24 @@ static IUTEST_ATTRIBUTE_UNUSED_ iuTestProperty *	iuTestResult_AllocTestProperty(
 #endif
 }
 
+/**
+ * @brief	プロパティの総数取得
+*/
+static IUTEST_ATTRIBUTE_UNUSED_ int iuTestResult_TotalPropertyCount(const iuTestResult* result)
+{
+	int count=0;
+	iuTestHelper_CountList(count, iuTestProperty, result->properties);
+	return count;
+}
+
+/**
+ * @brief	プロパティの取得
+*/
+static IUTEST_ATTRIBUTE_UNUSED_ iuTestProperty* iuTestResult_GetProperty(const iuTestResult* result, iuUInt32 index)
+{
+	iuTestProperty* p=0;
+	iuTestHelper_ListGetAt(iuTestProperty, result->properties, index, p);
+	return p;
+}
+
 #endif

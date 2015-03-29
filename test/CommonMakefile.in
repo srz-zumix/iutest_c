@@ -17,6 +17,7 @@ TARGETS = iutest_all_tests \
           iutest_minimum_tests \
           iutest_no_test_tests \
           iutest_param_test_tests \
+          iutest_record_property_tests \
           iutest_register_duplicate_tests \
           iutest_register_tests \
           iutest_repeat_tests \

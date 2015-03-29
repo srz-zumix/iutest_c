@@ -61,6 +61,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuUnitTest_Init(void)
 		iuUnitTest_ParamHolderRegisterTest();
 #endif
 	}
+	iuTestResult_Clear(&IIUT_C_UNITTEST().adhoc_testresult);
 	++IIUT_C_UNITTEST().initialized_count;
 }
 
@@ -524,6 +525,120 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuTestCase* iuUnitTest_AllocTestCas
 }
 
 #endif
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_ValidateTestInfoRecordPropertyName(const char *key)
+{
+#if IUTEST_C_HAS_MALLOC
+	const char* ban[] ={ "name", "status", "time", "classname", "type_param", "value_param" };
+	int i=0, n=IUTEST_PP_COUNTOF(ban);
+	for( i=0; i < n; ++i )
+	{
+		if( iuString_IsStringEqual(key, ban[i]) )
+		{
+			return FALSE;
+		}
+	}
+#else
+	if( iuString_IsStringEqual(key, "name") ) return FALSE;
+	if( iuString_IsStringEqual(key, "status") ) return FALSE;
+	if( iuString_IsStringEqual(key, "time") ) return FALSE;
+	if( iuString_IsStringEqual(key, "classname") ) return FALSE;
+	if( iuString_IsStringEqual(key, "type_param") ) return FALSE;
+	if( iuString_IsStringEqual(key, "value_param") ) return FALSE;
+#endif
+
+	return TRUE;
+}
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_ValidateTestCaseRecordPropertyName(const char *key)
+{
+#if IUTEST_C_HAS_MALLOC
+	const char* ban[] = { "name", "tests", "failures", "disabled", "skip", "errors", "time" };
+	int i=0, n=IUTEST_PP_COUNTOF(ban);
+	for( i=0; i < n; ++i )
+	{
+		if( iuString_IsStringEqual(key, ban[i]) )
+		{
+			return FALSE;
+		}
+	}
+#else
+	if( iuString_IsStringEqual(key, "name") ) return FALSE;
+	if( iuString_IsStringEqual(key, "tests") ) return FALSE;
+	if( iuString_IsStringEqual(key, "failures") ) return FALSE;
+	if( iuString_IsStringEqual(key, "disabled") ) return FALSE;
+	if( iuString_IsStringEqual(key, "skip") ) return FALSE;
+	if( iuString_IsStringEqual(key, "errors") ) return FALSE;
+	if( iuString_IsStringEqual(key, "time") ) return FALSE;
+#endif
+
+	return TRUE;
+}
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_ValidateTestSuitesRecordPropertyName(const char *key)
+{
+#if IUTEST_C_HAS_MALLOC
+	const char* ban[] = { "name", "tests", "failures", "disabled", "skip", "errors", "time", "timestamp", "random_seed" };
+	int i=0, n=IUTEST_PP_COUNTOF(ban);
+	for( i=0; i < n; ++i )
+	{
+		if( iuString_IsStringEqual(key, ban[i]) )
+		{
+			return FALSE;
+		}
+	}
+#else
+	if( iuString_IsStringEqual(key, "name") ) return FALSE;
+	if( iuString_IsStringEqual(key, "tests") ) return FALSE;
+	if( iuString_IsStringEqual(key, "failures") ) return FALSE;
+	if( iuString_IsStringEqual(key, "disabled") ) return FALSE;
+	if( iuString_IsStringEqual(key, "skip") ) return FALSE;
+	if( iuString_IsStringEqual(key, "errors") ) return FALSE;
+	if( iuString_IsStringEqual(key, "time") ) return FALSE;
+	if( iuString_IsStringEqual(key, "timestamp") ) return FALSE;
+	if( iuString_IsStringEqual(key, "random_seed") ) return FALSE;
+#endif
+
+	return TRUE;
+}
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_ValidateRecordPropertyName(const char *key)
+{
+	if( iuUnitTest_GetCurrentTestInfo() != NULL )
+	{
+		return iuTest_ValidateTestInfoRecordPropertyName(key);
+	}
+	if( iuUnitTest_GetCurrentTestCase() != NULL )
+	{
+		return iuTest_ValidateTestCaseRecordPropertyName(key);
+	}
+	return iuTest_ValidateTestSuitesRecordPropertyName(key);
+}
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_RecordProperty(const char *key, const char *value)
+{
+	/* 不正なキーのチェック */
+	if( !iuTest_ValidateRecordPropertyName(key) )
+	{
+		IUTEST_EXPECT_FAILURE("Reserved key used in iuTest_RecordProperty()");
+		return FALSE;
+	}
+
+	{
+		iuTestResult *result = iuUnitTest_GetCurrentTestResult();
+		iuTestProperty *prop_top = result->properties;
+		iuTestProperty *prop = iuTestResult_AllocTestProperty();
+		prop->key = key;
+		prop->value = value;
+		prop->next = NULL;
+		iuTestHelper_AddList(iuTestProperty, prop_top, prop);
+		result->properties = prop_top;
+
+		iuTestEnv_ListenerEvent_OnTestRecordProperty(prop);
+	}
+	return TRUE;
+}
+
 
 #undef IIUT_C_UNITTEST
 

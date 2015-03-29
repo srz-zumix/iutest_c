@@ -171,9 +171,9 @@
  * @biref	”äŠrŒŸØƒ}ƒNƒ
 */
 #define IUTEST_TEST_ASSERT_(expression, on_failure)	do {	\
-	iuAssertionResult tr; tr = (expression);				\
-	if( !tr.result )										\
-		on_failure(tr.message);								\
+	iuAssertionResult temp_ar_; temp_ar_ = (expression);	\
+	if( !temp_ar_.result )									\
+		on_failure(temp_ar_.message);						\
 	} while(iuAlwaysZero())
 
 /**

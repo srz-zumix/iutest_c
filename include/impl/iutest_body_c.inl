@@ -26,44 +26,6 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuTest_Init(iuTest* test_body,
 	test_body->user = user;
 }
 
-IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_RecordProperty(const char *key, const char *value)
-{
-	/* 不正なキーのチェック */
-	{
-#if IUTEST_C_HAS_MALLOC
-		const char* ban[] = { "name", "status", "time", "classname", "type_param", "value_param" };
-		int i=0, n=IUTEST_PP_COUNTOF(ban);
-		for( i=0; i < n; ++i )
-		{
-			if( iuString_IsStringEqual(key, ban[i]) )
-			{
-				return FALSE;
-			}
-		}
-#else
-		if( iuString_IsStringEqual(key, "name") ) return FALSE;
-		if( iuString_IsStringEqual(key, "status") ) return FALSE;
-		if( iuString_IsStringEqual(key, "time") ) return FALSE;
-		if( iuString_IsStringEqual(key, "classname") ) return FALSE;
-		if( iuString_IsStringEqual(key, "type_param") ) return FALSE;
-		if( iuString_IsStringEqual(key, "value_param") ) return FALSE;
-#endif
-	}
-	{
-		iuTestResult *result = iuUnitTest_GetCurrentTestResult();
-		iuTestProperty *prop_top = result->properties;
-		iuTestProperty *prop = iuTestResult_AllocTestProperty();
-		prop->key = key;
-		prop->value = value;
-		prop->next = NULL;
-		iuTestHelper_AddList(iuTestProperty, prop_top, prop);
-		result->properties = prop_top;
-
-		iuTestEnv_ListenerEvent_OnTestRecordProperty(prop);
-	}
-	return TRUE;
-}
-
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuTest_CommitResult(iuTestPartResult* part_result)
 {
 	iuBOOL bContinue = FALSE;

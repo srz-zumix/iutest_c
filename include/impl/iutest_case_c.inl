@@ -154,6 +154,7 @@ IUTEST_C_INL_INLINE void iuTestCase_Clear(iuTestCase* test_case)
 		iuTestInfo_Clear(curr);
 		curr = curr->next;
 	}
+	iuTestResult_Clear(&test_case->result);
 }
 
 IUTEST_C_INL_INLINE void iuTestCase_Filter(iuTestCase* test_case)
