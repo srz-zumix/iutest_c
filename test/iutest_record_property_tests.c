@@ -109,8 +109,8 @@ int main(int argc, char* argv[])
 			return 1;
 	}
 	*/
+	IUTEST_INIT(&argc, argv);
 	{
-		IUTEST_INIT(&argc, argv);
 		const int ret = IUTEST_RUN_ALL_TESTS();
 		if( ret != 0 ) return 1;
 		if( CheckProperty(iuUnitTest_GetCurrentTestResult(), "bar", "C") )
