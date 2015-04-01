@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -97,6 +97,22 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuExit(int exit_code)
 	*p = 0;
 #endif
 }
+
+#if IUTEST_C_HAS_FILEAPI
+
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ void iuStreamCapture(FILE* fp, char* buf, size_t size)
+{
+	if( buf == NULL )
+	{
+		setbuf(fp, NULL);
+	}
+	else
+	{
+		setvbuf(fp, buf, _IOFBF, size);
+	}
+}
+
+#endif
 
 IUTEST_PRAGMA_CRT_SECURE_WARN_DISABLE_END()
 

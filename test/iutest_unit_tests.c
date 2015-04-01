@@ -89,4 +89,12 @@ IUTEST(GenericUnit, IsTypeName)
 	IUTEST_ASSERT_FALSE( IUTEST_C_IS_TYPENAME(test) );
 }
 
+IUTEST(GenericUnit, FormatDecimalNumber)
+{
+	char s[2];
+	const char* p = iuTest_FormatDecimalNumber(s, 0);
+	IUTEST_ASSERT_STREQ("0", p);
+}
+
+
 #endif
