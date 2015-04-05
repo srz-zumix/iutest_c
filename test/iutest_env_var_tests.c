@@ -27,6 +27,7 @@ int SetUpEnvironment(void)
 	iuTestOS_PutEnv("IUTEST_C_BREAK_ON_FAILURE=1");
 	iuTestOS_PutEnv("IUTEST_C_PRINT_TIME=1");
 	iuTestOS_PutEnv("IUTEST_C_REPEAT=2");
+	iuTestOS_PutEnv("IUTEST_C_OUTPUT=xml");
 	iuTestOS_PutEnv("IUTEST_C_COLOR=no");
 	iuTestOS_PutEnv("IUTEST_C_FILTER=Flag*");
 	return 0;
@@ -44,6 +45,8 @@ IUTEST(FlagTest, Check)
 	IUTEST_EXPECT_EQ(   2, IUTEST_FLAG(repeat) );
 
 	IUTEST_EXPECT_STREQ( "Flag*", IUTEST_FLAG(filter) );
+	
+	IUTEST_EXPECT_TRUE( iuTestEnv_IsEnableOutputXml() );
 }
 
 #else

@@ -89,12 +89,39 @@ IUTEST(GenericUnit, IsTypeName)
 	IUTEST_ASSERT_FALSE( IUTEST_C_IS_TYPENAME(test) );
 }
 
-IUTEST(GenericUnit, FormatDecimalNumber)
+#endif
+
+IUTEST(FormatUnit, FormatDecimalNumber)
 {
 	char s[2];
 	const char* p = iuTest_FormatDecimalNumber(s, 0);
 	IUTEST_ASSERT_STREQ("0", p);
 }
 
-
+IUTEST(FormatUnit, PrintTo)
+{
+	char s[64];
+	{
+		char c=42;
+		const char* p = iuTest_PrintTo(s, &c, sizeof(c));
+		IUTEST_ASSERT_STREQ("0x2A", p);
+	}
+	{
+		short c=42;
+		const char* p = iuTest_PrintTo(s, &c, sizeof(c));
+		IUTEST_ASSERT_STREQ("0x002A", p);
+	}
+	{
+		int c=42;
+		const char* p = iuTest_PrintTo(s, &c, sizeof(c));
+		IUTEST_ASSERT_STREQ("0x0000002A", p);
+	}
+#if IUTEST_C_HAS_LONGLONG
+	{
+		long long c=42;
+		const char* p = iuTest_PrintTo(s, &c, sizeof(c));
+		IUTEST_ASSERT_STREQ("0x000000000000002A", p);
+	}
 #endif
+}
+

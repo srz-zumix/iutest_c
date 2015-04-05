@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -758,7 +758,9 @@ IUTEST_C_INL_INLINE void iuTestEnv_LoadEnviromentVariable(void)
 		char path[260+32];
 		if( iuTestOS_GetEnvironmentVariable("IUTEST_C_OUTPUT", path, sizeof(path)) )
 		{
-			iuTestEnv_ParseOutputOption(path);
+			static char f[260 + 32];
+			iu_strcpy(f, path);
+			iuTestEnv_ParseOutputOption(f);
 		}
 		if( iuTestOS_GetEnvironmentVariable("IUTEST_C_FILTER", path, sizeof(path)) )
 		{
