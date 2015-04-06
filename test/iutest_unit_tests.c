@@ -122,6 +122,21 @@ IUTEST(FormatUnit, PrintTo)
 		const char* p = iuTest_PrintTo(s, &c, sizeof(c));
 		IUTEST_ASSERT_STREQ("0x000000000000002A", p);
 	}
+	{
+		int c[2]={42, 43};
+		const char* p = iuTest_PrintTo(s, c, sizeof(c));
+		IUTEST_ASSERT_STREQ("0x0000002B0000002A", p);
+	}
 #endif
+	{
+		char c[9]={42, 43, 44, 45, 46, 47, 48, 49, 50};
+		const char* p = iuTest_PrintTo(s, c, sizeof(c));
+		IUTEST_ASSERT_STREQ("{ 2A, 2B, 2C, 2D, 2E, 2F, 30, 31, 32 }", p);
+	}
+	{
+		int c[4]={42, 43, 44, 45};
+		const char* p = iuTest_PrintTo(s, c, sizeof(c));
+		IUTEST_ASSERT_STREQ("{ 2A, 00, 00, 00, 2B, ... , 00, 2D, 00, 00, 00 }", p);
+	}
 }
 
