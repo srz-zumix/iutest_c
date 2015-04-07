@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -29,7 +29,7 @@ IUTEST_ATTRIBUTE_UNUSED_ void iuXmlFile_OutputCDataSection(FILE* fp, const char*
 #endif
 
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlAttribute(char* dst, const char* src);
-IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlText(char* dst, const char* src);
+//IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlText(char* dst, const char* src);
 
 #endif
 

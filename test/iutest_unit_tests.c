@@ -140,3 +140,10 @@ IUTEST(FormatUnit, PrintTo)
 	}
 }
 
+IUTEST(XmlUnit, Escape)
+{
+	char str[64];
+	iuXmlFile_EscapeXmlAttribute(str, "a<>	b& \'\"c\r\n");
+	IUTEST_ASSERT_STREQ("a&lt;&gt;&#x09;b&amp; &apos;&quot;c&#x0D;&#x0A;", str);
+}
+
