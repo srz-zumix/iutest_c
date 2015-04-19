@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -91,9 +91,11 @@ IUTEST_ATTRIBUTE_UNUSED_ char * iu_strrev(char* dst, const char* src);
 IUTEST_ATTRIBUTE_UNUSED_ char * iu_itoa(int value, char* dst, int radix);
 
 IUTEST_ATTRIBUTE_UNUSED_ int iuString_ToInt(const char *src);
+/*
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsSpace(char ch);
 IUTEST_ATTRIBUTE_UNUSED_ const char*	iuString_SkipSpace(const char* p);
 IUTEST_ATTRIBUTE_UNUSED_ const char*	iuString_FindComma(const char* p);
+*/
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsStringEqual(const char* str1, const char* str2);
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsStringCaseEqual(const char* str1, const char* str2);
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsDisabledTestName(const char* name);

@@ -29,7 +29,9 @@ IUTEST_ATTRIBUTE_UNUSED_ void iuXmlFile_OutputCDataSection(FILE* fp, const char*
 #endif
 
 IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlAttribute(char* dst, const char* src);
-//IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlText(char* dst, const char* src);
+/*
+IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlText(char* dst, const char* src);
+*/
 
 #endif
 

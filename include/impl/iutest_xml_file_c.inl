@@ -118,9 +118,11 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlAttribute
 {
 	return iuXmlFile_EscapeCharactor(dst, src, TRUE);
 }
-//IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlText(char* dst, const char* src)
-//{
-//	return iuXmlFile_EscapeCharactor(dst, src, FALSE);
-//}
+/*
+IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuXmlFile_EscapeXmlText(char* dst, const char* src)
+{
+	return iuXmlFile_EscapeCharactor(dst, src, FALSE);
+}
+*/
 
 #endif

@@ -6,7 +6,7 @@
  *
  * @author		t.sirayanagi
  * @par			copyright
- * Copyright (C) 2012-2014, Takazumi Shirayanagi\n
+ * Copyright (C) 2012-2015, Takazumi Shirayanagi\n
  * This software is released under the new BSD License,
  * see LICENSE
 */
@@ -291,7 +291,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ int iuString_ToInt(const char *src)
 #endif
 }
 
-
+/*
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsSpace(char ch)	{ return ch == ' ' || ch =='\t'; }
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ const char*	iuString_SkipSpace(const char* p)
 {
@@ -301,6 +301,7 @@ IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ const char*	iuString_FindComma(cons
 {
 	return (p == NULL || *p == '\0') ? NULL : ((*p == ',') ? p : iuString_FindComma(++p));
 }
+*/
 IUTEST_C_INL_INLINE IUTEST_ATTRIBUTE_UNUSED_ iuBOOL iuString_IsStringEqual(const char* str1, const char* str2)
 {
 	return str1 == NULL ? (str2 == NULL ? TRUE : FALSE) : (str2 == NULL ? FALSE : (iu_strcmp(str1, str2) == 0));

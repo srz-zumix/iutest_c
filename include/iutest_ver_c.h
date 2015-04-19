@@ -16,11 +16,11 @@
 #define INCG_IRIS_IUTEST_VER_C_H_D65CB7A7_D2AD_40FE_8F5F_8FBF376A0010_
 
 /* define ============================================================*/
-#define	IUTEST_C_VER			0x01050010	/*!< iutest version 1.5.0.10 */
+#define	IUTEST_C_VER			0x01050100	/*!< iutest version 1.5.1.0 */
 #define IUTEST_C_MAJORVER		0x01		/*!< Major Version */
 #define IUTEST_C_MINORVER		0x05		/*!< Minor Version */
-#define IUTEST_C_BUILD			0x00		/*!< Build */
-#define IUTEST_C_REVISION		0x10		/*!< Revision */
+#define IUTEST_C_BUILD			0x01		/*!< Build */
+#define IUTEST_C_REVISION		0x00		/*!< Revision */
 
 /**
  * @mainpage
@@ -83,9 +83,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * @page	CHANGELOG		変更履歴
  * @par		Changes
 <ul>
-  <li>v1.6.0.0
+  <li>v1.5.1.0
     <ul>
       <li>iuTestSetUp,iuTestTearDown 関数の引数を変更</li>
+      <li>バグ修正</li>
     </ul>
   </li>
   <li>v1.5.0.0
