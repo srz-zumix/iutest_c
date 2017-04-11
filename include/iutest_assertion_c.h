@@ -172,7 +172,7 @@ IUTEST_ATTRIBUTE_UNUSED_ iuAssertionResult iuAssertionFailureFormatMessage(const
 
 /* どちらも rvalue を使用できるが、式しか表示されない */
 #define iuTestAssertion_VsFailureMessageShowOnlyExpr(expression_str, val1, val2)		\
-	iuAssertionFailureMessage("error: Expected: " expression_str ) )
+	iuAssertionFailureMessage("error: Expected: " expression_str)
 
 #if IUTEST_C_HAS_GENERIC_ASSERTION
 #define iuTestAssertion_VsFailureMessageGeneric(expression_str, val1, val2)		\
